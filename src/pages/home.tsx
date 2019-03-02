@@ -1,3 +1,5 @@
 import * as React from 'react';
 
-export default () => <div>Hello world!</div>;
+import List from '../items/list/index';
+
+export default () => <List />;

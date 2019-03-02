@@ -9,4 +9,5 @@ npm i -D typescript ts-loader && tsc --init
 npm i react react-dom
 npm i -D @types/react @types/react-dom
 npm i -D react-router @types/react-router @types/history
+npm i redux react-redux && npm i -D @types/react-redux
 ```
