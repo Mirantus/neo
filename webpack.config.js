@@ -1,3 +1,14 @@
 module.exports = {
-  entry: './src/index.js'
+  entry: './src/index.tsx',
+  module: {
+    rules: [
+      // .ts, .tsx
+      {
+        test: /\.tsx?$/,
+        use: [
+          'ts-loader'
+        ]
+      },
+    ]
+  }
 };
