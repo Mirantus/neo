@@ -6,8 +6,7 @@ npm i -D webpack && touch webpack.config.js
 touch src/index.tsx
 npm i -D typescript ts-loader && tsc --init
 // add ts-loader to webpack config
-npm i react react-dom
-npm i -D @types/react @types/react-dom
-npm i -D react-router @types/react-router @types/history
-npm i redux react-redux && npm i -D @types/react-redux
+npm i react react-dom && npm i -D @types/react @types/react-dom
+npm i react-router && npm i -D @types/react-router @types/history
+npm i redux react-redux redux-thunk && npm i -D @types/react-redux
 ```
