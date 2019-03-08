@@ -7,8 +7,7 @@ interface ApiDataInterface {}
 interface ApiOptionsInterface { body?: string }
 
 export const apiFetch = (apiUrl:string, apiMethod:string = 'GET', apiData:ApiDataInterface = {}, apiOptions:ApiOptionsInterface = {}) => {
-    const APP_ENVapiUrl = 'http://api.log.fs8.local'; //TODO: FIXME
-    let url = `${APP_ENVapiUrl}/${apiUrl}`;
+    let url = `${APP_ENV.apiUrl}/${apiUrl}`;
     const options = {
         method: apiMethod,
         ...apiOptions
