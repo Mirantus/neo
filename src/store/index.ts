@@ -7,11 +7,9 @@ import reducer, { StoreInterface } from './reducers';
 export const configureStore = (): Store<StoreInterface> => {
     let middleware = applyMiddleware(thunk);
 
-    // todo: fixme
-    // if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
         middleware = composeWithDevTools(middleware);
-    // }
-
+    }
 
     return createStore(reducer as any, middleware) as Store<StoreInterface>;
 };
