@@ -3,8 +3,8 @@ import { Route, Router, Switch } from 'react-router';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 
-import { configureStore } from './store/';
-import Home from './pages/home';
+import { configureStore } from '../store';
+import Home from '../pages/home';
 
 // prepare store
 const history = createBrowserHistory();
