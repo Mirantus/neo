@@ -1,7 +1,7 @@
 import React from 'react';
-import { format } from 'date-fns';
 
 import { Type as DataType } from './reducers/data';
+import Item from './item';
 
 interface PropsType {
     data: DataType,
@@ -10,17 +10,7 @@ interface PropsType {
 const List = (props: PropsType) => {
     return (
         <div>
-            {
-                props.data.map(
-                    item => (
-                        <div key={item.id}>
-                            <hr />
-                            <b><small>{format(item.date, 'D.MM.YYYY')}</small></b><br />
-                            {item.text}<br />
-                        </div>
-                    )
-                )
-            }
+            { props.data.map(item => <Item key={item.id} data={item} />) }
             <hr />
         </div>
     );

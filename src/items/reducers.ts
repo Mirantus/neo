@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
+import item, { Type as ItemType } from './item/reducers';
 import list, { Type as ListType } from './list/reducers';
 
 export interface Type {
-    list: ListType
+    item: ItemType,
+    list: ListType,
 }
 
-export default combineReducers({ list });
+export default combineReducers({ item, list });

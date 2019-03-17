@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 
 import { configureStore } from '../store';
 import Home from '../pages/home';
+import Item from '../pages/items/item';
 
 // prepare store
 const history = createBrowserHistory();
@@ -14,6 +15,7 @@ export default () => (
     <Provider store={store}>
         <Router history={history}>
             <Switch>
+                <Route path="/items/:id(\d+)" component={Item} />
                 <Route path="/" component={Home} />
             </Switch>
         </Router>
