@@ -1,15 +1,15 @@
-import React from 'react';
-import { format } from 'date-fns';
+import { format } from "date-fns";
+import React from "react";
 
-interface PropsType {
-    date: string,
+interface IProps {
+    date: string;
 }
 
-export default (props: PropsType) => (
+export default (props: IProps) => (
     <div>
         <b>
             <small>
-                {format(props.date, 'D.MM.YYYY')}
+                {format(props.date, "D.MM.YYYY")}
             </small>
         </b>
     </div>

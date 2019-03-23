@@ -1,34 +1,34 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import * as React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
 
-import { fetchItem } from './actions';
-import Error from '../../components/error';
-import Loader from '../../components/loader';
-import Content from './content';
-import { Type as StoreType } from '../../store/reducers';
-import { Type as StoreItemType } from './reducers/';
+import Error from "../../components/error";
+import Loader from "../../components/loader";
+import { IStore as IStore } from "../../store/reducers";
+import { fetchItem } from "./actions";
+import Content from "./content";
+import { IItemStore as IStoreItem } from "./reducers/";
 
-interface ActionsType {
-    fetchItem(id: string): void
+interface IActions {
+    fetchItem(id: string): void;
 }
 
-interface PropsType {
-    actions: ActionsType
-    data: StoreItemType['data'],
-    error: StoreItemType['error'],
-    id: string,
-    isFetching: StoreItemType['isFetching'],
+interface IProps {
+    actions: IActions;
+    data: IStoreItem["data"];
+    error: IStoreItem["error"];
+    id: string;
+    isFetching: IStoreItem["isFetching"];
 }
 
-class Item extends React.Component<PropsType> {
-    componentDidMount(): void {
+class Item extends React.Component<IProps> {
+    public componentDidMount(): void {
         const { id, actions } = this.props;
 
         actions.fetchItem(id);
     }
 
-    render() {
+    public render() {
         const { data, isFetching, error } = this.props;
 
         if (isFetching) {
@@ -49,14 +49,14 @@ class Item extends React.Component<PropsType> {
     }
 }
 
-const mapStateToProps = (store: StoreType) => ({
+const mapStateToProps = (store: IStore) => ({
+    data: store.items.item.data,
     error: store.items.item.error,
     isFetching: store.items.item.isFetching,
-    data: store.items.item.data,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): Pick<PropsType, 'actions'> => ({
-    actions: bindActionCreators({ fetchItem }, dispatch)
+const mapDispatchToProps = (dispatch: Dispatch): Pick<IProps, "actions"> => ({
+    actions: bindActionCreators({ fetchItem }, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item);

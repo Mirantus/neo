@@ -1,19 +1,19 @@
-export interface ErrorType {
-    message: string
+export interface IError {
+    message: string;
 }
 
-export interface ActionType {
-    type: string,
-    payload: any
+export interface IAction {
+    type: string;
+    payload: any;
 }
 
-export interface ActionErrorType extends ActionType {
+export interface IActionError extends IAction {
     payload: {
-        message: string
-    }
+        message: string,
+    };
 }
 
-export interface ItemType {
+export interface IItem {
     date: string;
     id: string;
     text: string;

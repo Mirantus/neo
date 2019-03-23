@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import { Type as DataType } from './reducers/data';
-import Item from './item';
+import Item from "./item";
+import { IListDataStore } from "./reducers/data";
 
-interface PropsType {
-    data: DataType,
+interface IProps {
+    data: IListDataStore;
 }
 
-const List = (props: PropsType) => {
+const List = (props: IProps) => {
     return (
         <div>
-            { props.data.map(item => <Item key={item.id} data={item} />) }
+            {props.data.map((item) => <Item key={item.id} data={item} />)}
             <hr />
         </div>
     );

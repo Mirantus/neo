@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import items, { Type as ItemsType } from '../items/reducers';
+import items, { IItemsStore } from "../items/reducers";
 
-export interface Type {
-    items: ItemsType
+export interface IStore {
+    items: IItemsStore;
 }
 
 export default combineReducers({

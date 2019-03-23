@@ -1,21 +1,20 @@
-import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import React from "react";
+import { RouteComponentProps, withRouter } from "react-router";
 
-import Date from '../item/date';
-import { ItemType } from '../../types';
+import { IItem } from "../../types";
+import Date from "../item/date";
 
-interface RouterPropsType {}
-interface PropsType extends RouteComponentProps<RouterPropsType> {
-    data: ItemType,
+interface IProps extends RouteComponentProps<{}> {
+    data: IItem;
 }
 
-const Item = (props: PropsType) => {
+const Item = (props: IProps) => {
     const { data, history } = props;
 
-    const handleClick = () => history.push('/items/' + data.id);
+    const handleClick = () => history.push("/items/" + data.id);
 
     return (
-        <div style={{ cursor: 'pointer' }} onClick={handleClick}>
+        <div style={{ cursor: "pointer" }} onClick={handleClick}>
             <hr />
             <Date date={data.date} />
             {data.text}<br />

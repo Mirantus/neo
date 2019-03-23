@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
+import * as React from "react";
+import { RouteComponentProps } from "react-router";
 
-import Item from '../../items/item/';
+import Item from "../../items/item/";
 
-interface RouterPropsType { id: string; }
-interface PropsType extends RouteComponentProps<RouterPropsType> {}
+interface IRouterProps { id: string; }
+interface IProps extends RouteComponentProps<IRouterProps> {}
 
-export default (props:PropsType) => <Item id={props.match.params.id} />;
+export default (props: IProps) => <Item id={props.match.params.id} />;

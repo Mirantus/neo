@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { Route, Router, Switch } from 'react-router';
-import { Provider } from 'react-redux';
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
+import * as React from "react";
+import { Provider } from "react-redux";
+import { Route, Router, Switch } from "react-router";
 
-import { configureStore } from '../store';
-import Home from '../pages/home';
-import Item from '../pages/items/item';
+import Home from "../pages/home";
+import Item from "../pages/items/item";
+import { configureStore } from "../store";
 
 // prepare store
 const history = createBrowserHistory();

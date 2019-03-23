@@ -1,12 +1,12 @@
-import { ITEM_FETCH, ITEM_FETCH_ERROR } from '../constants';
-import { Type as ActionType } from '../actions';
-import { ErrorType } from '../../../types';
+import { IError } from "../../../types";
+import { IItemAction } from "../actions";
+import { ITEM_FETCH, ITEM_FETCH_ERROR } from "../constants";
 
-export type Type = ErrorType | null;
+export type IItemErrorStore = IError | null;
 
 const initialState = null;
 
-export default (state: Type = initialState, action: ActionType): Type => {
+export default (state: IItemErrorStore = initialState, action: IItemAction): IItemErrorStore => {
     switch (action.type) {
         case ITEM_FETCH:
             return initialState;

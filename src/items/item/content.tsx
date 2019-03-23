@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import Date from './date';
-import { ItemType } from '../../types';
+import { IItem } from "../../types";
+import Date from "./date";
 
-interface PropsType {
-    data: ItemType,
+interface IProps {
+    data: IItem;
 }
 
-export default (props: PropsType) => {
+export default (props: IProps) => {
     const { data } = props;
 
     return (
