@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -p --progress --colors",
-    "start": "webpack --mode development --progress --colors",
+    "start": "webpack --mode development --progress --colors && npm run lint",
+    "lint": "tslint --project \".\"",
+    "fix": "tslint --project \".\" --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
