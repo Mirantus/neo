@@ -8,9 +8,7 @@ interface IProps {
 export default (props: IProps) => (
     <div>
         <b>
-            <small>
-                {format(props.date, "D.MM.YYYY")}
-            </small>
+            <small>{format(props.date, "D.MM.YYYY")}</small>
         </b>
     </div>
 );

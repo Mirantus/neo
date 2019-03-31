@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from "redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
-import { IStore as IStore } from "../../store/reducers";
+import { IStore } from "../../store/reducers";
 import { fetchItem } from "./actions";
 import Content from "./content";
 import { IItemStore as IStoreItem } from "./reducers/";
@@ -40,9 +40,7 @@ class Item extends React.Component<IProps> {
         }
 
         if (data) {
-            return (
-                <Content data={data}/>
-            );
+            return <Content data={data} />;
         }
 
         return null;
@@ -59,4 +57,7 @@ const mapDispatchToProps = (dispatch: Dispatch): Pick<IProps, "actions"> => ({
     actions: bindActionCreators({ fetchItem }, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Item);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Item);

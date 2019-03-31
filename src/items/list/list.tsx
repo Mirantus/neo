@@ -10,7 +10,9 @@ interface IProps {
 const List = (props: IProps) => {
     return (
         <div>
-            {props.data.map((item) => <Item key={item.id} data={item} />)}
+            {props.data.map(item => (
+                <Item key={item.id} data={item} />
+            ))}
             <hr />
         </div>
     );

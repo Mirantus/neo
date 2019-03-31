@@ -9,7 +9,7 @@ export interface IAction {
 
 export interface IActionError extends IAction {
     payload: {
-        message: string,
+        message: string;
     };
 }
 

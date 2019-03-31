@@ -11,4 +11,5 @@ npm i react-router && npm i -D @types/react-router @types/history
 npm i redux react-redux redux-thunk && npm i -D @types/react-redux
 npm i -D redux-devtools-extension
 npm i -D @types/node
+npm i -g prettier && npm i -D tslint-config-prettier lint-staged husky
 ```

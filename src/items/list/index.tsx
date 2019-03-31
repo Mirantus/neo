@@ -38,9 +38,7 @@ class ItemsList extends React.Component<IProps> {
             return <Error message={error.message} />;
         }
 
-        return (
-            <List data={data}/>
-        );
+        return <List data={data} />;
     }
 }
 
@@ -54,4 +52,7 @@ const mapDispatchToProps = (dispatch: Dispatch): Pick<IProps, "actions"> => ({
     actions: bindActionCreators({ fetchItems }, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ItemsList);

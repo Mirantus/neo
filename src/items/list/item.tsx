@@ -17,7 +17,8 @@ const Item = (props: IProps) => {
         <div style={{ cursor: "pointer" }} onClick={handleClick}>
             <hr />
             <Date date={data.date} />
-            {data.text}<br />
+            {data.text}
+            <br />
         </div>
     );
 };
