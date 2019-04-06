@@ -1,36 +1,63 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const isProduction = process.env.NODE_ENV === 'production';
-const APP_ENV = isProduction ? require('./.env.production') : require('./.env.dev');
-const sourcePath = path.join(__dirname, './src');
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === "production";
+  const APP_ENV = isProduction
+    ? require("./.env.production")
+    : require("./.env.dev");
+  const sourcePath = path.join(__dirname, "./src");
 
-module.exports = {
+  return {
     context: sourcePath,
-    entry: './index.tsx',
+    entry: "./index.tsx",
     resolve: {
-        extensions: ['.js', '.ts', '.tsx'],
-        // Fix webpack's default behavior to not load packages with jsnext:main module
-        // (jsnext:main directs not usually distributable es6 format, but es6 sources)
-        mainFields: ['module', 'browser', 'main'],
-        alias: {
-            pages: path.resolve(__dirname, 'src/pages/'),
-        }
+      extensions: [".js", ".ts", ".tsx"],
+      mainFields: ["module", "browser", "main"],
+      alias: {
+        pages: path.resolve(__dirname, "src/pages/")
+      }
+    },
+    devtool: isProduction ? false : "cheap-module-eval-source-map",
+    devServer: {
+      contentBase: "./dist",
+      hot: true,
+      inline: true
     },
     module: {
-        rules: [
-            // .ts, .tsx
-            {
-                test: /\.tsx?$/,
-                use: [
-                    'ts-loader'
-                ]
-            },
-        ]
+      rules: [
+        // .ts, .tsx
+        {
+          test: /\.tsx?$/,
+          exclude: /(node_modules)/,
+          use: [
+            !isProduction && "react-hot-loader/webpack",
+            "ts-loader",
+            "tslint-loader"
+          ].filter(Boolean)
+        }
+      ]
     },
     plugins: [
-        new webpack.DefinePlugin({
-            APP_ENV: JSON.stringify(APP_ENV)
-        })
-    ]
+      new webpack.DefinePlugin({
+        APP_ENV: JSON.stringify(APP_ENV)
+      }),
+      new CopyWebpackPlugin([
+        {
+          from: "assets",
+          to: path.resolve(__dirname, "dist/")
+        }
+      ]),
+      new HtmlWebpackPlugin({
+        template: "assets/index.html"
+      })
+    ],
+    optimization: {
+      splitChunks: {
+        chunks: "all"
+      }
+    }
+  };
 };
