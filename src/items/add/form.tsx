@@ -1,30 +1,49 @@
 import * as React from "react";
+import { InjectedFormProps, reduxForm } from "redux-form";
 
 import Error from "../../components/error";
+import Field from "../../components/form/field";
+import Textarea from "../../components/form/textarea";
 import { IItem } from "../../types";
 import { IAddErrorStore } from "./reducers/error";
 
+type IValues = Pick<IItem, "text">;
+
 interface IProps {
     formError: IAddErrorStore;
-    onSubmit(values: Pick<IItem, "text">): void;
 }
 
-export default class ItemsAddForm extends React.Component<IProps> {
-    public handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        this.props.onSubmit({ text: event.currentTarget.text.value });
-    };
+interface IValidationErrors {
+    text?: string;
+}
 
+export class ItemsAddForm extends React.Component<InjectedFormProps<IValues> & IProps> {
     public render() {
-        const { formError } = this.props;
+        const { formError, handleSubmit } = this.props;
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <textarea name="text" />
-                <br />
+            <form onSubmit={handleSubmit}>
+                <Field label="Текст">
+                    <Textarea name="text" />
+                </Field>
                 <button>Добавить</button>
                 {formError && <Error {...formError} />}
             </form>
         );
     }
 }
+
+const validate = (values: IValues): IValidationErrors => {
+    const errors: IValidationErrors = {};
+
+    if (!values.text) {
+        errors.text = "Поле обязательно для заполнения";
+    }
+
+    return errors;
+};
+
+export default reduxForm<IValues, any>({
+    form: "addForm",
+    validate,
+})(ItemsAddForm);
