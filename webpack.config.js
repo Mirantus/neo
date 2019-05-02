@@ -13,18 +13,24 @@ module.exports = (env, argv) => {
   return {
     context: sourcePath,
     entry: "./index.tsx",
+    output: {
+      publicPath: "/"
+    },
     resolve: {
       extensions: [".js", ".ts", ".tsx"],
       mainFields: ["module", "browser", "main"],
       alias: {
+        "react-dom": "@hot-loader/react-dom",
         pages: path.resolve(__dirname, "src/pages/")
       }
     },
     devtool: isProduction ? false : "cheap-module-eval-source-map",
     devServer: {
       contentBase: "./dist",
+      historyApiFallback: true,
       hot: true,
-      inline: true
+      inline: true,
+      publicPath: "/"
     },
     module: {
       rules: [

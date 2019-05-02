@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
-import Item from "../../items/item/";
+import Item from "../../items/item";
 
 interface IRouterProps {
     id: string;

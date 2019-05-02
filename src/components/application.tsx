@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { Route, Router, Switch } from "react-router";
 
 import Home from "../pages/home";
+import Add from "../pages/items/add";
 import Item from "../pages/items/item";
 import { configureStore } from "../store";
 
@@ -15,6 +16,7 @@ export default () => (
     <Provider store={store}>
         <Router history={history}>
             <Switch>
+                <Route path="/add" component={Add} />
                 <Route path="/items/:id(\d+)" component={Item} />
                 <Route path="/" component={Home} />
             </Switch>
