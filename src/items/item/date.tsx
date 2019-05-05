@@ -6,9 +6,5 @@ interface IProps {
 }
 
 export default (props: IProps) => (
-    <div>
-        <b>
-            <small>{format(props.date, "D.MM.YYYY")}</small>
-        </b>
-    </div>
+    <time dateTime={format(props.date, "YYYY-MM-DD")}>{format(props.date, "D.MM.YYYY")}</time>
 );

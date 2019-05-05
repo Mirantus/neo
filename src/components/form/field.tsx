@@ -6,9 +6,9 @@ interface IProps {
 }
 
 const Field = ({ children, label }: IProps) => (
-    <div>
-        <label>{label}</label>
-        <div>{children}</div>
+    <div className="field">
+        <label className="label">{label}</label>
+        {children}
     </div>
 );
 

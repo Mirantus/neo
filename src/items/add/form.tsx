@@ -26,7 +26,9 @@ export class ItemsAddForm extends React.Component<InjectedFormProps<IValues> & I
                 <Field label="Текст">
                     <Textarea name="text" />
                 </Field>
-                <button>Добавить</button>
+                <div className="control">
+                    <button className="button is-link">Добавить</button>
+                </div>
                 {formError && <Error {...formError} />}
             </form>
         );

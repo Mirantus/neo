@@ -10,8 +10,10 @@ interface IRouterProps {
 export interface IProps extends RouteComponentProps<IRouterProps> {}
 
 export default (props: IProps) => (
-    <>
-        <h1>Добавление записи</h1>
-        <Add history={props.history} />
-    </>
+    <section className="section">
+        <div className="container">
+            <h1 className="title">Добавление записи</h1>
+            <Add history={props.history} />
+        </div>
+    </section>
 );

@@ -8,4 +8,8 @@ interface IRouterProps {
 }
 interface IProps extends RouteComponentProps<IRouterProps> {}
 
-export default (props: IProps) => <Item id={props.match.params.id} />;
+export default (props: IProps) => (
+    <section className="section">
+        <Item id={props.match.params.id} />
+    </section>
+);

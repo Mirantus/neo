@@ -14,11 +14,10 @@ const Item = (props: IProps) => {
     const handleClick = () => history.push("/items/" + data.id);
 
     return (
-        <div style={{ cursor: "pointer" }} onClick={handleClick}>
-            <hr />
-            <Date date={data.date} />
+        <div className="box pointer" onClick={handleClick}>
             {data.text}
             <br />
+            <Date date={data.date} />
         </div>
     );
 };

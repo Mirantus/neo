@@ -7,6 +7,7 @@ import Home from "../pages/home";
 import Add from "../pages/items/add";
 import Item from "../pages/items/item";
 import { configureStore } from "../store";
+import "../styles.less";
 
 // prepare store
 const history = createBrowserHistory();
