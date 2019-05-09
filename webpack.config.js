@@ -30,7 +30,8 @@ module.exports = (env, argv) => {
 
       // короткие пути для импортов в приложении
       alias: {
-        pages: path.resolve(__dirname, "src/pages/")
+        pages: path.resolve(__dirname, "src/pages/"),
+        "react-dom": "@hot-loader/react-dom"
       }
     },
 

@@ -21,31 +21,27 @@ interface IProps {
     isFetching: IStoreItem["isFetching"];
 }
 
-class Item extends React.Component<IProps> {
-    public componentDidMount(): void {
-        const { id, actions } = this.props;
+const Item = (props: IProps) => {
+    const { actions, data, id, isFetching, error } = props;
 
+    React.useEffect(() => {
         actions.fetchItem(id);
+    }, []);
+
+    if (isFetching) {
+        return <Loader />;
     }
 
-    public render() {
-        const { data, isFetching, error } = this.props;
-
-        if (isFetching) {
-            return <Loader />;
-        }
-
-        if (error) {
-            return <Error message={error.message} />;
-        }
-
-        if (data) {
-            return <Content data={data} />;
-        }
-
-        return null;
+    if (error) {
+        return <Error message={error.message} />;
     }
-}
+
+    if (data) {
+        return <Content data={data} />;
+    }
+
+    return null;
+};
 
 const mapStateToProps = (store: IStore) => ({
     data: store.items.item.data,

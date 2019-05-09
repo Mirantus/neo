@@ -21,25 +21,21 @@ interface IProps {
     isSubmitted: IAddIsSubmittedStore;
 }
 
-class ItemsAdd extends React.Component<IProps> {
-    public componentDidMount(): void {
-        this.props.actions.initAdd();
-    }
+const ItemsAdd = (props: IProps) => {
+    const { actions, error, history, isSubmitted } = props;
 
-    public componentDidUpdate(prevProps: IProps) {
-        const { error, isSubmitted, history } = this.props;
+    React.useEffect(() => {
+        props.actions.initAdd();
+    }, []);
 
+    React.useEffect(() => {
         if (!error && isSubmitted) {
             history.push("/");
         }
-    }
+    }, [error, isSubmitted]);
 
-    public render() {
-        const { actions, error } = this.props;
-
-        return <Form onSubmit={actions.add} formError={error} />;
-    }
-}
+    return <Form onSubmit={actions.add} formError={error} />;
+};
 
 const mapStateToProps = (store: IStore) => ({ ...store.items.add });
 

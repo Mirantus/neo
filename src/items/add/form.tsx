@@ -17,23 +17,21 @@ interface IValidationErrors {
     text?: string;
 }
 
-export class ItemsAddForm extends React.Component<InjectedFormProps<IValues> & IProps> {
-    public render() {
-        const { formError, handleSubmit } = this.props;
+const ItemsAddForm = (props: InjectedFormProps<IValues> & IProps) => {
+    const { formError, handleSubmit } = props;
 
-        return (
-            <form onSubmit={handleSubmit}>
-                <Field label="Текст">
-                    <Textarea name="text" />
-                </Field>
-                <div className="control">
-                    <button className="button is-link">Добавить</button>
-                </div>
-                {formError && <Error {...formError} />}
-            </form>
-        );
-    }
-}
+    return (
+        <form onSubmit={handleSubmit}>
+            <Field label="Текст">
+                <Textarea name="text" />
+            </Field>
+            <div className="control">
+                <button className="button is-link">Добавить</button>
+            </div>
+            {formError && <Error {...formError} />}
+        </form>
+    );
+};
 
 const validate = (values: IValues): IValidationErrors => {
     const errors: IValidationErrors = {};
