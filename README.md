@@ -14,4 +14,5 @@ npm i -g prettier && npm i -D tslint-config-prettier lint-staged husky
 npm i -D webpack-dev-server react-hot-loader @hot-loader/react-dom
 npm i -D mini-css-extract-plugin css-loader less-loader less postcss-loader autoprefixer
 npm i redux-form && npm i -D @types/redux-form
+npm i -D jest ts-jest @types/jest enzyme @types/enzyme enzyme-adapter-react-16 @types/ enzyme-adapter-react-16 && npx ts-jest config:init
 ```
