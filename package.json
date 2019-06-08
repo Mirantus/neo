@@ -61,7 +61,7 @@
     "typescript": "^3.3.3333",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.7.1"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
