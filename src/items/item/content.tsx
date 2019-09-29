@@ -7,7 +7,7 @@ interface IProps {
     data: IItem;
 }
 
-export default (props: IProps) => {
+const ItemContent = (props: IProps) => {
     const { data } = props;
 
     return (
@@ -20,3 +20,5 @@ export default (props: IProps) => {
         </div>
     );
 };
+
+export default ItemContent;

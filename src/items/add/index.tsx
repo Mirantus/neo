@@ -21,7 +21,7 @@ interface IProps {
     isSubmitted: IAddIsSubmittedStore;
 }
 
-const ItemsAdd = (props: IProps) => {
+export const ItemsAdd = (props: IProps) => {
     const { actions, error, history, isSubmitted } = props;
 
     React.useEffect(() => {

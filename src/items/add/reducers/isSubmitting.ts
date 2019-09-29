@@ -3,7 +3,7 @@ import { ITEMS_ADD, ITEMS_ADD_ERROR, ITEMS_ADD_OK } from "../constants";
 
 export type IAddIsSubmittingStore = boolean;
 
-const initialState = false;
+export const initialState = false;
 
 export default (state: IAddIsSubmittingStore = initialState, action: IAddAction): IAddIsSubmittingStore => {
     switch (action.type) {

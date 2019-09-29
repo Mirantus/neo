@@ -3,7 +3,7 @@ import { ITEMS_FETCH, ITEMS_FETCH_ERROR, ITEMS_FETCH_OK } from "../constants";
 
 export type IListIsFetchingStore = boolean;
 
-const initialState = false;
+export const initialState = false;
 
 export default (state: IListIsFetchingStore = initialState, action: IListAction): IListIsFetchingStore => {
     switch (action.type) {

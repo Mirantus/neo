@@ -4,7 +4,7 @@ import { ITEMS_ADD, ITEMS_ADD_ERROR } from "../constants";
 
 export type IAddErrorStore = IError | null;
 
-const initialState = null;
+export const initialState = null;
 
 export default (state: IAddErrorStore = initialState, action: IAddAction): IAddErrorStore => {
     switch (action.type) {

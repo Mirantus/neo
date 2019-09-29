@@ -4,7 +4,7 @@ import { ITEMS_FETCH, ITEMS_FETCH_OK } from "../constants";
 
 export type IListDataStore = IItem[];
 
-const initialState: IListDataStore = [];
+export const initialState: IListDataStore = [];
 
 export default (state: IListDataStore = initialState, action: IListAction): IListDataStore => {
     switch (action.type) {

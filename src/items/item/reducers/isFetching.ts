@@ -3,7 +3,7 @@ import { ITEM_FETCH, ITEM_FETCH_ERROR, ITEM_FETCH_OK } from "../constants";
 
 export type IItemIsFetchingStore = boolean;
 
-const initialState = false;
+export const initialState = false;
 
 export default (state: IItemIsFetchingStore = initialState, action: IItemAction): IItemIsFetchingStore => {
     switch (action.type) {

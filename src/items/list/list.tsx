@@ -7,7 +7,7 @@ interface IProps {
     data: IListDataStore;
 }
 
-const List = (props: IProps) => {
+const ItemsListContent = (props: IProps) => {
     return (
         <div className="container">
             {props.data.map(item => (
@@ -18,4 +18,4 @@ const List = (props: IProps) => {
     );
 };
 
-export default List;
+export default ItemsListContent;

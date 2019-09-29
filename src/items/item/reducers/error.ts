@@ -4,7 +4,7 @@ import { ITEM_FETCH, ITEM_FETCH_ERROR } from "../constants";
 
 export type IItemErrorStore = IError | null;
 
-const initialState = null;
+export const initialState = null;
 
 export default (state: IItemErrorStore = initialState, action: IItemAction): IItemErrorStore => {
     switch (action.type) {

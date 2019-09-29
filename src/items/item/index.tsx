@@ -21,7 +21,7 @@ interface IProps {
     isFetching: IStoreItem["isFetching"];
 }
 
-const Item = (props: IProps) => {
+export const Item = (props: IProps) => {
     const { actions, data, id, isFetching, error } = props;
 
     React.useEffect(() => {

@@ -4,7 +4,7 @@ import { ITEM_FETCH, ITEM_FETCH_OK } from "../constants";
 
 export type IItemDataStore = IItem | null;
 
-const initialState: IItemDataStore = null;
+export const initialState: IItemDataStore = null;
 
 export default (state: IItemDataStore = initialState, action: IItemAction): IItemDataStore => {
     switch (action.type) {

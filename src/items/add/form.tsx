@@ -17,7 +17,7 @@ interface IValidationErrors {
     text?: string;
 }
 
-const ItemsAddForm = (props: InjectedFormProps<IValues> & IProps) => {
+export const ItemsAddForm = (props: InjectedFormProps<IValues> & IProps) => {
     const { formError, handleSubmit } = props;
 
     return (
@@ -33,7 +33,7 @@ const ItemsAddForm = (props: InjectedFormProps<IValues> & IProps) => {
     );
 };
 
-const validate = (values: IValues): IValidationErrors => {
+export const validate = (values: IValues): IValidationErrors => {
     const errors: IValidationErrors = {};
 
     if (!values.text) {

@@ -20,7 +20,7 @@ interface IProps {
     isFetching: IListStore["isFetching"];
 }
 
-const ItemsList = (props: IProps) => {
+export const ItemsList = (props: IProps) => {
     const { actions, data, isFetching, error } = props;
 
     React.useEffect(() => {

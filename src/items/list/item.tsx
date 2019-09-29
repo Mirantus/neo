@@ -8,7 +8,7 @@ interface IProps extends RouteComponentProps<{}> {
     data: IItem;
 }
 
-const Item = (props: IProps) => {
+export const Item = (props: IProps) => {
     const { data, history } = props;
 
     const handleClick = () => history.push("/items/" + data.id);
