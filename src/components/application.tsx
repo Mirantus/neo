@@ -13,7 +13,7 @@ import "../styles.less";
 const history = createBrowserHistory();
 const store = configureStore();
 
-export default () => (
+const Application = () => (
     <Provider store={store}>
         <Router history={history}>
             <Switch>
@@ -24,3 +24,5 @@ export default () => (
         </Router>
     </Provider>
 );
+
+export default Application;

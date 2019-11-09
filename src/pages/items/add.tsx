@@ -9,7 +9,7 @@ interface IRouterProps {
 
 export interface IProps extends RouteComponentProps<IRouterProps> {}
 
-export default (props: IProps) => (
+const PageItemsAdd = (props: IProps) => (
     <section className="section">
         <div className="container">
             <h1 className="title">Добавление записи</h1>
@@ -17,3 +17,5 @@ export default (props: IProps) => (
         </div>
     </section>
 );
+
+export default PageItemsAdd;
