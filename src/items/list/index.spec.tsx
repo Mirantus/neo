@@ -4,12 +4,10 @@ import { shallow } from "enzyme";
 import { ItemsList } from "./index";
 
 const defaultProps: any = {
-    actions: {
-        fetchItems: jest.fn(),
-    },
     data: [],
     error: null,
     isFetching: false,
+    fetchItems: jest.fn(),
 };
 
 test("ItemsList Loader", () => {

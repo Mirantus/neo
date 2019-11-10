@@ -4,13 +4,11 @@ import { shallow } from "enzyme";
 import { Item } from "./index";
 
 const defaultProps: any = {
-    actions: {
-        fetchItem: jest.fn(),
-    },
     data: null,
     error: null,
     id: "id",
     isFetching: false,
+    fetchItem: jest.fn(),
 };
 
 test("Item Loader", () => {

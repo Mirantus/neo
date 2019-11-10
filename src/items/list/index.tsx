@@ -1,6 +1,5 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
@@ -9,22 +8,18 @@ import { fetchItems } from "./actions";
 import List from "./list";
 import { IListStore } from "./reducers/";
 
-interface IPropsActions {
-    fetchItems(): void;
-}
-
 interface IProps {
-    actions: IPropsActions;
     data: IListStore["data"];
     error: IListStore["error"];
     isFetching: IListStore["isFetching"];
+    fetchItems(): void;
 }
 
 export const ItemsList = (props: IProps) => {
-    const { actions, data, isFetching, error } = props;
+    const { data, isFetching, error } = props;
 
     React.useEffect(() => {
-        actions.fetchItems();
+        fetchItems();
     }, []);
 
     if (isFetching) {
@@ -44,11 +39,7 @@ const mapStateToProps = (store: IStore) => ({
     isFetching: store.items.list.isFetching,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): Pick<IProps, "actions"> => ({
-    actions: bindActionCreators({ fetchItems }, dispatch),
-});
-
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    { fetchItems }
 )(ItemsList);

@@ -6,34 +6,30 @@ import Form from "./form";
 
 test("ItemsAdd", () => {
     const props: any = {
-        actions: {
-            add: jest.fn(),
-            initAdd: jest.fn(),
-        },
         error: null,
         history: [],
         isSubmitted: false,
+        add: jest.fn(),
+        initAdd: jest.fn(),
     };
 
     const wrapper = shallow(<ItemsAdd {...props} />);
 
     expect(wrapper.type()).toEqual(Form);
-    // TODO: expect(props.actions.initAdd).toHaveBeenCalled();
+    // TODO: expect(props.initAdd).toHaveBeenCalled();
     // TODO: !error && isSubmitted вызывает history.push
 
     wrapper.prop("onSubmit")();
-    expect(props.actions.add).toHaveBeenCalled();
+    expect(props.add).toHaveBeenCalled();
 });
 
 test("ItemsAdd error", () => {
     const props: any = {
-        actions: {
-            add: jest.fn(),
-            initAdd: jest.fn(),
-        },
         error: "error",
         history: [],
         isSubmitted: false,
+        add: jest.fn(),
+        initAdd: jest.fn(),
     };
 
     const wrapper = shallow(<ItemsAdd {...props} />);
