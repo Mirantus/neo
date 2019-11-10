@@ -1,12 +1,14 @@
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import React from "react";
 
 interface IProps {
     date: string;
 }
 
-const ItemDate = (props: IProps) => (
-    <time dateTime={format(props.date, "YYYY-MM-DD")}>{format(props.date, "D.MM.YYYY")}</time>
-);
+const ItemDate = (props: IProps) => {
+    const date = parseISO(props.date);
+
+    return <time dateTime={props.date}>{format(date, "d.MM.yyyy")}</time>;
+};
 
 export default ItemDate;

@@ -16,7 +16,7 @@ interface IProps {
 }
 
 export const ItemsList = (props: IProps) => {
-    const { data, isFetching, error } = props;
+    const { data, isFetching, error, fetchItems } = props;
 
     React.useEffect(() => {
         fetchItems();

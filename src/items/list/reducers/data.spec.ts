@@ -7,10 +7,10 @@ test("List reducer data", () => {
     expect(reducer(initialState, fetchAction)).toBe(initialState);
 
     //ITEMS_FETCH_OK
-    const fetchOkAction = { type: ITEMS_FETCH_OK, payload: "payload" };
-    expect(reducer(initialState, fetchOkAction)).toBe(fetchOkAction.payload);
+    const fetchOkAction = { type: ITEMS_FETCH_OK, payload: ["payload"] };
+    expect(reducer(initialState, fetchOkAction)).toEqual(fetchOkAction.payload);
 
     //default
-    const otherAction = { type: "test", payload: "payload2" };
-    expect(reducer(initialState, otherAction)).toBe(initialState);
+    const otherAction = { type: "test", payload: ["payload2"] };
+    expect(reducer(initialState, otherAction)).toEqual(initialState);
 });
