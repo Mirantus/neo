@@ -20,7 +20,9 @@ module.exports = (env, argv) => {
     entry: "./index.tsx",
 
     output: {
-      publicPath: "/"
+      publicPath: "/",
+      filename: "[name].js",
+      chunkFilename: "[name].js"
     },
 
     // Как подключать модули
