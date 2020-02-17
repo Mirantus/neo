@@ -1,8 +1,7 @@
-import { IError } from "../../../types";
 import { IUserAuthAction } from "../actions";
 import { USER_AUTH, USER_AUTH_ERROR } from "../constants";
 
-export type IUserAuthErrorStore = IError | null;
+export type IUserAuthErrorStore = string | null;
 
 export const initialState = null;
 
@@ -12,7 +11,7 @@ export default (state: IUserAuthErrorStore = initialState, action: IUserAuthActi
             return initialState;
 
         case USER_AUTH_ERROR:
-            return { ...action.payload };
+            return action.payload;
 
         default:
             return state;

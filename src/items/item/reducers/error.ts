@@ -1,8 +1,7 @@
-import { IError } from "../../../types";
 import { IItemAction } from "../actions";
 import { ITEM_FETCH, ITEM_FETCH_ERROR } from "../constants";
 
-export type IItemErrorStore = IError | null;
+export type IItemErrorStore = string | null;
 
 export const initialState = null;
 
@@ -12,7 +11,7 @@ export default (state: IItemErrorStore = initialState, action: IItemAction): IIt
             return initialState;
 
         case ITEM_FETCH_ERROR:
-            return { ...action.payload };
+            return action.payload;
 
         default:
             return state;

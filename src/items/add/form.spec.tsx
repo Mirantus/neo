@@ -22,9 +22,7 @@ test("ItemsAddForm", () => {
 
 test("ItemsAddForm error", () => {
     const props: any = {
-        formError: {
-            message: "error",
-        },
+        formError: "error",
         handleSubmit: () => {},
     };
 
@@ -32,7 +30,7 @@ test("ItemsAddForm error", () => {
     const errorWrapper = wrapper.find("Error");
 
     expect(errorWrapper).toHaveLength(1);
-    expect(errorWrapper.prop("message")).toBe(props.formError.message);
+    expect(errorWrapper.prop("message")).toBe(props.formError);
 });
 
 test("ItemsAddForm validate", () => {

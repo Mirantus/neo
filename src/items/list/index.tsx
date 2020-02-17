@@ -27,7 +27,7 @@ export const ItemsList = (props: IProps) => {
     }
 
     if (error) {
-        return <Error message={error.message} />;
+        return <Error message={error} />;
     }
 
     return <List data={data} />;

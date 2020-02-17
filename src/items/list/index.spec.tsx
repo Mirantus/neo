@@ -26,14 +26,14 @@ test("ItemsList Loader", () => {
 test("ItemsList Error", () => {
     const props: any = {
         ...defaultProps,
-        error: { message: "message" },
+        error: "message",
     };
 
     const wrapper = shallow(<ItemsList {...props} />);
 
     expect(wrapper.find("Loading")).toHaveLength(0);
     expect(wrapper.find("ItemsListContent")).toHaveLength(0);
-    expect(wrapper.find("Error").prop("message")).toBe(props.error.message);
+    expect(wrapper.find("Error").prop("message")).toBe(props.error);
 });
 
 test("ItemsList List", () => {

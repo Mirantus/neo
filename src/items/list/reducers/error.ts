@@ -1,8 +1,7 @@
-import { IError } from "../../../types";
 import { IListAction } from "../actions";
 import { ITEMS_FETCH, ITEMS_FETCH_ERROR } from "../constants";
 
-export type IListErrorStore = IError | null;
+export type IListErrorStore = string | null;
 
 export const initialState = null;
 
@@ -12,7 +11,7 @@ export default (state: IListErrorStore = initialState, action: IListAction): ILi
             return initialState;
 
         case ITEMS_FETCH_ERROR:
-            return { ...action.payload };
+            return action.payload;
 
         default:
             return state;

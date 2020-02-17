@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 
 import { IAction, IActionError, IItem } from "../../types";
-import { apiFetch } from "../../utils/api";
+import { fetch } from "../../utils/api";
 import { ITEM_FETCH, ITEM_FETCH_ERROR, ITEM_FETCH_OK } from "./constants";
 
 interface IActionOk extends IAction {
@@ -11,13 +11,10 @@ interface IActionOk extends IAction {
 export type IItemAction = IAction | IActionError | IActionOk;
 
 export const fetchItem = (id: string) => async (dispatch: Dispatch) => {
-    dispatch({
-        type: ITEM_FETCH,
-    });
+    dispatch({ type: ITEM_FETCH });
 
     try {
-        const response = await apiFetch("items/" + id);
-        const item = await response.json();
+        const item = await fetch("items/" + id);
 
         dispatch({
             payload: item,
@@ -25,7 +22,7 @@ export const fetchItem = (id: string) => async (dispatch: Dispatch) => {
         });
     } catch (error) {
         dispatch({
-            payload: { message: "Невозможно получить данные" },
+            payload: error,
             type: ITEM_FETCH_ERROR,
         });
     }

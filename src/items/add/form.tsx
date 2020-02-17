@@ -28,7 +28,7 @@ export const ItemsAddForm = (props: InjectedFormProps<IValues> & IProps) => {
             <div className="control">
                 <button className="button is-link">Добавить</button>
             </div>
-            {formError && <Error {...formError} />}
+            {formError && <Error message={formError} />}
         </form>
     );
 };
