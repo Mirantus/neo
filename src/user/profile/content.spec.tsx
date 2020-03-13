@@ -1,10 +1,20 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 import Content from "./content";
 
 test("ProfileContent", () => {
-    const wrapper = shallow(<Content />);
+    const tree = renderer.create(<Content />).toJSON();
 
-    expect(wrapper.find("h1").text()).toBe("Профиль");
+    expect(tree).toMatchInlineSnapshot(`
+        <div
+          className="container"
+        >
+          <h1
+            className="title"
+          >
+            Профиль
+          </h1>
+        </div>
+    `);
 });

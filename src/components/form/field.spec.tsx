@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 import Field from "./field";
 
@@ -9,7 +9,18 @@ test("Field", () => {
         children: "text",
     };
 
-    const wrapper = shallow(<Field {...props} />);
+    const tree = renderer.create(<Field {...props} />).toJSON();
 
-    expect(wrapper.html()).toContain(props.label);
+    expect(tree).toMatchInlineSnapshot(`
+        <div
+          className="field"
+        >
+          <label
+            className="label"
+          >
+            label
+          </label>
+          text
+        </div>
+    `);
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 import { Item } from "./item";
 
@@ -15,11 +15,24 @@ test("ListItem", () => {
         },
     };
 
-    const wrapper = shallow(<Item {...props} />);
+    const tree = renderer.create(<Item {...props} />).toJSON();
 
-    expect(wrapper.text()).toContain(props.data.text);
-    expect(wrapper.find("ItemDate").prop("date")).toBe(props.data.date);
+    expect(tree).toMatchInlineSnapshot(`
+        <div
+          className="box pointer"
+          onClick={[Function]}
+        >
+          text
+          <br />
+          <time
+            dateTime="2019-01-01"
+          >
+            1.01.2019
+          </time>
+        </div>
+    `);
 
-    wrapper.prop("onClick")();
+    (tree as any).props.onClick();
+
     expect(props.history.push).toHaveBeenCalledWith("/items/" + props.data.id);
 });

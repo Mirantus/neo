@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 import Content from "./content";
 
@@ -11,9 +11,27 @@ test("ItemContent", () => {
         },
     };
 
-    const wrapper = shallow(<Content {...props} />);
+    const tree = renderer.create(<Content {...props} />).toJSON();
 
-    expect(wrapper.find("h1").text()).toBe("Запись");
-    expect(wrapper.text()).toContain(props.data.text);
-    expect(wrapper.find("ItemDate").prop("date")).toBe(props.data.date);
+    expect(tree).toMatchInlineSnapshot(`
+        <div
+          className="container"
+        >
+          <h1
+            className="title"
+          >
+            Запись
+          </h1>
+          <p>
+            text
+          </p>
+          <p>
+            <time
+              dateTime="2019-01-01"
+            >
+              1.01.2019
+            </time>
+          </p>
+        </div>
+    `);
 });

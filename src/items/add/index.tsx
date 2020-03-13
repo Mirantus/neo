@@ -34,7 +34,4 @@ export const ItemsAdd = (props: IProps) => {
 
 const mapStateToProps = (store: IStore) => ({ ...store.items.add });
 
-export default connect(
-    mapStateToProps,
-    { add, initAdd }
-)(ItemsAdd);
+export default connect(mapStateToProps, { add, initAdd })(ItemsAdd);

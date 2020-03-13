@@ -1,56 +1,53 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
-import Textarea, { renderField as RenderField } from "./textarea";
+import { renderField as RenderField } from "./textarea";
+import { props } from "./input.spec";
 
 test("Textarea", () => {
-    const props = {
-        name: "name",
-    };
+    const tree = renderer.create(<RenderField {...props} />).toJSON();
 
-    const wrapper = shallow(<Textarea {...props} />);
-
-    expect(wrapper.prop("name")).toEqual(props.name);
-});
-
-const componentProps = {
-    input: {
-        name: "",
-        value: "",
-        onBlur: () => null,
-        onChange: () => null,
-        onDragStart: () => null,
-        onDrop: () => null,
-        onFocus: () => null,
-    },
-    meta: {
-        autofilled: true,
-        asyncValidating: true,
-        dirty: true,
-        dispatch: (): any => null,
-        form: "",
-        initial: "",
-        invalid: true,
-        pristine: true,
-        submitting: true,
-        submitFailed: true,
-        touched: true,
-        valid: true,
-        visited: true,
-    },
-};
-
-test("RenderField без ошибки", () => {
-    const wrapper = shallow(<RenderField {...componentProps} />);
-
-    expect(wrapper.find("textarea")).toHaveLength(1);
-    expect(wrapper.find("p")).toHaveLength(0);
+    expect(tree).toMatchInlineSnapshot(`
+        <div
+          className="control"
+        >
+          <textarea
+            className="textarea"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value="value"
+          />
+        </div>
+    `);
 });
 
 test("RenderField с ошибкой", () => {
-    const error = "error";
-    const props = { ...componentProps, meta: { ...componentProps.meta, error } };
-    const wrapper = shallow(<RenderField {...props} />);
+    const propsWithError = { ...props, meta: { ...props.meta, error: "error" } };
+    const tree = renderer.create(<RenderField {...propsWithError} />).toJSON();
 
-    expect(wrapper.html()).toContain(error);
+    expect(tree).toMatchInlineSnapshot(`
+        <div
+          className="control"
+        >
+          <textarea
+            className="textarea"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value="value"
+          />
+          <p
+            className="help is-danger"
+          >
+            error
+          </p>
+        </div>
+    `);
 });

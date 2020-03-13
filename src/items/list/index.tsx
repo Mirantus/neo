@@ -39,7 +39,4 @@ const mapStateToProps = (store: IStore) => ({
     isFetching: store.items.list.isFetching,
 });
 
-export default connect(
-    mapStateToProps,
-    { fetchItems }
-)(ItemsList);
+export default connect(mapStateToProps, { fetchItems })(ItemsList);

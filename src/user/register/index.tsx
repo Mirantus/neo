@@ -34,7 +34,4 @@ export const Register = (props: IProps) => {
 
 const mapStateToProps = (store: IStore) => ({ ...store.user.register });
 
-export default connect(
-    mapStateToProps,
-    { initRegister, register }
-)(Register);
+export default connect(mapStateToProps, { initRegister, register })(Register);

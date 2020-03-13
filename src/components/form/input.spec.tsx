@@ -1,22 +1,12 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
-import Input, { renderField as RenderField } from "./input";
+import { renderField as RenderField } from "./input";
 
-test("Input", () => {
-    const props = {
-        name: "name",
-    };
-
-    const wrapper = shallow(<Input {...props} />);
-
-    expect(wrapper.prop("name")).toEqual(props.name);
-});
-
-const componentProps = {
+export const props = {
     input: {
-        name: "",
-        value: "",
+        name: "name",
+        value: "value",
         onBlur: () => null,
         onChange: () => null,
         onDragStart: () => null,
@@ -40,17 +30,50 @@ const componentProps = {
     },
 };
 
-test("RenderField без ошибки", () => {
-    const wrapper = shallow(<RenderField {...componentProps} />);
+test("Input", () => {
+    const tree = renderer.create(<RenderField {...props} />).toJSON();
 
-    expect(wrapper.find("input")).toHaveLength(1);
-    expect(wrapper.find("p")).toHaveLength(0);
+    expect(tree).toMatchInlineSnapshot(`
+        <div
+          className="control"
+        >
+          <input
+            className="input"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value="value"
+          />
+        </div>
+    `);
 });
 
 test("RenderField с ошибкой", () => {
-    const error = "error";
-    const props = { ...componentProps, meta: { ...componentProps.meta, error } };
-    const wrapper = shallow(<RenderField {...props} />);
+    const propsWithError = { ...props, meta: { ...props.meta, error: "error" } };
+    const tree = renderer.create(<RenderField {...propsWithError} />).toJSON();
 
-    expect(wrapper.html()).toContain(error);
+    expect(tree).toMatchInlineSnapshot(`
+        <div
+          className="control"
+        >
+          <input
+            className="input"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            value="value"
+          />
+          <p
+            className="help is-danger"
+          >
+            error
+          </p>
+        </div>
+    `);
 });

@@ -10,7 +10,7 @@ npm i redux react-redux redux-thunk && npm i -D @types/react-redux
 npm i -D redux-devtools-extension
 npm i -D @types/node
 npm i -g tslint && npm i -D tslint tslint-loader tslint-react
-npm i -g prettier && npm i -D tslint-config-prettier lint-staged husky
+npm i prettier && npm i -D tslint-config-prettier lint-staged husky
 npm i -D webpack-dev-server react-hot-loader @hot-loader/react-dom
 npm i -D mini-css-extract-plugin css-loader less-loader less postcss-loader autoprefixer
 npm i redux-form && npm i -D @types/redux-form

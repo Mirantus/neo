@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 import Date from "./date";
 
@@ -8,7 +8,13 @@ test("ItemDate", () => {
         date: "2019-12-31",
     };
 
-    const wrapper = shallow(<Date {...props} />);
+    const tree = renderer.create(<Date {...props} />).toJSON();
 
-    expect(wrapper.html()).toBe('<time dateTime="2019-12-31">31.12.2019</time>');
+    expect(tree).toMatchInlineSnapshot(`
+        <time
+          dateTime="2019-12-31"
+        >
+          31.12.2019
+        </time>
+    `);
 });

@@ -1,10 +1,21 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 import Loader from "./loader";
 
 test("Loader", () => {
-    const wrapper = shallow(<Loader />);
+    const tree = renderer.create(<Loader />).toJSON();
 
-    expect(wrapper.html()).toContain("Подождите");
+    expect(tree).toMatchInlineSnapshot(`
+        <div>
+          <span
+            className="icon has-text-info"
+          >
+            <i
+              className="fas fa-spinner fa-pulse"
+            />
+          </span>
+          Подождите...
+        </div>
+    `);
 });

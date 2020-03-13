@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 import Error from "./error";
 
@@ -8,7 +8,14 @@ test("Error", () => {
         message: "message",
     };
 
-    const wrapper = shallow(<Error {...props} />);
+    const tree = renderer.create(<Error {...props} />).toJSON();
 
-    expect(wrapper.html()).toContain(props.message);
+    expect(tree).toMatchInlineSnapshot(`
+        <p
+          className="help is-danger"
+        >
+          Ошибка: 
+          message
+        </p>
+    `);
 });
