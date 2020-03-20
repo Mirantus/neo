@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 import Content from "./content";
 
 test("ProfileContent", () => {
-    const tree = renderer.create(<Content />).toJSON();
+    const tree = renderer.create(<Content profile={{ email: "e@mail.com" }} />).toJSON();
 
     expect(tree).toMatchInlineSnapshot(`
         <div
@@ -15,6 +15,9 @@ test("ProfileContent", () => {
           >
             Профиль
           </h1>
+          <p>
+            e@mail.com
+          </p>
         </div>
     `);
 });

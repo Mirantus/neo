@@ -8,10 +8,6 @@ interface IRouterProps {
 }
 interface IProps extends RouteComponentProps<IRouterProps> {}
 
-const PageItemsItem = (props: IProps) => (
-    <section className="section">
-        <Item id={props.match.params.id} />
-    </section>
-);
+const PageItemsItem = (props: IProps) => <Item id={props.match.params.id} />;
 
 export default PageItemsItem;
