@@ -1,7 +1,7 @@
 import { IRegisterAction } from "../../register/actions";
 import { REGISTER_OK } from "../../register/constants";
 import { IUserAuthAction } from "../actions";
-import { USER_AUTH, USER_AUTH_ERROR, USER_AUTH_OK } from "../constants";
+import { LOGOUT, USER_AUTH, USER_AUTH_ERROR, USER_AUTH_OK } from "../constants";
 
 export type IUserAuthIsAuthorizedStore = boolean;
 
@@ -12,6 +12,7 @@ export default (
     action: IUserAuthAction | IRegisterAction
 ): IUserAuthIsAuthorizedStore => {
     switch (action.type) {
+        case LOGOUT:
         case USER_AUTH:
         case USER_AUTH_ERROR:
             return false;

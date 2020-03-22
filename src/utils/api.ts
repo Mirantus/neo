@@ -27,11 +27,16 @@ export const fetch = (apiUrl: string, apiMethod: string = "GET", apiData: {} = {
     new Promise(async (resolve, reject) => {
         try {
             const response = await request(apiUrl, apiMethod, apiData, apiOptions);
+            const responseText = await response.text();
 
             if (response.status === 200) {
-                resolve(await response.json());
+                try {
+                    resolve(await response.json());
+                } catch (e) {
+                    resolve(responseText);
+                }
             } else {
-                reject(await response.text());
+                reject(responseText);
             }
         } catch (error) {
             reject("Ошибка отправки данных");

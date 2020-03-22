@@ -1,7 +1,11 @@
-import { USER_AUTH, USER_AUTH_ERROR, USER_AUTH_OK } from "../constants";
+import { LOGOUT, USER_AUTH, USER_AUTH_ERROR, USER_AUTH_OK } from "../constants";
 import reducer, { initialState } from "./isFetching";
 
 test("User Auth reducer isSubmitted", () => {
+    //LOGOUT
+    const logoutAction = { type: LOGOUT, payload: null };
+    expect(reducer(initialState, logoutAction)).toBe(initialState);
+
     //USER_AUTH
     const userAuthAction = { type: USER_AUTH, payload: null };
     expect(reducer(initialState, userAuthAction)).toBe(true);

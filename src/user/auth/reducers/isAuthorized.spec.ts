@@ -1,8 +1,12 @@
 import { REGISTER_OK } from "../../register/constants";
-import { USER_AUTH, USER_AUTH_OK, USER_AUTH_ERROR } from "../constants";
+import { LOGOUT, USER_AUTH, USER_AUTH_OK, USER_AUTH_ERROR } from "../constants";
 import reducer, { initialState } from "./isAuthorized";
 
 test("User auth reducer isAuthorized", () => {
+    //LOGOUT
+    const logoutAction = { type: LOGOUT, payload: null };
+    expect(reducer(initialState, logoutAction)).toBe(initialState);
+
     //USER_AUTH
     const userAuthAction = { type: USER_AUTH, payload: null };
     expect(reducer(initialState, userAuthAction)).toBe(initialState);

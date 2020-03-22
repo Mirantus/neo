@@ -1,5 +1,5 @@
 import { IUserAuthAction } from "../actions";
-import { USER_AUTH, USER_AUTH_ERROR, USER_AUTH_OK } from "../constants";
+import { LOGOUT, USER_AUTH, USER_AUTH_ERROR, USER_AUTH_OK } from "../constants";
 
 export type IUserAuthIsFetchingStore = boolean;
 
@@ -9,6 +9,7 @@ export default (state: IUserAuthIsFetchingStore = initialState, action: IUserAut
     switch (action.type) {
         case USER_AUTH:
             return true;
+        case LOGOUT:
         case USER_AUTH_ERROR:
         case USER_AUTH_OK:
             return initialState;
