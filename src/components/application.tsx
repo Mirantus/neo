@@ -7,6 +7,7 @@ import Layout from "../components/layout";
 import PrivateRoute from "../components/privateRoute";
 import { configureStore } from "../store";
 import "../styles.less";
+import Auth from "../user/auth/index";
 import Loader from "./loader";
 
 const Add = React.lazy(() => import(/* webpackChunkName: "add" */ "../pages/items/add"));
@@ -39,6 +40,7 @@ const Application = () => (
                     </Switch>
                 </React.Suspense>
             </Layout>
+            <Auth />
         </Router>
     </Provider>
 );

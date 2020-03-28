@@ -1,4 +1,6 @@
 import { IUser } from "../../../types";
+import { IAuthAction } from "../../auth/actions";
+import { AUTH_OK } from "../../auth/constants";
 import { ILoginAction } from "../../login/actions";
 import { LOGIN_OK } from "../../login/constants";
 import { IRegisterAction } from "../../register/actions";
@@ -10,11 +12,13 @@ export const initialState: IUserProfileStore = {
     email: "",
 };
 
-export default (state: IUserProfileStore = initialState, action: ILoginAction | IRegisterAction): IUserProfileStore => {
+export default (
+    state: IUserProfileStore = initialState,
+    action: IAuthAction | ILoginAction | IRegisterAction
+): IUserProfileStore => {
     switch (action.type) {
+        case AUTH_OK:
         case LOGIN_OK:
-            return action.payload;
-
         case REGISTER_OK:
             return action.payload;
 

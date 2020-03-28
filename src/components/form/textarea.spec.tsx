@@ -1,8 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import { renderField as RenderField } from "./textarea";
 import { props } from "./input.spec";
+import { renderField as RenderField } from "./textarea";
 
 test("Textarea", () => {
     const tree = renderer.create(<RenderField {...props} />).toJSON();

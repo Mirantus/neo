@@ -1,24 +1,24 @@
-import { LOGOUT, USER_AUTH, USER_AUTH_ERROR, USER_AUTH_OK } from "../constants";
+import { AUTH, AUTH_ERROR, AUTH_OK, LOGOUT } from "../constants";
 import reducer, { initialState } from "./isFetching";
 
 test("User Auth reducer isSubmitted", () => {
-    //LOGOUT
+    // LOGOUT
     const logoutAction = { type: LOGOUT, payload: null };
-    expect(reducer(initialState, logoutAction)).toBe(initialState);
+    expect(reducer(initialState, logoutAction)).toBe(false);
 
-    //USER_AUTH
-    const userAuthAction = { type: USER_AUTH, payload: null };
-    expect(reducer(initialState, userAuthAction)).toBe(true);
+    // AUTH
+    const authAction = { type: AUTH, payload: null };
+    expect(reducer(initialState, authAction)).toBe(true);
 
-    //USER_AUTH_OK
-    const userAuthOkAction = { type: USER_AUTH_OK, payload: null };
-    expect(reducer(initialState, userAuthOkAction)).toBe(initialState);
+    // AUTH_OK
+    const authOkAction = { type: AUTH_OK, payload: null };
+    expect(reducer(initialState, authOkAction)).toBe(false);
 
-    //USER_AUTH_ERROR
-    const userAuthErrorAction = { type: USER_AUTH_ERROR, payload: null };
-    expect(reducer(initialState, userAuthErrorAction)).toBe(initialState);
+    // AUTH_ERROR
+    const authErrorAction = { type: AUTH_ERROR, payload: null };
+    expect(reducer(initialState, authErrorAction)).toBe(false);
 
-    //default
+    // default
     const otherAction = { type: "test", payload: null };
     expect(reducer(initialState, otherAction)).toEqual(initialState);
 });

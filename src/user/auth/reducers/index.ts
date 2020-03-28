@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
-import error, { IUserAuthErrorStore } from "./error";
-import isAuthorized, { IUserAuthIsAuthorizedStore } from "./isAuthorized";
-import isFetching, { IUserAuthIsFetchingStore } from "./isFetching";
+import error, { IAuthErrorStore } from "./error";
+import isAuthorized, { IAuthIsAuthorizedStore } from "./isAuthorized";
+import isFetching, { IAuthIsFetchingStore } from "./isFetching";
 
-export interface IUserAuthStore {
-    error: IUserAuthErrorStore;
-    isAuthorized: IUserAuthIsAuthorizedStore;
-    isFetching: IUserAuthIsFetchingStore;
+export interface IAuthStore {
+    error: IAuthErrorStore;
+    isAuthorized: IAuthIsAuthorizedStore;
+    isFetching: IAuthIsFetchingStore;
 }
 
 export default combineReducers({

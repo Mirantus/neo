@@ -1,21 +1,21 @@
-import { LOGOUT, USER_AUTH, USER_AUTH_ERROR } from "../constants";
+import { AUTH, AUTH_ERROR, LOGOUT } from "../constants";
 import reducer, { initialState } from "./error";
 
 test("User auth reducer error", () => {
-    //LOGOUT
+    // LOGOUT
     const logoutAction = { type: LOGOUT, payload: null };
     expect(reducer(initialState, logoutAction)).toBe(initialState);
 
-    //USER_AUTH
-    const userAuthAction = { type: USER_AUTH, payload: null };
-    expect(reducer(initialState, userAuthAction)).toBe(initialState);
+    // AUTH
+    const authAction = { type: AUTH, payload: null };
+    expect(reducer(initialState, authAction)).toBe(initialState);
 
-    //USER_AUTH_ERROR
-    const errorUserAuthPayload = { id: "test1" };
-    const errorUserAuthAction = { type: USER_AUTH_ERROR, payload: errorUserAuthPayload };
-    expect(reducer(initialState, errorUserAuthAction)).toEqual(errorUserAuthPayload);
+    // AUTH_ERROR
+    const errorAuthPayload = { id: "test1" };
+    const errorAuthAction = { type: AUTH_ERROR, payload: errorAuthPayload };
+    expect(reducer(initialState, errorAuthAction)).toEqual(errorAuthPayload);
 
-    //default
+    // default
     const otherAction = { type: "test2", payload: { id: "test2" } };
     expect(reducer(initialState, otherAction)).toEqual(initialState);
 });

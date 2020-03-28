@@ -1,14 +1,14 @@
-import { request, fetch } from "./api";
+import { fetch, request } from "./api";
 
 const globalAny: any = global;
 const url = "url";
 const apiUrl = `${APP_ENV.apiUrl}/${url}`;
 const data = { key1: "value1", key2: "value2" };
 
-const fetchSuccess = (): any => ({ status: 200, text: () => "ok", json: () => "ok" });
-const fetchError = (): any => ({ status: 400, text: () => "error", json: () => "error" });
+const fetchSuccess = (): any => ({ status: 200, clone: fetchSuccess, text: () => "ok", json: () => "ok" });
+const fetchError = (): any => ({ status: 400, clone: fetchError, text: () => "error", json: () => "error" });
 const fetchException = (): any => {
-    throw "";
+    throw new Error("");
 };
 
 globalAny.fetch = jest.fn().mockImplementation(fetchSuccess);
@@ -57,12 +57,12 @@ test("api fetch success", () => {
 
 test("api fetch error", () => {
     globalAny.fetch = jest.fn().mockImplementation(fetchError);
-    const response = fetch(url);
+    const response = fetch(url).catch();
     expect(response).rejects.toBe(fetchError().text());
 });
 
 test("api fetch exception", () => {
     globalAny.fetch = jest.fn().mockImplementation(fetchException);
-    const response = fetch(url);
+    const response = fetch(url).catch();
     expect(response).rejects.toBe("Ошибка отправки данных");
 });

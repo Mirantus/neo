@@ -1,17 +1,17 @@
-import { IUserAuthAction } from "../actions";
-import { LOGOUT, USER_AUTH, USER_AUTH_ERROR } from "../constants";
+import { IAuthAction } from "../actions";
+import { AUTH, AUTH_ERROR, LOGOUT } from "../constants";
 
-export type IUserAuthErrorStore = string | null;
+export type IAuthErrorStore = string | null;
 
 export const initialState = null;
 
-export default (state: IUserAuthErrorStore = initialState, action: IUserAuthAction): IUserAuthErrorStore => {
+export default (state: IAuthErrorStore = initialState, action: IAuthAction): IAuthErrorStore => {
     switch (action.type) {
         case LOGOUT:
-        case USER_AUTH:
+        case AUTH:
             return initialState;
 
-        case USER_AUTH_ERROR:
+        case AUTH_ERROR:
             return action.payload;
 
         default:

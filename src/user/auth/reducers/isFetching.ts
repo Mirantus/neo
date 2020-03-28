@@ -1,18 +1,18 @@
-import { IUserAuthAction } from "../actions";
-import { LOGOUT, USER_AUTH, USER_AUTH_ERROR, USER_AUTH_OK } from "../constants";
+import { IAuthAction } from "../actions";
+import { AUTH, AUTH_ERROR, AUTH_OK, LOGOUT } from "../constants";
 
-export type IUserAuthIsFetchingStore = boolean;
+export type IAuthIsFetchingStore = boolean;
 
-export const initialState = false;
+export const initialState = true;
 
-export default (state: IUserAuthIsFetchingStore = initialState, action: IUserAuthAction): IUserAuthIsFetchingStore => {
+export default (state: IAuthIsFetchingStore = initialState, action: IAuthAction): IAuthIsFetchingStore => {
     switch (action.type) {
-        case USER_AUTH:
+        case AUTH:
             return true;
         case LOGOUT:
-        case USER_AUTH_ERROR:
-        case USER_AUTH_OK:
-            return initialState;
+        case AUTH_ERROR:
+        case AUTH_OK:
+            return false;
         default:
             return state;
     }

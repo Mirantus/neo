@@ -27,7 +27,7 @@ export const fetch = (apiUrl: string, apiMethod: string = "GET", apiData: {} = {
     new Promise(async (resolve, reject) => {
         try {
             const response = await request(apiUrl, apiMethod, apiData, apiOptions);
-            const responseText = await response.text();
+            const responseText = await response.clone().text();
 
             if (response.status === 200) {
                 try {
