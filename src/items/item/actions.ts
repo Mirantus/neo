@@ -14,7 +14,7 @@ export const fetchItem = (id: string) => async (dispatch: Dispatch) => {
     dispatch({ type: ITEM_FETCH });
 
     try {
-        const item = await fetch("items/" + id);
+        const item = await fetch("items/item?id=" + id);
 
         dispatch({
             payload: item,

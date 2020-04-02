@@ -16,6 +16,7 @@ export const auth = () => async (dispatch: Dispatch) => {
     const token = getCookie("token");
 
     if (!token) {
+        dispatch({ type: LOGOUT });
         return;
     }
 

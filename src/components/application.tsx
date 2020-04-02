@@ -30,7 +30,7 @@ const Application = () => (
             <Layout>
                 <React.Suspense fallback={<Loader />}>
                     <Switch>
-                        <Route exact={true} path="/add" component={Add} />
+                        <PrivateRoute exact={true} path="/add" component={Add} />
                         <Route exact={true} path="/items/:id(\d+)" component={Item} />
 
                         <Route exact={true} path="/login" component={Login} />

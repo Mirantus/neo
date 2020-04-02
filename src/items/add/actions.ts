@@ -1,3 +1,4 @@
+import { get as getCookie } from "js-cookie";
 import { Dispatch } from "redux";
 
 import { IAction, IActionError, IItem } from "../../types";
@@ -13,7 +14,8 @@ export const add = (values: IItem) => async (dispatch: Dispatch) => {
     dispatch({ type: ITEMS_ADD });
 
     try {
-        await fetch("items/", "POST", values);
+        const token = getCookie("token");
+        await fetch("items/add", "POST", { ...values, token });
         dispatch({ type: ITEMS_ADD_OK });
     } catch (error) {
         dispatch({
