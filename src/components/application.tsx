@@ -11,6 +11,7 @@ import Auth from "../user/auth/index";
 import Loader from "./loader";
 
 const Add = React.lazy(() => import(/* webpackChunkName: "add" */ "../pages/items/add"));
+const Edit = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/items/edit"));
 const Item = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/items/item"));
 
 const Login = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/login"));
@@ -31,6 +32,7 @@ const Application = () => (
                 <React.Suspense fallback={<Loader />}>
                     <Switch>
                         <PrivateRoute exact={true} path="/add" component={Add} />
+                        <Route exact={true} path="/edit/:id(\d+)" component={Edit} />
                         <Route exact={true} path="/items/:id(\d+)" component={Item} />
 
                         <Route exact={true} path="/login" component={Login} />

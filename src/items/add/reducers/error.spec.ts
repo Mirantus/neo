@@ -1,4 +1,4 @@
-import { ITEMS_ADD, ITEMS_ADD_ERROR } from "../constants";
+import { ITEMS_ADD, ITEMS_ADD_ERROR, ITEMS_ADD_INIT } from "../constants";
 import reducer, { initialState } from "./error";
 
 test("Add reducer error", () => {
@@ -10,6 +10,10 @@ test("Add reducer error", () => {
     const errorAddPayload = { id: "test1" };
     const errorAddAction = { type: ITEMS_ADD_ERROR, payload: errorAddPayload };
     expect(reducer(initialState, errorAddAction)).toEqual(errorAddPayload);
+
+    // ITEMS_ADD_INIT
+    const initAction = { type: ITEMS_ADD_INIT, payload: null };
+    expect(reducer(initialState, initAction)).toBe(initialState);
 
     // default
     const otherAction = { type: "test2", payload: { id: "test2" } };

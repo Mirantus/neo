@@ -1,0 +1,7 @@
+export const ITEMS_EDIT_INIT = "ITEMS_EDIT_INIT";
+export const ITEMS_EDIT_INIT_OK = "ITEMS_EDIT_INIT_OK";
+export const ITEMS_EDIT_INIT_ERROR = "ITEMS_EDIT_INIT_ERROR";
+
+export const ITEMS_EDIT = "ITEMS_EDIT";
+export const ITEMS_EDIT_OK = "ITEMS_EDIT_OK";
+export const ITEMS_EDIT_ERROR = "ITEMS_EDIT_ERROR";

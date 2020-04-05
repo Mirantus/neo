@@ -11,9 +11,11 @@ export interface IItem {
     date: string;
     id: string;
     text: string;
+    user_id: string;
 }
 
 export interface IUser {
+    id?: string;
     email: string;
     password?: string;
     password2?: string;
