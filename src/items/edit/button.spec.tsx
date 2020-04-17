@@ -2,7 +2,7 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 
-import { ItemEditButton } from "./editButton";
+import { ItemEditButton } from "./button";
 
 test("ItemEditButton", () => {
     const props: any = {

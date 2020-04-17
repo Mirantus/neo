@@ -10,6 +10,7 @@ import "../styles.less";
 import Auth from "../user/auth/index";
 import Loader from "./loader";
 import Loading from "./loading";
+import Message from "./message";
 
 const Add = React.lazy(() => import(/* webpackChunkName: "add" */ "../pages/items/add"));
 const Edit = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/items/edit"));
@@ -47,6 +48,7 @@ const Application = () => (
             </Layout>
             <Auth />
             <Loading />
+            <Message />
         </Router>
     </Provider>
 );

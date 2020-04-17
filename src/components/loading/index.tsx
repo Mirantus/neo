@@ -4,15 +4,14 @@ import { connect } from "react-redux";
 import Loader from "../../components/loader";
 import { IStore } from "../../store/reducers";
 import { ILoadingStore } from "./reducers";
-import "./styles.less";
 
 interface IProps {
     loading: ILoadingStore;
 }
 
-export const ApplicationLoader = (props: IProps) => {
+export const Loading = (props: IProps) => {
     return props.loading ? (
-        <div className="loading notification is-light">
+        <div className="app-message notification is-light">
             <Loader />
         </div>
     ) : null;
@@ -20,4 +19,4 @@ export const ApplicationLoader = (props: IProps) => {
 
 const mapStateToProps = (store: IStore) => ({ loading: store.loading });
 
-export default connect(mapStateToProps)(ApplicationLoader);
+export default connect(mapStateToProps)(Loading);

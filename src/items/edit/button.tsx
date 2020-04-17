@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { IStore } from "../../../store/reducers";
-import { IItem } from "../../../types";
+import { IStore } from "../../store/reducers";
+import { IItem } from "../../types";
 
 interface IProps {
     item: IItem;

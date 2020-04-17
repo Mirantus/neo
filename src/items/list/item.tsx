@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { IItem } from "../../../types";
-import DeleteButton from "../../delete/button";
-import Date from "../../item/date";
-import EditButton from "./editButton";
+import { IItem } from "../../types";
+import DeleteButton from "../delete/button";
+import EditButton from "../edit/button";
+import Date from "../item/date";
 
 interface IProps {
     data: IItem;

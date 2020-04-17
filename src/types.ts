@@ -14,6 +14,11 @@ export interface IItem {
     user_id: string;
 }
 
+export interface IMessage {
+    text: string;
+    type: "info" | "success" | "warning" | "danger";
+}
+
 export interface IUser {
     id?: string;
     email: string;
