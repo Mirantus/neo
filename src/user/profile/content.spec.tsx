@@ -1,10 +1,17 @@
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 
 import Content from "./content";
 
 test("ProfileContent", () => {
-    const tree = renderer.create(<Content profile={{ email: "e@mail.com" }} />).toJSON();
+    const tree = renderer
+        .create(
+            <MemoryRouter>
+                <Content profile={{ email: "e@mail.com" }} />
+            </MemoryRouter>
+        )
+        .toJSON();
 
     expect(tree).toMatchInlineSnapshot(`
         <div
@@ -18,6 +25,31 @@ test("ProfileContent", () => {
           <p>
             e@mail.com
           </p>
+          <div
+            className="buttons are-small"
+            style={
+              Object {
+                "marginTop": "20px",
+              }
+            }
+          >
+            <a
+              className="button"
+              href="/user/edit"
+              onClick={[Function]}
+            >
+              <span
+                className="icon is-small"
+              >
+                <i
+                  className="fas fa-edit"
+                />
+              </span>
+              <span>
+                Редактировать
+              </span>
+            </a>
+          </div>
         </div>
     `);
 });

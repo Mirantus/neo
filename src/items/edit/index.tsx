@@ -44,6 +44,7 @@ export const ItemsEdit = (props: IProps) => {
 
     React.useEffect(() => {
         if (!submitError && isSubmitted && initData) {
+            initEdit(id);
             history.push(`/items/${initData.id}`);
         }
     }, [submitError, isSubmitted]);

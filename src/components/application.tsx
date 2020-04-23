@@ -18,6 +18,7 @@ const Item = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/it
 
 const Login = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/login"));
 const Profile = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/profile"));
+const UserEdit = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/edit"));
 const Register = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/register"));
 
 const Home = React.lazy(() => import(/* webpackChunkName: "home" */ "../pages/home"));
@@ -34,12 +35,13 @@ const Application = () => (
                 <React.Suspense fallback={<Loader />}>
                     <Switch>
                         <PrivateRoute exact={true} path="/add" component={Add} />
-                        <Route exact={true} path="/edit/:id(\d+)" component={Edit} />
+                        <PrivateRoute exact={true} path="/edit/:id(\d+)" component={Edit} />
                         <Route exact={true} path="/items/:id(\d+)" component={Item} />
 
                         <Route exact={true} path="/login" component={Login} />
                         <Route exact={true} path="/register" component={Register} />
                         <PrivateRoute exact={true} path="/profile" component={Profile} />
+                        <PrivateRoute exact={true} path="/user/edit" component={UserEdit} />
 
                         <Route exact={true} path="/" component={Home} />
                         <Route path="*" component={NotFound} />

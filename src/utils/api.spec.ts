@@ -1,8 +1,8 @@
 import { fetch, request } from "./api";
 
 const globalAny: any = global;
-const url = "url";
-const apiUrl = `${APP_ENV.apiUrl}/${url}`;
+const url = "/url";
+const apiUrl = APP_ENV.apiUrl + url;
 const data = { key1: "value1", key2: "value2" };
 
 const fetchSuccess = (): any => ({ status: 200, clone: fetchSuccess, text: () => "ok", json: () => "ok" });

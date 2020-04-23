@@ -1,6 +1,7 @@
 import { IUser } from "../../../types";
 import { IAuthAction } from "../../auth/actions";
 import { AUTH_OK } from "../../auth/constants";
+import { USER_EDIT_OK } from "../../edit/constants";
 import { ILoginAction } from "../../login/actions";
 import { LOGIN_OK } from "../../login/constants";
 import { IRegisterAction } from "../../register/actions";
@@ -20,6 +21,7 @@ export default (
         case AUTH_OK:
         case LOGIN_OK:
         case REGISTER_OK:
+        case USER_EDIT_OK:
             return action.payload;
 
         default:

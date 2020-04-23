@@ -25,6 +25,7 @@ export const Register = (props: IProps) => {
 
     React.useEffect(() => {
         if (!error && isSubmitted) {
+            initRegister();
             history.push("/profile");
         }
     }, [error, isSubmitted]);

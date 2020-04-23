@@ -4,7 +4,7 @@ interface IApiOptions {
 
 export const request = (apiUrl: string, apiMethod: string = "GET", apiData: {} = {}, apiOptions: IApiOptions = {}) => {
     const globalAny: any = global;
-    let url = `${APP_ENV.apiUrl}/${apiUrl}`;
+    let url = APP_ENV.apiUrl + apiUrl;
     const options = {
         method: apiMethod,
         ...apiOptions,

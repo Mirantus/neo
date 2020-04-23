@@ -25,6 +25,7 @@ export const ItemsAdd = (props: IProps) => {
 
     React.useEffect(() => {
         if (!error && isSubmitted) {
+            initAdd();
             history.push("/");
         }
     }, [error, isSubmitted]);
