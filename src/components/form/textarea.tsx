@@ -1,9 +1,7 @@
-import React from "react";
+import React, { TextareaHTMLAttributes } from "react";
 import { Field, WrappedFieldProps } from "redux-form";
 
-interface IProps {
-    name: string;
-}
+export interface IProps extends TextareaHTMLAttributes<HTMLInputElement> {}
 
 export const renderField = ({ input, meta: { touched, error } }: WrappedFieldProps) => (
     <div className="control">

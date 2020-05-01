@@ -8,7 +8,7 @@ test("ProfileContent", () => {
     const tree = renderer
         .create(
             <MemoryRouter>
-                <Content profile={{ email: "e@mail.com" }} />
+                <Content profile={{ email: "e@mail.com", id: "1" }} />
             </MemoryRouter>
         )
         .toJSON();

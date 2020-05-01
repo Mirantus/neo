@@ -11,6 +11,7 @@ export type IUserProfileStore = IUser;
 
 export const initialState: IUserProfileStore = {
     email: "",
+    id: "",
 };
 
 export default (

@@ -5,14 +5,10 @@ import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Input from "../../components/form/input";
 import { IChangePasswordErrorStore } from "./reducers/error";
-import { IChangePassword } from "./types";
+import { IChangePassword, IChangePasswordValidationErrors } from "./types";
 
 interface IProps {
     formError: IChangePasswordErrorStore;
-}
-
-interface IValidationErrors {
-    password2?: string;
 }
 
 export const ChangePasswordForm = (props: InjectedFormProps<IChangePassword> & IProps) => {
@@ -41,8 +37,8 @@ export const ChangePasswordForm = (props: InjectedFormProps<IChangePassword> & I
     );
 };
 
-export const validate = (values: IChangePassword): IValidationErrors => {
-    const errors: IValidationErrors = {};
+export const validate = (values: IChangePassword): IChangePasswordValidationErrors => {
+    const errors: IChangePasswordValidationErrors = {};
 
     if (values.password !== values.password2) {
         errors.password2 = "Пароль и подтверждение должны совпадать";

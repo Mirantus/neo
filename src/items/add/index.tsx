@@ -2,17 +2,17 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { IStore } from "../../store/reducers";
-import { IItem } from "../../types";
 import { add, initAdd } from "./actions";
 import Form from "./form";
 import { IAddErrorStore } from "./reducers/error";
 import { IAddIsSubmittedStore } from "./reducers/isSubmitted";
+import { IItemAdd } from "./types";
 
 interface IProps {
     error: IAddErrorStore;
     history: any;
     isSubmitted: IAddIsSubmittedStore;
-    add(values: IItem): void;
+    add(values: IItemAdd): void;
     initAdd(): void;
 }
 

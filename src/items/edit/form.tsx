@@ -5,22 +5,16 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Textarea from "../../components/form/textarea";
-import { IItem } from "../../types";
 import { IEditErrorStore } from "./reducers/submit/error";
 import { IEditIsSubmittingStore } from "./reducers/submit/isSubmitting";
-
-type IValues = Pick<IItem, "text">;
+import { IItemEdit } from "./types";
 
 interface IProps {
     formError: IEditErrorStore;
     isSubmitting: IEditIsSubmittingStore;
 }
 
-interface IValidationErrors {
-    text?: string;
-}
-
-export const ItemsEditForm = (props: InjectedFormProps<IValues> & IProps) => {
+export const ItemsEditForm = (props: InjectedFormProps<IItemEdit> & IProps) => {
     const { formError, isSubmitting, handleSubmit } = props;
 
     return (
@@ -28,7 +22,7 @@ export const ItemsEditForm = (props: InjectedFormProps<IValues> & IProps) => {
             <h1 className="title">Редактирование</h1>
             <form onSubmit={handleSubmit}>
                 <Field label="Текст">
-                    <Textarea name="text" />
+                    <Textarea name="text" required={true} />
                 </Field>
                 <div className="control">
                     <button className={classnames("button", "is-link", { "is-loading": isSubmitting })}>
@@ -41,17 +35,6 @@ export const ItemsEditForm = (props: InjectedFormProps<IValues> & IProps) => {
     );
 };
 
-export const validate = (values: IValues): IValidationErrors => {
-    const errors: IValidationErrors = {};
-
-    if (!values.text) {
-        errors.text = "Поле обязательно для заполнения";
-    }
-
-    return errors;
-};
-
-export default reduxForm<IValues, any>({
+export default reduxForm<IItemEdit, any>({
     form: "editForm",
-    validate,
 })(ItemsEditForm);

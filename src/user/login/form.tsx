@@ -4,14 +4,14 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Input from "../../components/form/input";
-import { IUser } from "../../types";
 import { ILoginErrorStore } from "./reducers/error";
+import { IUserLogin } from "./types";
 
 interface IProps {
     formError: ILoginErrorStore;
 }
 
-export const LoginForm = (props: InjectedFormProps<IUser> & IProps) => {
+export const LoginForm = (props: InjectedFormProps<IUserLogin> & IProps) => {
     const { formError, handleSubmit } = props;
 
     return (
@@ -30,6 +30,6 @@ export const LoginForm = (props: InjectedFormProps<IUser> & IProps) => {
     );
 };
 
-export default reduxForm<IUser, any>({
+export default reduxForm<IUserLogin, any>({
     form: "reduxForm",
 })(LoginForm);

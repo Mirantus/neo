@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { IStore } from "../../store/reducers";
-import { IUser } from "../../types";
 import { initLogin, login } from "./actions";
 import Content from "./content";
 import { ILoginErrorStore } from "./reducers/error";
+import { IUserLogin } from "./types";
 
 interface IProps {
     error: ILoginErrorStore;
     isAuthorized: boolean;
     initLogin(): void;
-    login(values: IUser): void;
+    login(values: IUserLogin): void;
 }
 
 export const Login = (props: IProps) => {

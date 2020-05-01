@@ -1,8 +1,10 @@
 import { set as setCookie } from "js-cookie";
 import { Dispatch } from "redux";
 
-import { IAction, IActionError, IUser } from "../../types";
+import { IAction, IActionError } from "../../types";
 import { fetch } from "../../utils/api";
+import { IAuthResponse } from "../auth/types";
+import { IUserRegister } from "./types";
 
 export type IRegisterAction = IAction | IActionError;
 
@@ -10,15 +12,16 @@ import { REGISTER, REGISTER_ERROR, REGISTER_INIT, REGISTER_OK } from "./constant
 
 export const initRegister = () => ({ type: REGISTER_INIT });
 
-export const register = (values: IUser) => async (dispatch: Dispatch) => {
+export const register = (values: IUserRegister) => async (dispatch: Dispatch) => {
     dispatch({ type: REGISTER });
 
     try {
-        const token = await fetch("register/", "POST", values);
+        const response = await fetch("register/", "POST", values);
+        const { token, user } = response as IAuthResponse;
         setCookie("token", String(token));
 
         dispatch({
-            payload: { email: values.email },
+            payload: user,
             type: REGISTER_OK,
         });
     } catch (error) {

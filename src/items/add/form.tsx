@@ -4,26 +4,20 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Textarea from "../../components/form/textarea";
-import { IItem } from "../../types";
 import { IAddErrorStore } from "./reducers/error";
-
-type IValues = Pick<IItem, "text">;
+import { IItemAdd } from "./types";
 
 interface IProps {
     formError: IAddErrorStore;
 }
 
-interface IValidationErrors {
-    text?: string;
-}
-
-export const ItemsAddForm = (props: InjectedFormProps<IValues> & IProps) => {
+export const ItemsAddForm = (props: InjectedFormProps<IItemAdd> & IProps) => {
     const { formError, handleSubmit } = props;
 
     return (
         <form onSubmit={handleSubmit}>
             <Field label="Текст">
-                <Textarea name="text" />
+                <Textarea name="text" required={true} />
             </Field>
             <div className="control">
                 <button className="button is-link">Добавить</button>
@@ -33,17 +27,6 @@ export const ItemsAddForm = (props: InjectedFormProps<IValues> & IProps) => {
     );
 };
 
-export const validate = (values: IValues): IValidationErrors => {
-    const errors: IValidationErrors = {};
-
-    if (!values.text) {
-        errors.text = "Поле обязательно для заполнения";
-    }
-
-    return errors;
-};
-
-export default reduxForm<IValues, any>({
+export default reduxForm<IItemAdd, any>({
     form: "addForm",
-    validate,
 })(ItemsAddForm);

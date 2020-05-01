@@ -2,18 +2,18 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { IStore } from "../../store/reducers";
-import { IUser } from "../../types";
 import { initRegister, register } from "./actions";
 import Form from "./form";
 import { IRegisterErrorStore } from "./reducers/error";
 import { IRegisterIsSubmittedStore } from "./reducers/isSubmitted";
+import { IUserRegister } from "./types";
 
 interface IProps {
     error: IRegisterErrorStore;
     history: any;
     isSubmitted: IRegisterIsSubmittedStore;
     initRegister(): void;
-    register(values: IUser): void;
+    register(values: IUserRegister): void;
 }
 
 export const Register = (props: IProps) => {

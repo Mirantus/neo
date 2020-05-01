@@ -3,3 +3,7 @@ export interface IChangePassword {
     password: string;
     password2: string;
 }
+
+export interface IChangePasswordValidationErrors {
+    password2?: string;
+}

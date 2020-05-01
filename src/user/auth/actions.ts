@@ -1,16 +1,12 @@
 import { get as getCookie, remove as removeCookie, set as setCookie } from "js-cookie";
 import { Dispatch } from "redux";
 
-import { IAction, IActionError, IUser } from "../../types";
+import { IAction, IActionError } from "../../types";
 import { fetch } from "../../utils/api";
 import { AUTH, AUTH_ERROR, AUTH_OK, LOGOUT } from "./constants";
+import { IAuthResponse } from "./types";
 
 export type IAuthAction = IAction | IActionError;
-
-interface IResponse {
-    user: IUser;
-    token: string;
-}
 
 export const auth = () => async (dispatch: Dispatch) => {
     const token = getCookie("token");
@@ -23,10 +19,8 @@ export const auth = () => async (dispatch: Dispatch) => {
     dispatch({ type: AUTH });
 
     try {
-        const response: IResponse | any = await fetch("auth/", "POST", { token });
-
-        const user = response.user;
-        const newToken = response.token;
+        const response = await fetch("auth/", "POST", { token });
+        const { user, token: newToken } = response as IAuthResponse;
 
         setCookie("token", String(newToken));
 

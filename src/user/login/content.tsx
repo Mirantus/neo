@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { IUser } from "../../types";
 import Form from "./form";
 import { ILoginErrorStore } from "./reducers/error";
+import { IUserLogin } from "./types";
 
 interface IProps {
     formError: ILoginErrorStore;
-    onSubmit(values: IUser): void;
+    onSubmit(values: IUserLogin): void;
 }
 
 const LoginContent = (props: IProps) => {

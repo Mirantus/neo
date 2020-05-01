@@ -20,8 +20,6 @@ export interface IMessage {
 }
 
 export interface IUser {
-    id?: string;
+    id: string;
     email: string;
-    password?: string;
-    password2?: string;
 }

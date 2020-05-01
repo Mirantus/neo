@@ -2,18 +2,18 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { IStore } from "../../store/reducers";
-import { IUser } from "../../types";
 import { edit, init } from "./actions";
 import Form from "./form";
 import { IUserEditErrorStore } from "./reducers/error";
 import { IUserEditIsSubmittedStore } from "./reducers/isSubmitted";
+import { IUserEdit } from "./types";
 
 interface IProps {
     error: IUserEditErrorStore;
     history: any;
-    initialValues: IUser;
+    initialValues: IUserEdit;
     isSubmitted: IUserEditIsSubmittedStore;
-    edit(values: IUser): void;
+    edit(values: IUserEdit): void;
     init(): void;
 }
 

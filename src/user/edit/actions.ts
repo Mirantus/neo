@@ -1,8 +1,9 @@
 import { get as getCookie } from "js-cookie";
 import { Dispatch } from "redux";
 
-import { IAction, IActionError, IUser } from "../../types";
+import { IAction, IActionError } from "../../types";
 import { fetch } from "../../utils/api";
+import { IUserEdit } from "./types";
 
 export type IUserEditAction = IAction | IActionError;
 
@@ -10,15 +11,15 @@ import { USER_EDIT, USER_EDIT_ERROR, USER_EDIT_INIT, USER_EDIT_OK } from "./cons
 
 export const init = () => ({ type: USER_EDIT_INIT });
 
-export const edit = (values: IUser) => async (dispatch: Dispatch) => {
+export const edit = (values: IUserEdit) => async (dispatch: Dispatch) => {
     dispatch({ type: USER_EDIT });
 
     try {
         const token = getCookie("token");
-        await fetch("user/edit/", "POST", { ...values, token });
+        const user = await fetch("user/edit/", "POST", { ...values, token });
 
         dispatch({
-            payload: { email: values.email },
+            payload: user,
             type: USER_EDIT_OK,
         });
     } catch (error) {
