@@ -1,7 +1,7 @@
 import { REGISTER, REGISTER_ERROR, REGISTER_OK } from "../constants";
 import reducer, { initialState } from "./isSubmitting";
 
-test("Register reducer isSubmitted", () => {
+test("Register reducer isSubmitting", () => {
     // REGISTER
     const registerAction = { type: REGISTER, payload: null };
     expect(reducer(initialState, registerAction)).toBe(true);

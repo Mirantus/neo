@@ -1,7 +1,7 @@
 import { LOGIN, LOGIN_ERROR, LOGIN_OK } from "../constants";
 import reducer, { initialState } from "./isSubmitting";
 
-test("Login reducer isSubmitted", () => {
+test("Login reducer isSubmitting", () => {
     // LOGIN
     const loginAction = { type: LOGIN, payload: null };
     expect(reducer(initialState, loginAction)).toBe(true);

@@ -1,7 +1,7 @@
 import { ITEMS_ADD, ITEMS_ADD_ERROR, ITEMS_ADD_OK } from "../constants";
 import reducer, { initialState } from "./isSubmitting";
 
-test("Add reducer isSubmitted", () => {
+test("Add reducer isSubmitting", () => {
     // ITEMS_ADD
     const addAction = { type: ITEMS_ADD, payload: null };
     expect(reducer(initialState, addAction)).toBe(true);

@@ -49,6 +49,22 @@ test("ProfileContent", () => {
                 Редактировать
               </span>
             </a>
+            <a
+              className="button"
+              href="/change_password"
+              onClick={[Function]}
+            >
+              <span
+                className="icon is-small"
+              >
+                <i
+                  className="fas fa-key"
+                />
+              </span>
+              <span>
+                Изменить пароль
+              </span>
+            </a>
           </div>
         </div>
     `);

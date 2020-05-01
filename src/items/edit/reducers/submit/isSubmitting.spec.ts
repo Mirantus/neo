@@ -1,7 +1,7 @@
 import { ITEMS_EDIT, ITEMS_EDIT_ERROR, ITEMS_EDIT_OK } from "../../constants";
 import reducer, { initialState } from "./isSubmitting";
 
-test("Edit reducer isSubmitted", () => {
+test("Edit reducer isSubmitting", () => {
     // ITEMS_EDIT
     const editAction = { type: ITEMS_EDIT, payload: null };
     expect(reducer(initialState, editAction)).toBe(true);

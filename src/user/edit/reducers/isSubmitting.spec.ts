@@ -1,7 +1,7 @@
 import { USER_EDIT, USER_EDIT_ERROR, USER_EDIT_OK } from "../constants";
 import reducer, { initialState } from "./isSubmitting";
 
-test("User edit reducer isSubmitted", () => {
+test("User edit reducer isSubmitting", () => {
     // USER_EDIT
     const userEditAction = { type: USER_EDIT, payload: null };
     expect(reducer(initialState, userEditAction)).toBe(true);

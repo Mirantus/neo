@@ -1,7 +1,7 @@
 import { AUTH, AUTH_ERROR, AUTH_OK, LOGOUT } from "../constants";
 import reducer, { initialState } from "./isFetching";
 
-test("User Auth reducer isSubmitted", () => {
+test("User Auth reducer isFetching", () => {
     // LOGOUT
     const logoutAction = { type: LOGOUT, payload: null };
     expect(reducer(initialState, logoutAction)).toBe(false);

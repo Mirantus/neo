@@ -1,4 +1,4 @@
-import { get as getCookie, set as setCookie } from "js-cookie";
+import { get as getCookie } from "js-cookie";
 import { Dispatch } from "redux";
 
 import { IAction, IActionError, IUser } from "../../types";
@@ -16,7 +16,6 @@ export const edit = (values: IUser) => async (dispatch: Dispatch) => {
     try {
         const token = getCookie("token");
         await fetch("user/edit/", "POST", { ...values, token });
-        setCookie("token", String(token));
 
         dispatch({
             payload: { email: values.email },

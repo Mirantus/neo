@@ -1,7 +1,7 @@
 import { ITEMS_DELETE, ITEMS_DELETE_ERROR, ITEMS_DELETE_OK } from "../constants";
 import reducer, { initialState } from "./isSubmitting";
 
-test("Delete reducer isSubmitted", () => {
+test("Delete reducer isSubmitting", () => {
     // ITEMS_DELETE
     const deleteAction = { type: ITEMS_DELETE, payload: null };
     expect(reducer(initialState, deleteAction)).toBe(true);

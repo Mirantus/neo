@@ -20,6 +20,13 @@ const ProfileContent = (props: IProps) => {
                     </span>
                     <span>Редактировать</span>
                 </Link>
+
+                <Link to="/change_password" className="button">
+                    <span className="icon is-small">
+                        <i className="fas fa-key" />
+                    </span>
+                    <span>Изменить пароль</span>
+                </Link>
             </div>
         </div>
     );
