@@ -20,6 +20,9 @@ const LoginContent = (props: IProps) => {
                 <Form formError={formError} onSubmit={onSubmit} />
             </div>
             <div className="content">
+                <Link to="/password_recovery">Забыли пароль?</Link>
+            </div>
+            <div className="content">
                 <Link to="/register">Регистрация</Link>
             </div>
         </div>

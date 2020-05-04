@@ -21,6 +21,7 @@ const Profile = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages
 const UserEdit = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/edit"));
 const Register = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/register"));
 const ChangePassword = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/changePassword"));
+const PasswordRecovery = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/passwordRecovery"));
 
 const Home = React.lazy(() => import(/* webpackChunkName: "home" */ "../pages/home"));
 const NotFound = React.lazy(() => import(/* webpackChunkName: "notFound" */ "../pages/notFound"));
@@ -41,6 +42,7 @@ const Application = () => (
 
                         <Route exact={true} path="/login" component={Login} />
                         <Route exact={true} path="/register" component={Register} />
+                        <Route exact={true} path="/password_recovery" component={PasswordRecovery} />
                         <PrivateRoute exact={true} path="/profile" component={Profile} />
                         <PrivateRoute exact={true} path="/user/edit" component={UserEdit} />
                         <PrivateRoute exact={true} path="/change_password" component={ChangePassword} />
