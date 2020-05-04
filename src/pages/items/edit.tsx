@@ -2,10 +2,7 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
 import Edit from "../../items/edit/index";
-
-interface IRouterProps {
-    id: string;
-}
+import { IRouterProps } from "../../types";
 
 interface IProps extends RouteComponentProps<IRouterProps> {}
 

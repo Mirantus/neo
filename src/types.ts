@@ -19,6 +19,10 @@ export interface IMessage {
     type: "info" | "success" | "warning" | "danger";
 }
 
+export interface IRouterProps {
+    id: string;
+}
+
 export interface IUser {
     id: string;
     email: string;

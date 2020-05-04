@@ -1,11 +1,8 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
+import { IRouterProps } from "../../types";
 import PasswordRecovery from "../../user/passwordRecovery/index";
-
-interface IRouterProps {
-    id: string;
-}
 
 export interface IProps extends RouteComponentProps<IRouterProps> {}
 

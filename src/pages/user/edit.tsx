@@ -1,11 +1,8 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
+import { IRouterProps } from "../../types";
 import UserEdit from "../../user/edit/index";
-
-interface IRouterProps {
-    id: string;
-}
 
 export interface IProps extends RouteComponentProps<IRouterProps> {}
 
