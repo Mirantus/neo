@@ -45,6 +45,7 @@ module.exports = (env, argv) => {
           exclude: /(node_modules)/,
           use: [
             !isProduction && "react-hot-loader/webpack",
+            "cache-loader",
             "ts-loader",
             {
               loader: "eslint-loader",

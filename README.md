@@ -1,7 +1,7 @@
 ```
 mkdir neo.local && cd neo.local
 npm init && touch .gitignore
-npm i -D webpack copy-webpack-plugin html-webpack-plugin
+npm i -D webpack copy-webpack-plugin html-webpack-plugin cache-loader
 touch src/index.tsx
 npm i -D typescript ts-loader && tsc --init
 npm i react react-dom && npm i -D @types/react @types/react-dom
