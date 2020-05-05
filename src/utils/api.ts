@@ -40,6 +40,6 @@ export const fetch = (apiUrl: string, apiMethod: string = "GET", apiData: {} = {
             }
         } catch (error) {
             reject("Ошибка отправки данных");
-            console.log(error); // tslint:disable-line
+            console.log(error);
         }
     });

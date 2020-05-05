@@ -46,7 +46,14 @@ module.exports = (env, argv) => {
           use: [
             !isProduction && "react-hot-loader/webpack",
             "ts-loader",
-            "tslint-loader"
+            {
+              loader: "eslint-loader",
+              options: {
+                emitWarning: !isProduction,
+                failOnError: isProduction,
+                fix: false
+              }
+            }
           ].filter(Boolean)
         },
 
