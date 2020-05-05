@@ -16,7 +16,7 @@ export const PrivateRoute: FunctionComponent<IPrivateRouteProps> = ({
     isAuthorized,
     isFetching,
     ...rest
-}) => {
+}: IPrivateRouteProps) => {
     const render = (props: any) => {
         if (isFetching) {
             return <Loader />;

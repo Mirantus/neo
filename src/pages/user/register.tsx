@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 import { IRouterProps } from "../../types";
 import Register from "../../user/register/index";
 
-export interface IProps extends RouteComponentProps<IRouterProps> {}
+type IProps = RouteComponentProps<IRouterProps>;
 
 const PageRegister = (props: IProps) => <Register history={props.history} />;
 

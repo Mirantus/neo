@@ -1,9 +1,9 @@
 import React from "react";
 
-interface IProps {
+type IProps = {
     label: string;
     children: any;
-}
+};
 
 const Field = ({ children, label }: IProps) => (
     <div className="field">

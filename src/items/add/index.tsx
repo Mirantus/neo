@@ -8,27 +8,27 @@ import { IAddErrorStore } from "./reducers/error";
 import { IAddIsSubmittedStore } from "./reducers/isSubmitted";
 import { IItemAdd } from "./types";
 
-interface IProps {
+type IProps = {
     error: IAddErrorStore;
     history: any;
     isSubmitted: IAddIsSubmittedStore;
     add(values: IItemAdd): void;
     initAdd(): void;
-}
+};
 
 export const ItemsAdd = (props: IProps) => {
     const { error, history, isSubmitted, add, initAdd } = props;
 
     React.useEffect(() => {
         initAdd();
-    }, []);
+    }, [initAdd]);
 
     React.useEffect(() => {
         if (!error && isSubmitted) {
             initAdd();
             history.push("/");
         }
-    }, [error, isSubmitted]);
+    }, [error, history, initAdd, isSubmitted]);
 
     return <Form onSubmit={add} formError={error} />;
 };

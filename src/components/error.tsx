@@ -1,8 +1,8 @@
 import React from "react";
 
-interface IProps {
+type IProps = {
     message: string;
-}
+};
 
 const Error = (props: IProps) => <p className="help is-danger">Ошибка: {props.message || "нет данных"}</p>;
 

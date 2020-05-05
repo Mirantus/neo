@@ -3,9 +3,9 @@ import React from "react";
 import UserPanel from "../user/panel/index";
 import Menu from "./menu";
 
-interface IProps {
+type IProps = {
     children: any;
-}
+};
 
 const Layout = (props: IProps) => (
     <>

@@ -3,9 +3,9 @@ import React from "react";
 import { IItem } from "../../types";
 import Date from "./date";
 
-interface IProps {
+type IProps = {
     data: IItem;
-}
+};
 
 const ItemContent = (props: IProps) => {
     const { data } = props;

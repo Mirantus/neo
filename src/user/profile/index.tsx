@@ -5,9 +5,9 @@ import { IStore } from "../../store/reducers";
 import { IUser } from "../../types";
 import Content from "./content";
 
-interface IProps {
+type IProps = {
     profile: IUser;
-}
+};
 
 export const Profile = (props: IProps) => {
     return <Content profile={props.profile} />;

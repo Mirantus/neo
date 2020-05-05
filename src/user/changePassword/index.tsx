@@ -8,27 +8,27 @@ import { IChangePasswordErrorStore } from "./reducers/error";
 import { IChangePasswordIsSubmittedStore } from "./reducers/isSubmitted";
 import { IChangePassword } from "./types";
 
-interface IProps {
+type IProps = {
     error: IChangePasswordErrorStore;
     history: any;
     isSubmitted: IChangePasswordIsSubmittedStore;
     changePassword(values: IChangePassword): void;
     init(): void;
-}
+};
 
 export const ChangePassword = (props: IProps) => {
     const { error, history, isSubmitted, changePassword, init } = props;
 
     React.useEffect(() => {
         init();
-    }, []);
+    }, [init]);
 
     React.useEffect(() => {
         if (!error && isSubmitted) {
             init();
             history.push("/profile");
         }
-    }, [error, isSubmitted]);
+    }, [error, history, init, isSubmitted]);
 
     return <Form formError={error} onSubmit={changePassword} />;
 };

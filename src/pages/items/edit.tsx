@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 import Edit from "../../items/edit/index";
 import { IRouterProps } from "../../types";
 
-interface IProps extends RouteComponentProps<IRouterProps> {}
+type IProps = RouteComponentProps<IRouterProps>;
 
 const PageItemsEdit = (props: IProps) => <Edit history={props.history} id={props.match.params.id} />;
 

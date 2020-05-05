@@ -6,9 +6,9 @@ import DeleteButton from "../delete/button";
 import EditButton from "../edit/button";
 import Date from "../item/date";
 
-interface IProps {
+type IProps = {
     data: IItem;
-}
+};
 
 export const Item = (props: IProps) => {
     const { data } = props;

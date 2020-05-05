@@ -1,9 +1,9 @@
 import { format, parseISO } from "date-fns";
 import React from "react";
 
-interface IProps {
+type IProps = {
     date: string;
-}
+};
 
 const ItemDate = (props: IProps) => {
     const date = parseISO(props.date);

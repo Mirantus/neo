@@ -8,20 +8,20 @@ import { fetchItem } from "./actions";
 import Content from "./content";
 import { IItemStore as IStoreItem } from "./reducers/";
 
-interface IProps {
+type IProps = {
     data: IStoreItem["data"];
     error: IStoreItem["error"];
     id: string;
     isFetching: IStoreItem["isFetching"];
     fetchItem(id: string): void;
-}
+};
 
 export const Item = (props: IProps) => {
     const { data, id, isFetching, error, fetchItem } = props;
 
     React.useEffect(() => {
         fetchItem(id);
-    }, []);
+    }, [fetchItem, id]);
 
     if (isFetching) {
         return <Loader />;

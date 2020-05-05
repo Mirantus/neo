@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 import { logout } from "../auth/actions";
 
-interface IProps {
+type IProps = {
     email: string;
     logout(): void;
-}
+};
 
 const UserPanelInfo = (props: IProps) => {
     const { email, logout } = props;

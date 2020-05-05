@@ -11,7 +11,7 @@ import { IEditInitStore } from "./reducers/init";
 import { IEditSubmitStore } from "./reducers/submit";
 import { IEditIsSubmittedStore } from "./reducers/submit/isSubmitted";
 
-interface IProps {
+type IProps = {
     history: any;
     initData: IEditInitStore["data"];
     initError: IEditInitStore["error"];
@@ -22,7 +22,7 @@ interface IProps {
     submitError: IEditSubmitStore["error"];
     edit(values: IItem): void;
     initEdit(id: string): void;
-}
+};
 
 export const ItemsEdit = (props: IProps) => {
     const {
@@ -40,14 +40,14 @@ export const ItemsEdit = (props: IProps) => {
 
     React.useEffect(() => {
         initEdit(id);
-    }, []);
+    }, [id, initEdit]);
 
     React.useEffect(() => {
         if (!submitError && isSubmitted && initData) {
             initEdit(id);
             history.push(`/items/${initData.id}`);
         }
-    }, [submitError, isSubmitted]);
+    }, [history, id, initData, initEdit, submitError, isSubmitted]);
 
     if (isFetching) {
         return <Loader />;

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 import { IStore } from "../../store/reducers";
 
-interface IProps {
+type IProps = {
     isAuthorized: boolean;
-}
+};
 
 const ItemsAddButton = (props: IProps) => {
     if (!props.isAuthorized) {

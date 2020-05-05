@@ -5,10 +5,10 @@ import { IStore } from "../../store/reducers";
 import { messageHide } from "./actions";
 import { IMessageStore } from "./reducers";
 
-interface IProps {
+type IProps = {
     message: IMessageStore;
     messageHide(): void;
-}
+};
 
 export const Message = (props: IProps) => {
     const { message, messageHide } = props;

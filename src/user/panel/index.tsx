@@ -5,10 +5,10 @@ import { IStore } from "../../store/reducers";
 import Button from "./button";
 import Info from "./info";
 
-interface IProps {
+type IProps = {
     email: string;
     isAuthorized: boolean;
-}
+};
 
 const UserPanel = (props: IProps) => {
     const { email, isAuthorized } = props;

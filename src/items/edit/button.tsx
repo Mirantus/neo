@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { IStore } from "../../store/reducers";
 import { IItem } from "../../types";
 
-interface IProps {
+type IProps = {
     item: IItem;
     userId?: string;
-}
+};
 
 export const ItemEditButton = (props: IProps) => {
     const { item, userId } = props;

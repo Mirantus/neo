@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 import { IRouterProps } from "../../types";
 import UserEdit from "../../user/edit/index";
 
-export interface IProps extends RouteComponentProps<IRouterProps> {}
+type IProps = RouteComponentProps<IRouterProps>;
 
 const PageUserEdit = (props: IProps) => <UserEdit history={props.history} />;
 

@@ -3,9 +3,9 @@ import React from "react";
 import Item from "./item";
 import { IListDataStore } from "./reducers/data";
 
-interface IProps {
+type IProps = {
     data: IListDataStore;
-}
+};
 
 const ItemsListContent = (props: IProps) => {
     return (

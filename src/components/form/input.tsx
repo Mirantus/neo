@@ -1,7 +1,7 @@
 import React, { InputHTMLAttributes } from "react";
 import { Field, WrappedFieldProps } from "redux-form";
 
-export interface IProps extends InputHTMLAttributes<HTMLInputElement> {}
+type IProps = InputHTMLAttributes<HTMLInputElement>;
 
 export const renderField = (props: WrappedFieldProps) => {
     const {

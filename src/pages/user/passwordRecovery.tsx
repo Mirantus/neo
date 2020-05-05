@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 import { IRouterProps } from "../../types";
 import PasswordRecovery from "../../user/passwordRecovery/index";
 
-export interface IProps extends RouteComponentProps<IRouterProps> {}
+type IProps = RouteComponentProps<IRouterProps>;
 
 const PagePasswordRecovery = (props: IProps) => <PasswordRecovery history={props.history} />;
 

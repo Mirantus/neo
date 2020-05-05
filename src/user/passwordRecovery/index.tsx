@@ -8,27 +8,27 @@ import { IPasswordRecoveryErrorStore } from "./reducers/error";
 import { IPasswordRecoveryIsSubmittedStore } from "./reducers/isSubmitted";
 import { IPasswordRecovery } from "./types";
 
-interface IProps {
+type IProps = {
     error: IPasswordRecoveryErrorStore;
     history: any;
     isSubmitted: IPasswordRecoveryIsSubmittedStore;
     passwordRecovery(values: IPasswordRecovery): void;
     init(): void;
-}
+};
 
 export const PasswordRecovery = (props: IProps) => {
     const { error, history, isSubmitted, init, passwordRecovery } = props;
 
     React.useEffect(() => {
         init();
-    }, []);
+    }, [init]);
 
     React.useEffect(() => {
         if (!error && isSubmitted) {
             init();
             history.push("/login");
         }
-    }, [error, isSubmitted]);
+    }, [error, history, init, isSubmitted]);
 
     return <Form formError={error} onSubmit={passwordRecovery} />;
 };

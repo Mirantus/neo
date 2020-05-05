@@ -5,9 +5,9 @@ import Loader from "../../components/loader";
 import { IStore } from "../../store/reducers";
 import { ILoadingStore } from "./reducers";
 
-interface IProps {
+type IProps = {
     loading: ILoadingStore;
-}
+};
 
 export const Loading = (props: IProps) => {
     return props.loading ? (

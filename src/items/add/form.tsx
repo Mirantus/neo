@@ -7,9 +7,9 @@ import Textarea from "../../components/form/textarea";
 import { IAddErrorStore } from "./reducers/error";
 import { IItemAdd } from "./types";
 
-interface IProps {
+type IProps = {
     formError: IAddErrorStore;
-}
+};
 
 export const ItemsAddForm = (props: InjectedFormProps<IItemAdd> & IProps) => {
     const { formError, handleSubmit } = props;
@@ -17,7 +17,7 @@ export const ItemsAddForm = (props: InjectedFormProps<IItemAdd> & IProps) => {
     return (
         <form onSubmit={handleSubmit}>
             <Field label="Текст">
-                <Textarea name="text" required={true} />
+                <Textarea name="text" required />
             </Field>
             <div className="control">
                 <button className="button is-link">Добавить</button>

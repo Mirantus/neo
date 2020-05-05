@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 import Add from "../../items/add/index";
 import { IRouterProps } from "../../types";
 
-export interface IProps extends RouteComponentProps<IRouterProps> {}
+type IProps = RouteComponentProps<IRouterProps>;
 
 const PageItemsAdd = (props: IProps) => (
     <div className="container">

@@ -8,19 +8,19 @@ import Content from "./content";
 import { ILoginErrorStore } from "./reducers/error";
 import { IUserLogin } from "./types";
 
-interface IProps {
+type IProps = {
     error: ILoginErrorStore;
     isAuthorized: boolean;
     initLogin(): void;
     login(values: IUserLogin): void;
-}
+};
 
 export const Login = (props: IProps) => {
     const { error, isAuthorized, initLogin, login } = props;
 
     React.useEffect(() => {
         initLogin();
-    }, []);
+    }, [initLogin]);
 
     return isAuthorized ? <Redirect to={{ pathname: "/profile" }} /> : <Content onSubmit={login} formError={error} />;
 };

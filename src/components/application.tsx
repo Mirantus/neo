@@ -36,18 +36,18 @@ const Application = () => (
             <Layout>
                 <React.Suspense fallback={<Loader />}>
                     <Switch>
-                        <PrivateRoute exact={true} path="/add" component={Add} />
-                        <PrivateRoute exact={true} path="/edit/:id(\d+)" component={Edit} />
-                        <Route exact={true} path="/items/:id(\d+)" component={Item} />
+                        <PrivateRoute exact path="/add" component={Add} />
+                        <PrivateRoute exact path="/edit/:id(\d+)" component={Edit} />
+                        <Route exact path="/items/:id(\d+)" component={Item} />
 
-                        <Route exact={true} path="/login" component={Login} />
-                        <Route exact={true} path="/register" component={Register} />
-                        <Route exact={true} path="/password_recovery" component={PasswordRecovery} />
-                        <PrivateRoute exact={true} path="/profile" component={Profile} />
-                        <PrivateRoute exact={true} path="/user/edit" component={UserEdit} />
-                        <PrivateRoute exact={true} path="/change_password" component={ChangePassword} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/password_recovery" component={PasswordRecovery} />
+                        <PrivateRoute exact path="/profile" component={Profile} />
+                        <PrivateRoute exact path="/user/edit" component={UserEdit} />
+                        <PrivateRoute exact path="/change_password" component={ChangePassword} />
 
-                        <Route exact={true} path="/" component={Home} />
+                        <Route exact path="/" component={Home} />
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </React.Suspense>

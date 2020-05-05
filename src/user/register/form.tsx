@@ -7,9 +7,9 @@ import Input from "../../components/form/input";
 import { IRegisterErrorStore } from "./reducers/error";
 import { IUserRegister, IUserRegisterValidationErrors } from "./types";
 
-interface IProps {
+type IProps = {
     formError: IRegisterErrorStore;
-}
+};
 
 export const RegisterForm = (props: InjectedFormProps<IUserRegister> & IProps) => {
     const { formError, handleSubmit } = props;
@@ -20,13 +20,13 @@ export const RegisterForm = (props: InjectedFormProps<IUserRegister> & IProps) =
 
             <form onSubmit={handleSubmit}>
                 <Field label="Email">
-                    <Input autoComplete="username" name="email" required={true} type="email" />
+                    <Input autoComplete="username" name="email" required type="email" />
                 </Field>
                 <Field label="Пароль">
-                    <Input autoComplete="new-password" name="password" required={true} type="password" />
+                    <Input autoComplete="new-password" name="password" required type="password" />
                 </Field>
                 <Field label="Подтверждение пароля">
-                    <Input autoComplete="new-password" name="password2" required={true} type="password" />
+                    <Input autoComplete="new-password" name="password2" required type="password" />
                 </Field>
                 <div className="control">
                     <button className="button is-link">Отправить</button>

@@ -5,10 +5,10 @@ import Form from "./form";
 import { ILoginErrorStore } from "./reducers/error";
 import { IUserLogin } from "./types";
 
-interface IProps {
+type IProps = {
     formError: ILoginErrorStore;
     onSubmit(values: IUserLogin): void;
-}
+};
 
 const LoginContent = (props: IProps) => {
     const { formError, onSubmit } = props;

@@ -7,9 +7,9 @@ import Input from "../../components/form/input";
 import { IPasswordRecoveryErrorStore } from "./reducers/error";
 import { IPasswordRecovery } from "./types";
 
-interface IProps {
+type IProps = {
     formError: IPasswordRecoveryErrorStore;
-}
+};
 
 export const PasswordRecoveryForm = (props: InjectedFormProps<IPasswordRecovery> & IProps) => {
     const { formError, handleSubmit } = props;
@@ -20,7 +20,7 @@ export const PasswordRecoveryForm = (props: InjectedFormProps<IPasswordRecovery>
 
             <form onSubmit={handleSubmit}>
                 <Field label="Email">
-                    <Input autoComplete="username" name="email" required={true} type="email" />
+                    <Input autoComplete="username" name="email" required type="email" />
                 </Field>
                 <div className="control">
                     <button className="button is-link">Отправить</button>

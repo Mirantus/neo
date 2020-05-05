@@ -5,11 +5,11 @@ import { IStore } from "../../store/reducers";
 import { IItem } from "../../types";
 import { deleteItem } from "./actions";
 
-interface IProps {
+type IProps = {
     item: IItem;
     userId?: string;
     deleteItem(id: string): void;
-}
+};
 
 export const ItemDeleteButton = (props: IProps) => {
     const { item, userId, deleteItem } = props;

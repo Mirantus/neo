@@ -9,10 +9,10 @@ import { IEditErrorStore } from "./reducers/submit/error";
 import { IEditIsSubmittingStore } from "./reducers/submit/isSubmitting";
 import { IItemEdit } from "./types";
 
-interface IProps {
+type IProps = {
     formError: IEditErrorStore;
     isSubmitting: IEditIsSubmittingStore;
-}
+};
 
 export const ItemsEditForm = (props: InjectedFormProps<IItemEdit> & IProps) => {
     const { formError, isSubmitting, handleSubmit } = props;
@@ -22,7 +22,7 @@ export const ItemsEditForm = (props: InjectedFormProps<IItemEdit> & IProps) => {
             <h1 className="title">Редактирование</h1>
             <form onSubmit={handleSubmit}>
                 <Field label="Текст">
-                    <Textarea name="text" required={true} />
+                    <Textarea name="text" required />
                 </Field>
                 <div className="control">
                     <button className={classnames("button", "is-link", { "is-loading": isSubmitting })}>

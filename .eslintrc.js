@@ -47,18 +47,10 @@ module.exports = {
     "react/sort-comp": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
-
-    "@typescript-eslint/interface-name-prefix": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "react/prop-types": "off",
-    "@typescript-eslint/no-empty-interface": "off",
-    "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/no-inferrable-types": "off",
-    "@typescript-eslint/no-empty-function": "off",
-    "no-async-promise-executor": "off",
-    "react/jsx-boolean-value": "off",
-    "react-hooks/exhaustive-deps": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+
+    "@typescript-eslint/interface-name-prefix": "off"
   },
   settings: {
     react: {

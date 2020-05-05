@@ -7,9 +7,9 @@ import Input from "../../components/form/input";
 import { IUserEditErrorStore } from "./reducers/error";
 import { IUserEdit } from "./types";
 
-interface IProps {
+type IProps = {
     formError: IUserEditErrorStore;
-}
+};
 
 export const UserEditForm = (props: InjectedFormProps<IUserEdit> & IProps) => {
     const { formError, handleSubmit } = props;
@@ -20,7 +20,7 @@ export const UserEditForm = (props: InjectedFormProps<IUserEdit> & IProps) => {
 
             <form onSubmit={handleSubmit}>
                 <Field label="Email">
-                    <Input autoComplete="username" name="email" required={true} type="email" />
+                    <Input autoComplete="username" name="email" required type="email" />
                 </Field>
                 <div className="control">
                     <button className="button is-link">Отправить</button>
