@@ -1,12 +1,12 @@
-import { IItem } from "../../../types";
-import { IItemAction } from "../actions";
+import { Item } from "../../../types";
+import { ItemAction } from "../actions";
 import { ITEM_FETCH, ITEM_FETCH_OK } from "../constants";
 
-export type IItemDataStore = IItem | null;
+export type ItemDataStore = Item | null;
 
-export const initialState: IItemDataStore = null;
+export const initialState: ItemDataStore = null;
 
-export default (state: IItemDataStore = initialState, action: IItemAction): IItemDataStore => {
+export default (state: ItemDataStore = initialState, action: ItemAction): ItemDataStore => {
     switch (action.type) {
         case ITEM_FETCH:
             return initialState;

@@ -1,3 +1,3 @@
-export interface IPasswordRecovery {
+export interface PasswordRecoveryFormData {
     email: string;
 }

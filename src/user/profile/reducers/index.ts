@@ -1,23 +1,23 @@
-import { IUser } from "../../../types";
-import { IAuthAction } from "../../auth/actions";
+import { User } from "../../../types";
+import { AuthAction } from "../../auth/actions";
 import { AUTH_OK } from "../../auth/constants";
 import { USER_EDIT_OK } from "../../edit/constants";
-import { ILoginAction } from "../../login/actions";
+import { LoginAction } from "../../login/actions";
 import { LOGIN_OK } from "../../login/constants";
-import { IRegisterAction } from "../../register/actions";
+import { RegisterAction } from "../../register/actions";
 import { REGISTER_OK } from "../../register/constants";
 
-export type IUserProfileStore = IUser;
+export type UserProfileStore = User;
 
-export const initialState: IUserProfileStore = {
+export const initialState: UserProfileStore = {
     email: "",
     id: "",
 };
 
 export default (
-    state: IUserProfileStore = initialState,
-    action: IAuthAction | ILoginAction | IRegisterAction
-): IUserProfileStore => {
+    state: UserProfileStore = initialState,
+    action: AuthAction | LoginAction | RegisterAction
+): UserProfileStore => {
     switch (action.type) {
         case AUTH_OK:
         case LOGIN_OK:

@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
-import error, { IEditErrorStore } from "./error";
-import isSubmitted, { IEditIsSubmittedStore } from "./isSubmitted";
-import isSubmitting, { IEditIsSubmittingStore } from "./isSubmitting";
+import error, { EditErrorStore } from "./error";
+import isSubmitted, { EditIsSubmittedStore } from "./isSubmitted";
+import isSubmitting, { EditIsSubmittingStore } from "./isSubmitting";
 
-export interface IEditSubmitStore {
-    error: IEditErrorStore;
-    isSubmitted: IEditIsSubmittedStore;
-    isSubmitting: IEditIsSubmittingStore;
+export interface EditSubmitStore {
+    error: EditErrorStore;
+    isSubmitted: EditIsSubmittedStore;
+    isSubmitting: EditIsSubmittingStore;
 }
 
 export default combineReducers({

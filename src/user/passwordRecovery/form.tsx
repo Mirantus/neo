@@ -4,14 +4,14 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Input from "../../components/form/input";
-import { IPasswordRecoveryErrorStore } from "./reducers/error";
-import { IPasswordRecovery } from "./types";
+import { PasswordRecoveryErrorStore } from "./reducers/error";
+import { PasswordRecoveryFormData } from "./types";
 
-type IProps = {
-    formError: IPasswordRecoveryErrorStore;
+type Props = {
+    formError: PasswordRecoveryErrorStore;
 };
 
-export const PasswordRecoveryForm = (props: InjectedFormProps<IPasswordRecovery> & IProps) => {
+export const PasswordRecoveryForm = (props: InjectedFormProps<PasswordRecoveryFormData> & Props) => {
     const { formError, handleSubmit } = props;
 
     return (
@@ -31,4 +31,4 @@ export const PasswordRecoveryForm = (props: InjectedFormProps<IPasswordRecovery>
     );
 };
 
-export default reduxForm<IPasswordRecovery, any>({ form: "reduxForm" })(PasswordRecoveryForm);
+export default reduxForm<PasswordRecoveryFormData, any>({ form: "reduxForm" })(PasswordRecoveryForm);

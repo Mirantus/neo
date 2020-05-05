@@ -1,10 +1,10 @@
-export interface IUserRegister {
+export interface UserRegisterFormData {
     email: string;
     password: string;
     password2: string;
 }
 
-export interface IUserRegisterValidationErrors {
+export interface UserRegisterValidationErrors {
     email?: string;
     password?: string;
     password2?: string;

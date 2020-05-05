@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { IUser } from "../../types";
+import { User } from "../../types";
 
-type IProps = {
-    profile: IUser;
+type Props = {
+    profile: User;
 };
 
-const ProfileContent = (props: IProps) => {
+const ProfileContent = (props: Props) => {
     return (
         <div className="container">
             <h1 className="title">Профиль</h1>

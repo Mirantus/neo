@@ -1,11 +1,11 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
-import { IRouterProps } from "../../types";
+import { RouterProps } from "../../types";
 import ChangePassword from "../../user/changePassword/index";
 
-type IProps = RouteComponentProps<IRouterProps>;
+type Props = RouteComponentProps<RouterProps>;
 
-const PageChangePassword = (props: IProps) => <ChangePassword history={props.history} />;
+const PageChangePassword = (props: Props) => <ChangePassword history={props.history} />;
 
 export default PageChangePassword;

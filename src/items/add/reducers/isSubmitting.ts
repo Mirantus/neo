@@ -1,11 +1,11 @@
-import { IAddAction } from "../actions";
+import { AddAction } from "../actions";
 import { ITEMS_ADD, ITEMS_ADD_ERROR, ITEMS_ADD_OK } from "../constants";
 
-export type IAddIsSubmittingStore = boolean;
+export type AddIsSubmittingStore = boolean;
 
 export const initialState = false;
 
-export default (state: IAddIsSubmittingStore = initialState, action: IAddAction): IAddIsSubmittingStore => {
+export default (state: AddIsSubmittingStore = initialState, action: AddAction): AddIsSubmittingStore => {
     switch (action.type) {
         case ITEMS_ADD:
             return true;

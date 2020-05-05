@@ -1,22 +1,22 @@
 import { set as setCookie } from "js-cookie";
 import { Dispatch } from "redux";
 
-import { IAction, IActionError } from "../../types";
+import { Action, ActionError } from "../../types";
 import { fetch } from "../../utils/api";
-import { IAuthResponse } from "../auth/types";
+import { AuthResponse } from "../auth/types";
 import { LOGIN, LOGIN_ERROR, LOGIN_INIT, LOGIN_OK } from "./constants";
-import { IUserLogin } from "./types";
+import { UserLoginFormData } from "./types";
 
-export type ILoginAction = IAction | IActionError;
+export type LoginAction = Action | ActionError;
 
 export const initLogin = () => ({ type: LOGIN_INIT });
 
-export const login = (values: IUserLogin) => async (dispatch: Dispatch) => {
+export const login = (values: UserLoginFormData) => async (dispatch: Dispatch) => {
     dispatch({ type: LOGIN });
 
     try {
         const response = await fetch("login/", "POST", values);
-        const { token, user } = response as IAuthResponse;
+        const { token, user } = response as AuthResponse;
         setCookie("token", String(token));
 
         dispatch({

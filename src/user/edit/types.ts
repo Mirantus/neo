@@ -1,3 +1,3 @@
-export interface IUserEdit {
+export interface UserEditFormData {
     email: string;
 }

@@ -1,11 +1,11 @@
-import { IAddAction } from "../actions";
+import { AddAction } from "../actions";
 import { ITEMS_ADD, ITEMS_ADD_ERROR, ITEMS_ADD_INIT } from "../constants";
 
-export type IAddErrorStore = string | null;
+export type AddErrorStore = string | null;
 
 export const initialState = null;
 
-export default (state: IAddErrorStore = initialState, action: IAddAction): IAddErrorStore => {
+export default (state: AddErrorStore = initialState, action: AddAction): AddErrorStore => {
     switch (action.type) {
         case ITEMS_ADD:
         case ITEMS_ADD_INIT:

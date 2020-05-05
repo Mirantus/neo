@@ -1,22 +1,22 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { IStore } from "../../store/reducers";
+import { Store } from "../../store/reducers";
 import { changePassword, init } from "./actions";
 import Form from "./form";
-import { IChangePasswordErrorStore } from "./reducers/error";
-import { IChangePasswordIsSubmittedStore } from "./reducers/isSubmitted";
-import { IChangePassword } from "./types";
+import { ChangePasswordErrorStore } from "./reducers/error";
+import { ChangePasswordIsSubmittedStore } from "./reducers/isSubmitted";
+import { ChangePasswordFormData } from "./types";
 
-type IProps = {
-    error: IChangePasswordErrorStore;
+type Props = {
+    error: ChangePasswordErrorStore;
     history: any;
-    isSubmitted: IChangePasswordIsSubmittedStore;
-    changePassword(values: IChangePassword): void;
+    isSubmitted: ChangePasswordIsSubmittedStore;
+    changePassword(values: ChangePasswordFormData): void;
     init(): void;
 };
 
-export const ChangePassword = (props: IProps) => {
+export const ChangePassword = (props: Props) => {
     const { error, history, isSubmitted, changePassword, init } = props;
 
     React.useEffect(() => {
@@ -33,7 +33,7 @@ export const ChangePassword = (props: IProps) => {
     return <Form formError={error} onSubmit={changePassword} />;
 };
 
-const mapStateToProps = ({ user }: IStore) => ({
+const mapStateToProps = ({ user }: Store) => ({
     error: user.changePassword.error,
     isSubmitted: user.changePassword.isSubmitted,
 });

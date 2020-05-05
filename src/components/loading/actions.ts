@@ -1,6 +1,6 @@
 import { LOADING_HIDE, LOADING_SHOW } from "./constants";
 
-export interface IActionLoading {
+export interface ActionLoading {
     type: string;
 }
 

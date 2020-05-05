@@ -1,11 +1,11 @@
-import { IListAction } from "../actions";
+import { ListAction } from "../actions";
 import { ITEMS_FETCH, ITEMS_FETCH_ERROR, ITEMS_FETCH_OK } from "../constants";
 
-export type IListIsFetchingStore = boolean;
+export type ListIsFetchingStore = boolean;
 
 export const initialState = false;
 
-export default (state: IListIsFetchingStore = initialState, action: IListAction): IListIsFetchingStore => {
+export default (state: ListIsFetchingStore = initialState, action: ListAction): ListIsFetchingStore => {
     switch (action.type) {
         case ITEMS_FETCH:
             return true;

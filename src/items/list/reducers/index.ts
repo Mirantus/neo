@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
-import data, { IListDataStore } from "./data";
-import error, { IListErrorStore } from "./error";
-import isFetching, { IListIsFetchingStore } from "./isFetching";
+import data, { ListDataStore } from "./data";
+import error, { ListErrorStore } from "./error";
+import isFetching, { ListIsFetchingStore } from "./isFetching";
 
-export interface IListStore {
-    data: IListDataStore;
-    error: IListErrorStore;
-    isFetching: IListIsFetchingStore;
+export interface ListStore {
+    data: ListDataStore;
+    error: ListErrorStore;
+    isFetching: ListIsFetchingStore;
 }
 
 export default combineReducers({

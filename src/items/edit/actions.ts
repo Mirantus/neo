@@ -1,7 +1,7 @@
 import { get as getCookie } from "js-cookie";
 import { Dispatch } from "redux";
 
-import { IAction, IActionError, IItem } from "../../types";
+import { Action, ActionError, Item } from "../../types";
 import { fetch } from "../../utils/api";
 import {
     ITEMS_EDIT,
@@ -12,12 +12,12 @@ import {
     ITEMS_EDIT_OK,
 } from "./constants";
 
-interface IEditInitActionOk extends IAction {
-    payload: IItem[];
+interface EditInitActionOk extends Action {
+    payload: Item[];
 }
 
-export type IEditInitAction = IAction | IActionError | IEditInitActionOk;
-export type IEditAction = IAction | IActionError;
+export type EditInitAction = Action | ActionError | EditInitActionOk;
+export type EditAction = Action | ActionError;
 
 export const initEdit = (id: string) => async (dispatch: Dispatch) => {
     dispatch({ type: ITEMS_EDIT_INIT });
@@ -37,7 +37,7 @@ export const initEdit = (id: string) => async (dispatch: Dispatch) => {
     }
 };
 
-export const edit = (values: IItem) => async (dispatch: Dispatch) => {
+export const edit = (values: Item) => async (dispatch: Dispatch) => {
     dispatch({ type: ITEMS_EDIT });
 
     try {

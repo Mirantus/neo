@@ -2,10 +2,10 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
 import Item from "../../items/item";
-import { IRouterProps } from "../../types";
+import { RouterProps } from "../../types";
 
-type IProps = RouteComponentProps<IRouterProps>;
+type Props = RouteComponentProps<RouterProps>;
 
-const PageItemsItem = (props: IProps) => <Item id={props.match.params.id} />;
+const PageItemsItem = (props: Props) => <Item id={props.match.params.id} />;
 
 export default PageItemsItem;

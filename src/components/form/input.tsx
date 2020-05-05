@@ -1,7 +1,7 @@
 import React, { InputHTMLAttributes } from "react";
 import { Field, WrappedFieldProps } from "redux-form";
 
-type IProps = InputHTMLAttributes<HTMLInputElement>;
+type Props = InputHTMLAttributes<HTMLInputElement>;
 
 export const renderField = (props: WrappedFieldProps) => {
     const {
@@ -18,6 +18,6 @@ export const renderField = (props: WrappedFieldProps) => {
     );
 };
 
-export const Input = (props: IProps) => <Field {...props} component={renderField} />;
+export const Input = (props: Props) => <Field {...props} component={renderField} />;
 
 export default Input;

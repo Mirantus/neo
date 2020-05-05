@@ -1,17 +1,17 @@
 import React from "react";
 
-import Item from "./item";
-import { IListDataStore } from "./reducers/data";
+import ListItem from "./item";
+import { ListDataStore } from "./reducers/data";
 
-type IProps = {
-    data: IListDataStore;
+type Props = {
+    data: ListDataStore;
 };
 
-const ItemsListContent = (props: IProps) => {
+const ItemsListContent = (props: Props) => {
     return (
         <div className="container">
             {props.data.map(item => (
-                <Item key={item.id} data={item} />
+                <ListItem key={item.id} data={item} />
             ))}
             <hr />
         </div>

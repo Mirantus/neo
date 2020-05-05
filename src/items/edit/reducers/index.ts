@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
-import init, { IEditInitStore } from "./init/index";
-import submit, { IEditSubmitStore } from "./submit/index";
+import init, { EditInitStore } from "./init/index";
+import submit, { EditSubmitStore } from "./submit/index";
 
-export interface IEditStore {
-    init: IEditInitStore;
-    submit: IEditSubmitStore;
+export interface EditStore {
+    init: EditInitStore;
+    submit: EditSubmitStore;
 }
 
 export default combineReducers({

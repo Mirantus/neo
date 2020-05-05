@@ -1,11 +1,11 @@
-import { IEditAction } from "../../actions";
+import { EditAction } from "../../actions";
 import { ITEMS_EDIT, ITEMS_EDIT_ERROR, ITEMS_EDIT_OK } from "../../constants";
 
-export type IEditIsSubmittingStore = boolean;
+export type EditIsSubmittingStore = boolean;
 
 export const initialState = false;
 
-export default (state: IEditIsSubmittingStore = initialState, action: IEditAction): IEditIsSubmittingStore => {
+export default (state: EditIsSubmittingStore = initialState, action: EditAction): EditIsSubmittingStore => {
     switch (action.type) {
         case ITEMS_EDIT:
             return true;

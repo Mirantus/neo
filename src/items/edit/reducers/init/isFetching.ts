@@ -1,11 +1,11 @@
-import { IEditAction } from "../../actions";
+import { EditAction } from "../../actions";
 import { ITEMS_EDIT_INIT, ITEMS_EDIT_INIT_ERROR, ITEMS_EDIT_INIT_OK } from "../../constants";
 
-export type IEditInitIsFetchingStore = boolean;
+export type EditInitIsFetchingStore = boolean;
 
 export const initialState = false;
 
-export default (state: IEditInitIsFetchingStore = initialState, action: IEditAction): IEditInitIsFetchingStore => {
+export default (state: EditInitIsFetchingStore = initialState, action: EditAction): EditInitIsFetchingStore => {
     switch (action.type) {
         case ITEMS_EDIT_INIT:
             return true;

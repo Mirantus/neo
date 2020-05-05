@@ -3,20 +3,20 @@ import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
-import { IStore } from "../../store/reducers";
+import { Store } from "../../store/reducers";
 import { fetchItem } from "./actions";
 import Content from "./content";
-import { IItemStore as IStoreItem } from "./reducers/";
+import { ItemStore as StoreItem } from "./reducers/";
 
-type IProps = {
-    data: IStoreItem["data"];
-    error: IStoreItem["error"];
+type Props = {
+    data: StoreItem["data"];
+    error: StoreItem["error"];
     id: string;
-    isFetching: IStoreItem["isFetching"];
+    isFetching: StoreItem["isFetching"];
     fetchItem(id: string): void;
 };
 
-export const Item = (props: IProps) => {
+export const Item = (props: Props) => {
     const { data, id, isFetching, error, fetchItem } = props;
 
     React.useEffect(() => {
@@ -38,7 +38,7 @@ export const Item = (props: IProps) => {
     return null;
 };
 
-const mapStateToProps = (store: IStore) => ({
+const mapStateToProps = (store: Store) => ({
     data: store.items.item.data,
     error: store.items.item.error,
     isFetching: store.items.item.isFetching,

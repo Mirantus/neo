@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
-import error, { IDeleteErrorStore } from "./error";
-import isSubmitting, { IDeleteIsSubmittingStore } from "./isSubmitting";
+import error, { DeleteErrorStore } from "./error";
+import isSubmitting, { DeleteIsSubmittingStore } from "./isSubmitting";
 
-export interface IDeleteStore {
-    error: IDeleteErrorStore;
-    isSubmitting: IDeleteIsSubmittingStore;
+export interface DeleteStore {
+    error: DeleteErrorStore;
+    isSubmitting: DeleteIsSubmittingStore;
 }
 
 export default combineReducers({

@@ -1,18 +1,18 @@
-import { ILoginAction } from "../../login/actions";
+import { LoginAction } from "../../login/actions";
 import { LOGIN_OK } from "../../login/constants";
-import { IRegisterAction } from "../../register/actions";
+import { RegisterAction } from "../../register/actions";
 import { REGISTER_OK } from "../../register/constants";
-import { IAuthAction } from "../actions";
+import { AuthAction } from "../actions";
 import { AUTH, AUTH_ERROR, AUTH_OK, LOGOUT } from "../constants";
 
-export type IAuthIsAuthorizedStore = boolean;
+export type AuthIsAuthorizedStore = boolean;
 
 export const initialState = false;
 
 export default (
-    state: IAuthIsAuthorizedStore = initialState,
-    action: ILoginAction | IAuthAction | IRegisterAction
-): IAuthIsAuthorizedStore => {
+    state: AuthIsAuthorizedStore = initialState,
+    action: LoginAction | AuthAction | RegisterAction
+): AuthIsAuthorizedStore => {
     switch (action.type) {
         case LOGOUT:
         case AUTH:

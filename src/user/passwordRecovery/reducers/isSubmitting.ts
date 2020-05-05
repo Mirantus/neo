@@ -1,14 +1,14 @@
-import { IPasswordRecoveryAction } from "../actions";
+import { PasswordRecoveryAction } from "../actions";
 import { PASSWORD_RECOVERY, PASSWORD_RECOVERY_ERROR, PASSWORD_RECOVERY_OK } from "../constants";
 
-export type IPasswordRecoveryIsSubmittingStore = boolean;
+export type PasswordRecoveryIsSubmittingStore = boolean;
 
 export const initialState = false;
 
 export default (
-    state: IPasswordRecoveryIsSubmittingStore = initialState,
-    action: IPasswordRecoveryAction
-): IPasswordRecoveryIsSubmittingStore => {
+    state: PasswordRecoveryIsSubmittingStore = initialState,
+    action: PasswordRecoveryAction
+): PasswordRecoveryIsSubmittingStore => {
     switch (action.type) {
         case PASSWORD_RECOVERY:
             return true;

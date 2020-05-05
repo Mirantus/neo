@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Form from "./form";
-import { ILoginErrorStore } from "./reducers/error";
-import { IUserLogin } from "./types";
+import { LoginErrorStore } from "./reducers/error";
+import { UserLoginFormData } from "./types";
 
-type IProps = {
-    formError: ILoginErrorStore;
-    onSubmit(values: IUserLogin): void;
+type Props = {
+    formError: LoginErrorStore;
+    onSubmit(values: UserLoginFormData): void;
 };
 
-const LoginContent = (props: IProps) => {
+const LoginContent = (props: Props) => {
     const { formError, onSubmit } = props;
 
     return (

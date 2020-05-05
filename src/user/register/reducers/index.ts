@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
-import error, { IRegisterErrorStore } from "./error";
-import isSubmitted, { IRegisterIsSubmittedStore } from "./isSubmitted";
-import isSubmitting, { IRegisterIsSubmittingStore } from "./isSubmitting";
+import error, { RegisterErrorStore } from "./error";
+import isSubmitted, { RegisterIsSubmittedStore } from "./isSubmitted";
+import isSubmitting, { RegisterIsSubmittingStore } from "./isSubmitting";
 
-export interface IRegisterStore {
-    error: IRegisterErrorStore;
-    isSubmitted: IRegisterIsSubmittedStore;
-    isSubmitting: IRegisterIsSubmittingStore;
+export interface RegisterStore {
+    error: RegisterErrorStore;
+    isSubmitted: RegisterIsSubmittedStore;
+    isSubmitting: RegisterIsSubmittingStore;
 }
 
 export default combineReducers({

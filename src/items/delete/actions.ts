@@ -1,10 +1,10 @@
 import { get as getCookie } from "js-cookie";
 import { Dispatch } from "redux";
 
-import { IAction, IActionError } from "../../types";
+import { Action, ActionError } from "../../types";
 import { fetch } from "../../utils/api";
 
-export type IDeleteAction = IAction | IActionError;
+export type DeleteAction = Action | ActionError;
 
 import { loadingHide, loadingShow } from "../../components/loading/actions";
 import { messageShow } from "../../components/message/actions";

@@ -3,28 +3,28 @@ import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
-import { IStore } from "../../store/reducers";
-import { IItem } from "../../types";
+import { Store } from "../../store/reducers";
+import { Item } from "../../types";
 import { edit, initEdit } from "./actions";
 import Form from "./form";
-import { IEditInitStore } from "./reducers/init";
-import { IEditSubmitStore } from "./reducers/submit";
-import { IEditIsSubmittedStore } from "./reducers/submit/isSubmitted";
+import { EditInitStore } from "./reducers/init";
+import { EditSubmitStore } from "./reducers/submit";
+import { EditIsSubmittedStore } from "./reducers/submit/isSubmitted";
 
-type IProps = {
+type Props = {
     history: any;
-    initData: IEditInitStore["data"];
-    initError: IEditInitStore["error"];
+    initData: EditInitStore["data"];
+    initError: EditInitStore["error"];
     id: string;
-    isFetching: IEditInitStore["isFetching"];
-    isSubmitted: IEditIsSubmittedStore;
-    isSubmitting: IEditSubmitStore["isSubmitting"];
-    submitError: IEditSubmitStore["error"];
-    edit(values: IItem): void;
+    isFetching: EditInitStore["isFetching"];
+    isSubmitted: EditIsSubmittedStore;
+    isSubmitting: EditSubmitStore["isSubmitting"];
+    submitError: EditSubmitStore["error"];
+    edit(values: Item): void;
     initEdit(id: string): void;
 };
 
-export const ItemsEdit = (props: IProps) => {
+export const ItemsEdit = (props: Props) => {
     const {
         history,
         initData,
@@ -64,7 +64,7 @@ export const ItemsEdit = (props: IProps) => {
     return null;
 };
 
-const mapStateToProps = (store: IStore) => ({
+const mapStateToProps = (store: Store) => ({
     initData: store.items.edit.init.data,
     initError: store.items.edit.init.error,
     isFetching: store.items.edit.init.isFetching,

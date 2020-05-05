@@ -1,11 +1,11 @@
-import { IUserEditAction } from "../actions";
+import { UserEditAction } from "../actions";
 import { USER_EDIT, USER_EDIT_ERROR } from "../constants";
 
-export type IUserEditErrorStore = string | null;
+export type UserEditErrorStore = string | null;
 
 export const initialState = null;
 
-export default (state: IUserEditErrorStore = initialState, action: IUserEditAction): IUserEditErrorStore => {
+export default (state: UserEditErrorStore = initialState, action: UserEditAction): UserEditErrorStore => {
     switch (action.type) {
         case USER_EDIT:
             return initialState;

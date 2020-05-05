@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
-import error, { IChangePasswordErrorStore } from "./error";
-import isSubmitted, { IChangePasswordIsSubmittedStore } from "./isSubmitted";
-import isSubmitting, { IChangePasswordIsSubmittingStore } from "./isSubmitting";
+import error, { ChangePasswordErrorStore } from "./error";
+import isSubmitted, { ChangePasswordIsSubmittedStore } from "./isSubmitted";
+import isSubmitting, { ChangePasswordIsSubmittingStore } from "./isSubmitting";
 
-export interface IChangePasswordStore {
-    error: IChangePasswordErrorStore;
-    isSubmitted: IChangePasswordIsSubmittedStore;
-    isSubmitting: IChangePasswordIsSubmittingStore;
+export interface ChangePasswordStore {
+    error: ChangePasswordErrorStore;
+    isSubmitted: ChangePasswordIsSubmittedStore;
+    isSubmitting: ChangePasswordIsSubmittingStore;
 }
 
 export default combineReducers({

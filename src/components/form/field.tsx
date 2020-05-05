@@ -1,11 +1,11 @@
 import React from "react";
 
-type IProps = {
+type Props = {
     label: string;
     children: any;
 };
 
-const Field = ({ children, label }: IProps) => (
+const Field = ({ children, label }: Props) => (
     <div className="field">
         <label className="label">{label}</label>
         {children}

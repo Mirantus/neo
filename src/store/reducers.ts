@@ -1,16 +1,16 @@
 import { combineReducers } from "redux";
 import { reducer as form } from "redux-form";
 
-import loading, { ILoadingStore } from "../components/loading/reducers";
-import message, { IMessageStore } from "../components/message/reducers";
-import items, { IItemsStore } from "../items/reducers";
-import user, { IUserStore } from "../user/reducers";
+import loading, { LoadingStore } from "../components/loading/reducers";
+import message, { MessageStore } from "../components/message/reducers";
+import items, { ItemsStore } from "../items/reducers";
+import user, { UserStore } from "../user/reducers";
 
-export interface IStore {
-    items: IItemsStore;
-    loading: ILoadingStore;
-    message: IMessageStore;
-    user: IUserStore;
+export interface Store {
+    items: ItemsStore;
+    loading: LoadingStore;
+    message: MessageStore;
+    user: UserStore;
 }
 
 export default combineReducers({

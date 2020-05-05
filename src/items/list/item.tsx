@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { IItem } from "../../types";
+import { Item } from "../../types";
 import DeleteButton from "../delete/button";
 import EditButton from "../edit/button";
 import Date from "../item/date";
 
-type IProps = {
-    data: IItem;
+type Props = {
+    data: Item;
 };
 
-export const Item = (props: IProps) => {
+export const ListItem = (props: Props) => {
     const { data } = props;
 
     return (
@@ -30,4 +30,4 @@ export const Item = (props: IProps) => {
     );
 };
 
-export default Item;
+export default ListItem;

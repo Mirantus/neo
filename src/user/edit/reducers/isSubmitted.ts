@@ -1,14 +1,11 @@
-import { IUserEditAction } from "../actions";
+import { UserEditAction } from "../actions";
 import { USER_EDIT, USER_EDIT_ERROR, USER_EDIT_INIT, USER_EDIT_OK } from "../constants";
 
-export type IUserEditIsSubmittedStore = boolean;
+export type UserEditIsSubmittedStore = boolean;
 
 export const initialState = false;
 
-export default (
-    state: IUserEditIsSubmittedStore = initialState,
-    action: IUserEditAction
-): IUserEditIsSubmittedStore => {
+export default (state: UserEditIsSubmittedStore = initialState, action: UserEditAction): UserEditIsSubmittedStore => {
     switch (action.type) {
         case USER_EDIT_INIT:
         case USER_EDIT:

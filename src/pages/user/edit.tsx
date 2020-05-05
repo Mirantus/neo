@@ -1,11 +1,11 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
-import { IRouterProps } from "../../types";
+import { RouterProps } from "../../types";
 import UserEdit from "../../user/edit/index";
 
-type IProps = RouteComponentProps<IRouterProps>;
+type Props = RouteComponentProps<RouterProps>;
 
-const PageUserEdit = (props: IProps) => <UserEdit history={props.history} />;
+const PageUserEdit = (props: Props) => <UserEdit history={props.history} />;
 
 export default PageUserEdit;

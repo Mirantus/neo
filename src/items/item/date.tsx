@@ -1,11 +1,11 @@
 import { format, parseISO } from "date-fns";
 import React from "react";
 
-type IProps = {
+type Props = {
     date: string;
 };
 
-const ItemDate = (props: IProps) => {
+const ItemDate = (props: Props) => {
     const date = parseISO(props.date);
 
     return <time dateTime={props.date}>{format(date, "d.MM.yyyy")}</time>;

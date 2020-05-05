@@ -1,8 +1,8 @@
-interface IApiOptions {
+interface ApiOptions {
     body?: string;
 }
 
-export const request = (apiUrl: string, apiMethod = "GET", apiData: {} = {}, apiOptions: IApiOptions = {}) => {
+export const request = (apiUrl: string, apiMethod = "GET", apiData: {} = {}, apiOptions: ApiOptions = {}) => {
     const globalAny: any = global;
     let url = APP_ENV.apiUrl + apiUrl;
     const options = {
@@ -23,7 +23,7 @@ export const request = (apiUrl: string, apiMethod = "GET", apiData: {} = {}, api
     return globalAny.fetch(url, options);
 };
 
-export const fetch = async (apiUrl: string, apiMethod = "GET", apiData: {} = {}, apiOptions: IApiOptions = {}) => {
+export const fetch = async (apiUrl: string, apiMethod = "GET", apiData: {} = {}, apiOptions: ApiOptions = {}) => {
     let responseText;
 
     try {

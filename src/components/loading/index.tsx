@@ -2,14 +2,14 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import Loader from "../../components/loader";
-import { IStore } from "../../store/reducers";
-import { ILoadingStore } from "./reducers";
+import { Store } from "../../store/reducers";
+import { LoadingStore } from "./reducers";
 
-type IProps = {
-    loading: ILoadingStore;
+type Props = {
+    loading: LoadingStore;
 };
 
-export const Loading = (props: IProps) => {
+export const Loading = (props: Props) => {
     return props.loading ? (
         <div className="app-message notification is-light">
             <Loader />
@@ -17,6 +17,6 @@ export const Loading = (props: IProps) => {
     ) : null;
 };
 
-const mapStateToProps = (store: IStore) => ({ loading: store.loading });
+const mapStateToProps = (store: Store) => ({ loading: store.loading });
 
 export default connect(mapStateToProps)(Loading);

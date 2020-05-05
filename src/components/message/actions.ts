@@ -1,9 +1,9 @@
-import { IMessage } from "../../types";
+import { Message } from "../../types";
 import { MESSAGE_HIDE, MESSAGE_SHOW } from "./constants";
 
-export interface IActionMessage {
+export interface ActionMessage {
     type: string;
-    payload?: IMessage;
+    payload?: Message;
 }
 
 export const messageHide = () => ({

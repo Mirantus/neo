@@ -1,17 +1,17 @@
 import React, { MouseEvent } from "react";
 import { connect } from "react-redux";
 
-import { IStore } from "../../store/reducers";
-import { IItem } from "../../types";
+import { Store } from "../../store/reducers";
+import { Item } from "../../types";
 import { deleteItem } from "./actions";
 
-type IProps = {
-    item: IItem;
+type Props = {
+    item: Item;
     userId?: string;
     deleteItem(id: string): void;
 };
 
-export const ItemDeleteButton = (props: IProps) => {
+export const ItemDeleteButton = (props: Props) => {
     const { item, userId, deleteItem } = props;
 
     if (userId !== item.user_id) {
@@ -34,7 +34,7 @@ export const ItemDeleteButton = (props: IProps) => {
     );
 };
 
-const mapStateToProps = (store: IStore) => ({
+const mapStateToProps = (store: Store) => ({
     userId: store.user.profile.id,
 });
 

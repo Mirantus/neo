@@ -1,11 +1,11 @@
-import { IDeleteAction } from "../actions";
+import { DeleteAction } from "../actions";
 import { ITEMS_DELETE, ITEMS_DELETE_ERROR } from "../constants";
 
-export type IDeleteErrorStore = string | null;
+export type DeleteErrorStore = string | null;
 
 export const initialState = null;
 
-export default (state: IDeleteErrorStore = initialState, action: IDeleteAction): IDeleteErrorStore => {
+export default (state: DeleteErrorStore = initialState, action: DeleteAction): DeleteErrorStore => {
     switch (action.type) {
         case ITEMS_DELETE:
             return initialState;

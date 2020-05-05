@@ -4,14 +4,14 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Textarea from "../../components/form/textarea";
-import { IAddErrorStore } from "./reducers/error";
-import { IItemAdd } from "./types";
+import { AddErrorStore } from "./reducers/error";
+import { ItemAddFormData } from "./types";
 
-type IProps = {
-    formError: IAddErrorStore;
+type Props = {
+    formError: AddErrorStore;
 };
 
-export const ItemsAddForm = (props: InjectedFormProps<IItemAdd> & IProps) => {
+export const ItemsAddForm = (props: InjectedFormProps<ItemAddFormData> & Props) => {
     const { formError, handleSubmit } = props;
 
     return (
@@ -27,6 +27,6 @@ export const ItemsAddForm = (props: InjectedFormProps<IItemAdd> & IProps) => {
     );
 };
 
-export default reduxForm<IItemAdd, any>({
+export default reduxForm<ItemAddFormData, any>({
     form: "addForm",
 })(ItemsAddForm);

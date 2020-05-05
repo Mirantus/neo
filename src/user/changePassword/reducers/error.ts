@@ -1,14 +1,14 @@
-import { IChangePasswordAction } from "../actions";
+import { ChangePasswordAction } from "../actions";
 import { CHANGE_PASSWORD, CHANGE_PASSWORD_ERROR } from "../constants";
 
-export type IChangePasswordErrorStore = string | null;
+export type ChangePasswordErrorStore = string | null;
 
 export const initialState = null;
 
 export default (
-    state: IChangePasswordErrorStore = initialState,
-    action: IChangePasswordAction
-): IChangePasswordErrorStore => {
+    state: ChangePasswordErrorStore = initialState,
+    action: ChangePasswordAction
+): ChangePasswordErrorStore => {
     switch (action.type) {
         case CHANGE_PASSWORD:
             return initialState;

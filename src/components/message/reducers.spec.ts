@@ -1,4 +1,4 @@
-import { IMessage } from "../../types";
+import { Message } from "../../types";
 import { MESSAGE_HIDE, MESSAGE_SHOW } from "./constants";
 import reducer, { initialState } from "./reducers";
 
@@ -8,7 +8,7 @@ test("Message reducer", () => {
     expect(reducer(initialState, hideAction)).toBe(initialState);
 
     // MESSAGE_SHOW
-    const message: IMessage = { type: initialState.type, text: "123" };
+    const message: Message = { type: initialState.type, text: "123" };
     const showAction = { type: MESSAGE_SHOW, payload: message };
     expect(reducer(initialState, showAction)).toBe(message);
 

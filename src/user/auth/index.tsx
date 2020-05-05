@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 
 import { auth } from "./actions";
 
-type IProps = {
+type Props = {
     auth(): void;
 };
 
-const Auth = (props: IProps) => {
+const Auth = (props: Props) => {
     const { auth } = props;
 
     React.useEffect(() => {

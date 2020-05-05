@@ -4,14 +4,14 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Input from "../../components/form/input";
-import { IRegisterErrorStore } from "./reducers/error";
-import { IUserRegister, IUserRegisterValidationErrors } from "./types";
+import { RegisterErrorStore } from "./reducers/error";
+import { UserRegisterFormData, UserRegisterValidationErrors } from "./types";
 
-type IProps = {
-    formError: IRegisterErrorStore;
+type Props = {
+    formError: RegisterErrorStore;
 };
 
-export const RegisterForm = (props: InjectedFormProps<IUserRegister> & IProps) => {
+export const RegisterForm = (props: InjectedFormProps<UserRegisterFormData> & Props) => {
     const { formError, handleSubmit } = props;
 
     return (
@@ -37,8 +37,8 @@ export const RegisterForm = (props: InjectedFormProps<IUserRegister> & IProps) =
     );
 };
 
-export const validate = (values: IUserRegister): IUserRegisterValidationErrors => {
-    const errors: IUserRegisterValidationErrors = {};
+export const validate = (values: UserRegisterFormData): UserRegisterValidationErrors => {
+    const errors: UserRegisterValidationErrors = {};
 
     if (values.password !== values.password2) {
         errors.password2 = "Пароли должны совпадать";
@@ -47,7 +47,7 @@ export const validate = (values: IUserRegister): IUserRegisterValidationErrors =
     return errors;
 };
 
-export default reduxForm<IUserRegister, any>({
+export default reduxForm<UserRegisterFormData, any>({
     form: "reduxForm",
     validate,
 })(RegisterForm);

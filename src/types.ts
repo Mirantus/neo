@@ -1,29 +1,29 @@
-export interface IAction {
+export interface Action {
     type: string;
     payload: any;
 }
 
-export interface IActionError extends IAction {
+export interface ActionError extends Action {
     payload: string;
 }
 
-export interface IItem {
+export interface Item {
     date: string;
     id: string;
     text: string;
     user_id: string;
 }
 
-export interface IMessage {
+export interface Message {
     text: string;
     type: "info" | "success" | "warning" | "danger";
 }
 
-export interface IRouterProps {
+export interface RouterProps {
     id: string;
 }
 
-export interface IUser {
+export interface User {
     id: string;
     email: string;
 }

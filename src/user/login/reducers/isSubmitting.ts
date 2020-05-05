@@ -1,11 +1,11 @@
-import { ILoginAction } from "../actions";
+import { LoginAction } from "../actions";
 import { LOGIN, LOGIN_ERROR, LOGIN_OK } from "../constants";
 
-export type ILoginIsSubmittingStore = boolean;
+export type LoginIsSubmittingStore = boolean;
 
 export const initialState = false;
 
-export default (state: ILoginIsSubmittingStore = initialState, action: ILoginAction): ILoginIsSubmittingStore => {
+export default (state: LoginIsSubmittingStore = initialState, action: LoginAction): LoginIsSubmittingStore => {
     switch (action.type) {
         case LOGIN:
             return true;

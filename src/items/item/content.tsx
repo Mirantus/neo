@@ -1,13 +1,13 @@
 import React from "react";
 
-import { IItem } from "../../types";
+import { Item } from "../../types";
 import Date from "./date";
 
-type IProps = {
-    data: IItem;
+type Props = {
+    data: Item;
 };
 
-const ItemContent = (props: IProps) => {
+const ItemContent = (props: Props) => {
     const { data } = props;
 
     return (

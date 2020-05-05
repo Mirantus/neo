@@ -1,21 +1,21 @@
 import { combineReducers } from "redux";
 
-import auth, { IAuthStore } from "./auth/reducers";
-import changePassword, { IChangePasswordStore } from "./changePassword/reducers";
-import edit, { IUserEditStore } from "./edit/reducers";
-import login, { ILoginStore } from "./login/reducers";
-import passwordRecovery, { IPasswordRecoveryStore } from "./passwordRecovery/reducers";
-import profile, { IUserProfileStore } from "./profile/reducers";
-import register, { IRegisterStore } from "./register/reducers";
+import auth, { AuthStore } from "./auth/reducers";
+import changePassword, { ChangePasswordStore } from "./changePassword/reducers";
+import edit, { UserEditStore } from "./edit/reducers";
+import login, { LoginStore } from "./login/reducers";
+import passwordRecovery, { PasswordRecoveryStore } from "./passwordRecovery/reducers";
+import profile, { UserProfileStore } from "./profile/reducers";
+import register, { RegisterStore } from "./register/reducers";
 
-export interface IUserStore {
-    auth: IAuthStore;
-    changePassword: IChangePasswordStore;
-    edit: IUserEditStore;
-    login: ILoginStore;
-    passwordRecovery: IPasswordRecoveryStore;
-    profile: IUserProfileStore;
-    register: IRegisterStore;
+export interface UserStore {
+    auth: AuthStore;
+    changePassword: ChangePasswordStore;
+    edit: UserEditStore;
+    login: LoginStore;
+    passwordRecovery: PasswordRecoveryStore;
+    profile: UserProfileStore;
+    register: RegisterStore;
 }
 
 export default combineReducers({ auth, changePassword, edit, login, passwordRecovery, profile, register });

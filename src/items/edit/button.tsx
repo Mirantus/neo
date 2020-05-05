@@ -2,15 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { IStore } from "../../store/reducers";
-import { IItem } from "../../types";
+import { Store } from "../../store/reducers";
+import { Item } from "../../types";
 
-type IProps = {
-    item: IItem;
+type Props = {
+    item: Item;
     userId?: string;
 };
 
-export const ItemEditButton = (props: IProps) => {
+export const ItemEditButton = (props: Props) => {
     const { item, userId } = props;
 
     if (userId !== item.user_id) {
@@ -26,7 +26,7 @@ export const ItemEditButton = (props: IProps) => {
     );
 };
 
-const mapStateToProps = (store: IStore) => ({
+const mapStateToProps = (store: Store) => ({
     userId: store.user.profile.id,
 });
 

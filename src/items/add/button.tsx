@@ -2,13 +2,13 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { IStore } from "../../store/reducers";
+import { Store } from "../../store/reducers";
 
-type IProps = {
+type Props = {
     isAuthorized: boolean;
 };
 
-const ItemsAddButton = (props: IProps) => {
+const ItemsAddButton = (props: Props) => {
     if (!props.isAuthorized) {
         return null;
     }
@@ -25,6 +25,6 @@ const ItemsAddButton = (props: IProps) => {
     );
 };
 
-const mapStateToProps = ({ user }: IStore) => ({ isAuthorized: user.auth.isAuthorized });
+const mapStateToProps = ({ user }: Store) => ({ isAuthorized: user.auth.isAuthorized });
 
 export default connect(mapStateToProps)(ItemsAddButton);

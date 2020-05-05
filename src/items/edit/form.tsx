@@ -5,16 +5,16 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Textarea from "../../components/form/textarea";
-import { IEditErrorStore } from "./reducers/submit/error";
-import { IEditIsSubmittingStore } from "./reducers/submit/isSubmitting";
-import { IItemEdit } from "./types";
+import { EditErrorStore } from "./reducers/submit/error";
+import { EditIsSubmittingStore } from "./reducers/submit/isSubmitting";
+import { ItemEditFormData } from "./types";
 
-type IProps = {
-    formError: IEditErrorStore;
-    isSubmitting: IEditIsSubmittingStore;
+type Props = {
+    formError: EditErrorStore;
+    isSubmitting: EditIsSubmittingStore;
 };
 
-export const ItemsEditForm = (props: InjectedFormProps<IItemEdit> & IProps) => {
+export const ItemsEditForm = (props: InjectedFormProps<ItemEditFormData> & Props) => {
     const { formError, isSubmitting, handleSubmit } = props;
 
     return (
@@ -35,6 +35,6 @@ export const ItemsEditForm = (props: InjectedFormProps<IItemEdit> & IProps) => {
     );
 };
 
-export default reduxForm<IItemEdit, any>({
+export default reduxForm<ItemEditFormData, any>({
     form: "editForm",
 })(ItemsEditForm);

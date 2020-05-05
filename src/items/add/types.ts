@@ -1,3 +1,3 @@
-export interface IItemAdd {
+export interface ItemAddFormData {
     text: string;
 }

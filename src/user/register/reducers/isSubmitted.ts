@@ -1,14 +1,11 @@
-import { IRegisterAction } from "../actions";
+import { RegisterAction } from "../actions";
 import { REGISTER, REGISTER_ERROR, REGISTER_INIT, REGISTER_OK } from "../constants";
 
-export type IRegisterIsSubmittedStore = boolean;
+export type RegisterIsSubmittedStore = boolean;
 
 export const initialState = false;
 
-export default (
-    state: IRegisterIsSubmittedStore = initialState,
-    action: IRegisterAction
-): IRegisterIsSubmittedStore => {
+export default (state: RegisterIsSubmittedStore = initialState, action: RegisterAction): RegisterIsSubmittedStore => {
     switch (action.type) {
         case REGISTER_INIT:
         case REGISTER:

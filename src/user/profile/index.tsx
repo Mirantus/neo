@@ -1,18 +1,18 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { IStore } from "../../store/reducers";
-import { IUser } from "../../types";
+import { Store } from "../../store/reducers";
+import { User } from "../../types";
 import Content from "./content";
 
-type IProps = {
-    profile: IUser;
+type Props = {
+    profile: User;
 };
 
-export const Profile = (props: IProps) => {
+export const Profile = (props: Props) => {
     return <Content profile={props.profile} />;
 };
 
-const mapStateToProps = ({ user }: IStore) => ({ profile: user.profile });
+const mapStateToProps = ({ user }: Store) => ({ profile: user.profile });
 
 export default connect(mapStateToProps)(Profile);

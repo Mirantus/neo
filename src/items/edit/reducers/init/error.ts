@@ -1,11 +1,11 @@
-import { IEditAction } from "../../actions";
+import { EditAction } from "../../actions";
 import { ITEMS_EDIT_INIT, ITEMS_EDIT_INIT_ERROR } from "../../constants";
 
-export type IEditInitErrorStore = string | null;
+export type EditInitErrorStore = string | null;
 
 export const initialState = null;
 
-export default (state: IEditInitErrorStore = initialState, action: IEditAction): IEditInitErrorStore => {
+export default (state: EditInitErrorStore = initialState, action: EditAction): EditInitErrorStore => {
     switch (action.type) {
         case ITEMS_EDIT_INIT:
             return initialState;

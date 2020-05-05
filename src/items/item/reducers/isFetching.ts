@@ -1,11 +1,11 @@
-import { IItemAction } from "../actions";
+import { ItemAction } from "../actions";
 import { ITEM_FETCH, ITEM_FETCH_ERROR, ITEM_FETCH_OK } from "../constants";
 
-export type IItemIsFetchingStore = boolean;
+export type ItemIsFetchingStore = boolean;
 
 export const initialState = false;
 
-export default (state: IItemIsFetchingStore = initialState, action: IItemAction): IItemIsFetchingStore => {
+export default (state: ItemIsFetchingStore = initialState, action: ItemAction): ItemIsFetchingStore => {
     switch (action.type) {
         case ITEM_FETCH:
             return true;

@@ -1,14 +1,14 @@
 import { Dispatch } from "redux";
 
-import { IAction, IActionError, IItem } from "../../types";
+import { Action, ActionError, Item } from "../../types";
 import { fetch } from "../../utils/api";
 import { ITEMS_FETCH, ITEMS_FETCH_ERROR, ITEMS_FETCH_OK } from "./constants";
 
-interface IActionOk extends IAction {
-    payload: IItem[];
+interface ActionOk extends Action {
+    payload: Item[];
 }
 
-export type IListAction = IAction | IActionError | IActionOk;
+export type ListAction = Action | ActionError | ActionOk;
 
 export const fetchItems = () => async (dispatch: Dispatch) => {
     dispatch({ type: ITEMS_FETCH });

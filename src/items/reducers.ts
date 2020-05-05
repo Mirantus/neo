@@ -1,17 +1,17 @@
 import { combineReducers } from "redux";
 
-import add, { IAddStore } from "./add/reducers";
-import deleteItem, { IDeleteStore } from "./delete/reducers";
-import edit, { IEditStore } from "./edit/reducers";
-import item, { IItemStore } from "./item/reducers";
-import list, { IListStore } from "./list/reducers";
+import add, { AddStore } from "./add/reducers";
+import deleteItem, { DeleteStore } from "./delete/reducers";
+import edit, { EditStore } from "./edit/reducers";
+import item, { ItemStore } from "./item/reducers";
+import list, { ListStore } from "./list/reducers";
 
-export interface IItemsStore {
-    add: IAddStore;
-    delete: IDeleteStore;
-    edit: IEditStore;
-    item: IItemStore;
-    list: IListStore;
+export interface ItemsStore {
+    add: AddStore;
+    delete: DeleteStore;
+    edit: EditStore;
+    item: ItemStore;
+    list: ListStore;
 }
 
 export default combineReducers({ add, delete: deleteItem, edit, item, list });

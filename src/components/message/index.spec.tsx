@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import { IMessage } from "../../types";
+import { Message as MessageType } from "../../types";
 import { Message } from "./index";
 
 test("Message", () => {
-    const emptyMessage: IMessage = {
+    const emptyMessage: MessageType = {
         text: "",
         type: "info",
     };

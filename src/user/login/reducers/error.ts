@@ -1,11 +1,11 @@
-import { ILoginAction } from "../actions";
+import { LoginAction } from "../actions";
 import { LOGIN, LOGIN_ERROR } from "../constants";
 
-export type ILoginErrorStore = string | null;
+export type LoginErrorStore = string | null;
 
 export const initialState = null;
 
-export default (state: ILoginErrorStore = initialState, action: ILoginAction): ILoginErrorStore => {
+export default (state: LoginErrorStore = initialState, action: LoginAction): LoginErrorStore => {
     switch (action.type) {
         case LOGIN:
             return initialState;

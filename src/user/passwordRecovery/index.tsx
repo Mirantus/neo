@@ -1,22 +1,22 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { IStore } from "../../store/reducers";
+import { Store } from "../../store/reducers";
 import { init, passwordRecovery } from "./actions";
 import Form from "./form";
-import { IPasswordRecoveryErrorStore } from "./reducers/error";
-import { IPasswordRecoveryIsSubmittedStore } from "./reducers/isSubmitted";
-import { IPasswordRecovery } from "./types";
+import { PasswordRecoveryErrorStore } from "./reducers/error";
+import { PasswordRecoveryIsSubmittedStore } from "./reducers/isSubmitted";
+import { PasswordRecoveryFormData } from "./types";
 
-type IProps = {
-    error: IPasswordRecoveryErrorStore;
+type Props = {
+    error: PasswordRecoveryErrorStore;
     history: any;
-    isSubmitted: IPasswordRecoveryIsSubmittedStore;
-    passwordRecovery(values: IPasswordRecovery): void;
+    isSubmitted: PasswordRecoveryIsSubmittedStore;
+    passwordRecovery(values: PasswordRecoveryFormData): void;
     init(): void;
 };
 
-export const PasswordRecovery = (props: IProps) => {
+export const PasswordRecovery = (props: Props) => {
     const { error, history, isSubmitted, init, passwordRecovery } = props;
 
     React.useEffect(() => {
@@ -33,7 +33,7 @@ export const PasswordRecovery = (props: IProps) => {
     return <Form formError={error} onSubmit={passwordRecovery} />;
 };
 
-const mapStateToProps = ({ user }: IStore) => ({
+const mapStateToProps = ({ user }: Store) => ({
     error: user.passwordRecovery.error,
     isSubmitted: user.passwordRecovery.isSubmitted,
 });

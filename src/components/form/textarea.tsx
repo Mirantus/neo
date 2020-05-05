@@ -1,7 +1,7 @@
 import React, { TextareaHTMLAttributes } from "react";
 import { Field, WrappedFieldProps } from "redux-form";
 
-type IProps = TextareaHTMLAttributes<HTMLInputElement>;
+type Props = TextareaHTMLAttributes<HTMLInputElement>;
 
 export const renderField = ({ input, meta: { touched, error } }: WrappedFieldProps) => (
     <div className="control">
@@ -10,6 +10,6 @@ export const renderField = ({ input, meta: { touched, error } }: WrappedFieldPro
     </div>
 );
 
-export const Textarea = ({ name }: IProps) => <Field name={name} component={renderField} />;
+export const Textarea = ({ name }: Props) => <Field name={name} component={renderField} />;
 
 export default Textarea;

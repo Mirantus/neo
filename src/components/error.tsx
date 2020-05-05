@@ -1,9 +1,9 @@
 import React from "react";
 
-type IProps = {
+type Props = {
     message: string;
 };
 
-const Error = (props: IProps) => <p className="help is-danger">Ошибка: {props.message || "нет данных"}</p>;
+const Error = (props: Props) => <p className="help is-danger">Ошибка: {props.message || "нет данных"}</p>;
 
 export default Error;

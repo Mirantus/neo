@@ -2,10 +2,10 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
 import Edit from "../../items/edit/index";
-import { IRouterProps } from "../../types";
+import { RouterProps } from "../../types";
 
-type IProps = RouteComponentProps<IRouterProps>;
+type Props = RouteComponentProps<RouterProps>;
 
-const PageItemsEdit = (props: IProps) => <Edit history={props.history} id={props.match.params.id} />;
+const PageItemsEdit = (props: Props) => <Edit history={props.history} id={props.match.params.id} />;
 
 export default PageItemsEdit;

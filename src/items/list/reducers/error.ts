@@ -1,11 +1,11 @@
-import { IListAction } from "../actions";
+import { ListAction } from "../actions";
 import { ITEMS_FETCH, ITEMS_FETCH_ERROR } from "../constants";
 
-export type IListErrorStore = string | null;
+export type ListErrorStore = string | null;
 
 export const initialState = null;
 
-export default (state: IListErrorStore = initialState, action: IListAction): IListErrorStore => {
+export default (state: ListErrorStore = initialState, action: ListAction): ListErrorStore => {
     switch (action.type) {
         case ITEMS_FETCH:
             return initialState;

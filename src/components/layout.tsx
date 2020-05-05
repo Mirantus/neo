@@ -3,11 +3,11 @@ import React from "react";
 import UserPanel from "../user/panel/index";
 import Menu from "./menu";
 
-type IProps = {
+type Props = {
     children: any;
 };
 
-const Layout = (props: IProps) => (
+const Layout = (props: Props) => (
     <>
         <nav className="navbar is-link">
             <div className="navbar-menu">

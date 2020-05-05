@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
-import data, { IEditInitDataStore } from "./data";
-import error, { IEditInitErrorStore } from "./error";
-import isFetching, { IEditInitIsFetchingStore } from "./isFetching";
+import data, { EditInitDataStore } from "./data";
+import error, { EditInitErrorStore } from "./error";
+import isFetching, { EditInitIsFetchingStore } from "./isFetching";
 
-export interface IEditInitStore {
-    data: IEditInitDataStore;
-    error: IEditInitErrorStore;
-    isFetching: IEditInitIsFetchingStore;
+export interface EditInitStore {
+    data: EditInitDataStore;
+    error: EditInitErrorStore;
+    isFetching: EditInitIsFetchingStore;
 }
 
 export default combineReducers({

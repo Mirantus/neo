@@ -1,15 +1,15 @@
-import { IMessage } from "../../types";
-import { IActionMessage } from "./actions";
+import { Message } from "../../types";
+import { ActionMessage } from "./actions";
 import { MESSAGE_HIDE, MESSAGE_SHOW } from "./constants";
 
-export const initialState: IMessage = {
+export const initialState: Message = {
     text: "",
     type: "info",
 };
 
-export type IMessageStore = IMessage;
+export type MessageStore = Message;
 
-export default (state: IMessageStore = initialState, action: IActionMessage): IMessageStore => {
+export default (state: MessageStore = initialState, action: ActionMessage): MessageStore => {
     switch (action.type) {
         case MESSAGE_HIDE:
             return initialState;

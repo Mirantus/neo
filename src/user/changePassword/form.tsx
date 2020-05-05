@@ -4,14 +4,14 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Input from "../../components/form/input";
-import { IChangePasswordErrorStore } from "./reducers/error";
-import { IChangePassword, IChangePasswordValidationErrors } from "./types";
+import { ChangePasswordErrorStore } from "./reducers/error";
+import { ChangePasswordFormData, ChangePasswordValidationErrors } from "./types";
 
-type IProps = {
-    formError: IChangePasswordErrorStore;
+type Props = {
+    formError: ChangePasswordErrorStore;
 };
 
-export const ChangePasswordForm = (props: InjectedFormProps<IChangePassword> & IProps) => {
+export const ChangePasswordForm = (props: InjectedFormProps<ChangePasswordFormData> & Props) => {
     const { formError, handleSubmit } = props;
 
     return (
@@ -37,8 +37,8 @@ export const ChangePasswordForm = (props: InjectedFormProps<IChangePassword> & I
     );
 };
 
-export const validate = (values: IChangePassword): IChangePasswordValidationErrors => {
-    const errors: IChangePasswordValidationErrors = {};
+export const validate = (values: ChangePasswordFormData): ChangePasswordValidationErrors => {
+    const errors: ChangePasswordValidationErrors = {};
 
     if (values.password !== values.password2) {
         errors.password2 = "Пароль и подтверждение должны совпадать";
@@ -47,4 +47,4 @@ export const validate = (values: IChangePassword): IChangePasswordValidationErro
     return errors;
 };
 
-export default reduxForm<IChangePassword, any>({ form: "reduxForm", validate })(ChangePasswordForm);
+export default reduxForm<ChangePasswordFormData, any>({ form: "reduxForm", validate })(ChangePasswordForm);

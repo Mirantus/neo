@@ -1,22 +1,22 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { IStore } from "../../store/reducers";
+import { Store } from "../../store/reducers";
 import { initRegister, register } from "./actions";
 import Form from "./form";
-import { IRegisterErrorStore } from "./reducers/error";
-import { IRegisterIsSubmittedStore } from "./reducers/isSubmitted";
-import { IUserRegister } from "./types";
+import { RegisterErrorStore } from "./reducers/error";
+import { RegisterIsSubmittedStore } from "./reducers/isSubmitted";
+import { UserRegisterFormData } from "./types";
 
-type IProps = {
-    error: IRegisterErrorStore;
+type Props = {
+    error: RegisterErrorStore;
     history: any;
-    isSubmitted: IRegisterIsSubmittedStore;
+    isSubmitted: RegisterIsSubmittedStore;
     initRegister(): void;
-    register(values: IUserRegister): void;
+    register(values: UserRegisterFormData): void;
 };
 
-export const Register = (props: IProps) => {
+export const Register = (props: Props) => {
     const { error, history, isSubmitted, initRegister, register } = props;
 
     React.useEffect(() => {
@@ -33,6 +33,6 @@ export const Register = (props: IProps) => {
     return <Form onSubmit={register} formError={error} />;
 };
 
-const mapStateToProps = (store: IStore) => ({ ...store.user.register });
+const mapStateToProps = (store: Store) => ({ ...store.user.register });
 
 export default connect(mapStateToProps, { initRegister, register })(Register);

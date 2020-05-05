@@ -1,16 +1,16 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { IStore } from "../../store/reducers";
+import { Store } from "../../store/reducers";
 import { messageHide } from "./actions";
-import { IMessageStore } from "./reducers";
+import { MessageStore } from "./reducers";
 
-type IProps = {
-    message: IMessageStore;
+type Props = {
+    message: MessageStore;
     messageHide(): void;
 };
 
-export const Message = (props: IProps) => {
+export const Message = (props: Props) => {
     const { message, messageHide } = props;
     const className = `app-message notification is-${message.type}`;
 
@@ -22,6 +22,6 @@ export const Message = (props: IProps) => {
     ) : null;
 };
 
-const mapStateToProps = (store: IStore) => ({ message: store.message });
+const mapStateToProps = (store: Store) => ({ message: store.message });
 
 export default connect(mapStateToProps, { messageHide })(Message);
