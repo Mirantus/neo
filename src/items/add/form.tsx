@@ -4,11 +4,11 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Textarea from "../../components/form/textarea";
-import { AddErrorStore } from "./reducers/error";
+import { ErrorStore } from "../../store/error";
 import { ItemAddFormData } from "./types";
 
 type Props = {
-    formError: AddErrorStore;
+    formError: ErrorStore;
 };
 
 export const ItemsAddForm = (props: InjectedFormProps<ItemAddFormData> & Props) => {

@@ -1,5 +1,6 @@
+import { ERROR, OK } from "../../../store/constants";
 import { AuthAction } from "../actions";
-import { AUTH, AUTH_ERROR, AUTH_OK, LOGOUT } from "../constants";
+import { AUTH, LOGOUT } from "../constants";
 
 export type AuthIsFetchingStore = boolean;
 
@@ -10,8 +11,8 @@ export default (state: AuthIsFetchingStore = initialState, action: AuthAction): 
         case AUTH:
             return true;
         case LOGOUT:
-        case AUTH_ERROR:
-        case AUTH_OK:
+        case AUTH + ERROR:
+        case AUTH + OK:
             return false;
         default:
             return state;

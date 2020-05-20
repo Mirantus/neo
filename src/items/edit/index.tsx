@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
+import { IsLoadingStore } from "../../store/isLoading";
 import { Store } from "../../store/reducers";
 import { Item } from "../../types";
-import { edit, initEdit } from "./actions";
+import { edit, init } from "./actions";
 import Form from "./form";
 import { EditInitStore } from "./reducers/init";
 import { EditSubmitStore } from "./reducers/submit";
-import { EditIsSubmittedStore } from "./reducers/submit/isSubmitted";
 
 type Props = {
     history: any;
@@ -17,37 +17,26 @@ type Props = {
     initError: EditInitStore["error"];
     id: string;
     isFetching: EditInitStore["isFetching"];
-    isSubmitted: EditIsSubmittedStore;
+    isSubmitted: IsLoadingStore;
     isSubmitting: EditSubmitStore["isSubmitting"];
     submitError: EditSubmitStore["error"];
     edit(values: Item): void;
-    initEdit(id: string): void;
+    init(id: string): void;
 };
 
 export const ItemsEdit = (props: Props) => {
-    const {
-        history,
-        initData,
-        id,
-        isFetching,
-        isSubmitted,
-        isSubmitting,
-        submitError,
-        initError,
-        edit,
-        initEdit,
-    } = props;
+    const { history, initData, id, isFetching, isSubmitted, isSubmitting, submitError, initError, edit, init } = props;
 
     React.useEffect(() => {
-        initEdit(id);
-    }, [id, initEdit]);
+        init(id);
+    }, [id, init]);
 
     React.useEffect(() => {
         if (!submitError && isSubmitted && initData) {
-            initEdit(id);
+            init(id);
             history.push(`/items/${initData.id}`);
         }
-    }, [history, id, initData, initEdit, submitError, isSubmitted]);
+    }, [history, id, initData, init, submitError, isSubmitted]);
 
     if (isFetching) {
         return <Loader />;
@@ -73,4 +62,4 @@ const mapStateToProps = (store: Store) => ({
     submitError: store.items.edit.submit.error,
 });
 
-export default connect(mapStateToProps, { edit, initEdit })(ItemsEdit);
+export default connect(mapStateToProps, { edit, init })(ItemsEdit);

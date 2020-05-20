@@ -1,4 +1,5 @@
-import { AUTH, AUTH_ERROR, LOGOUT } from "../constants";
+import { ERROR } from "../../../store/constants";
+import { AUTH, LOGOUT } from "../constants";
 import reducer, { initialState } from "./error";
 
 test("User auth reducer error", () => {
@@ -12,7 +13,7 @@ test("User auth reducer error", () => {
 
     // AUTH_ERROR
     const errorAuthPayload = { id: "test1" };
-    const errorAuthAction = { type: AUTH_ERROR, payload: errorAuthPayload };
+    const errorAuthAction = { type: AUTH + ERROR, payload: errorAuthPayload };
     expect(reducer(initialState, errorAuthAction)).toEqual(errorAuthPayload);
 
     // default

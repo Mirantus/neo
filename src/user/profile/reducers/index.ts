@@ -1,11 +1,12 @@
+import { OK } from "../../../store/constants";
 import { User } from "../../../types";
 import { AuthAction } from "../../auth/actions";
-import { AUTH_OK } from "../../auth/constants";
-import { USER_EDIT_OK } from "../../edit/constants";
+import { AUTH } from "../../auth/constants";
+import { USER_EDIT } from "../../edit/constants";
 import { LoginAction } from "../../login/actions";
-import { LOGIN_OK } from "../../login/constants";
+import { LOGIN } from "../../login/constants";
 import { RegisterAction } from "../../register/actions";
-import { REGISTER_OK } from "../../register/constants";
+import { REGISTER } from "../../register/constants";
 
 export type UserProfileStore = User;
 
@@ -19,10 +20,10 @@ export default (
     action: AuthAction | LoginAction | RegisterAction
 ): UserProfileStore => {
     switch (action.type) {
-        case AUTH_OK:
-        case LOGIN_OK:
-        case REGISTER_OK:
-        case USER_EDIT_OK:
+        case AUTH + OK:
+        case LOGIN + OK:
+        case REGISTER + OK:
+        case USER_EDIT + OK:
             return action.payload;
 
         default:

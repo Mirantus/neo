@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { ErrorStore } from "../../store/error";
 import Form from "./form";
-import { LoginErrorStore } from "./reducers/error";
 import { UserLoginFormData } from "./types";
 
 type Props = {
-    formError: LoginErrorStore;
+    formError: ErrorStore;
     onSubmit(values: UserLoginFormData): void;
 };
 

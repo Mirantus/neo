@@ -1,17 +1,18 @@
 import { combineReducers } from "redux";
 
+import createError, { ErrorStore } from "../../../../store/error";
+import createIsLoading, { IsLoadingStore } from "../../../../store/isLoading";
+import { ITEMS_EDIT } from "../../constants";
 import data, { EditInitDataStore } from "./data";
-import error, { EditInitErrorStore } from "./error";
-import isFetching, { EditInitIsFetchingStore } from "./isFetching";
 
 export interface EditInitStore {
     data: EditInitDataStore;
-    error: EditInitErrorStore;
-    isFetching: EditInitIsFetchingStore;
+    error: ErrorStore;
+    isFetching: IsLoadingStore;
 }
 
 export default combineReducers({
     data,
-    error,
-    isFetching,
+    error: createError(ITEMS_EDIT),
+    isFetching: createIsLoading(ITEMS_EDIT),
 });

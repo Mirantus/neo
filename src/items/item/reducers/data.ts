@@ -1,6 +1,7 @@
+import { OK } from "../../../store/constants";
 import { Item } from "../../../types";
 import { ItemAction } from "../actions";
-import { ITEM_FETCH, ITEM_FETCH_OK } from "../constants";
+import { ITEM_FETCH } from "../constants";
 
 export type ItemDataStore = Item | null;
 
@@ -11,7 +12,7 @@ export default (state: ItemDataStore = initialState, action: ItemAction): ItemDa
         case ITEM_FETCH:
             return initialState;
 
-        case ITEM_FETCH_OK:
+        case ITEM_FETCH + OK:
             return action.payload;
 
         default:

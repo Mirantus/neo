@@ -1,5 +1,6 @@
+import { ERROR } from "../../../store/constants";
 import { AuthAction } from "../actions";
-import { AUTH, AUTH_ERROR, LOGOUT } from "../constants";
+import { AUTH, LOGOUT } from "../constants";
 
 export type AuthErrorStore = string | null;
 
@@ -11,7 +12,7 @@ export default (state: AuthErrorStore = initialState, action: AuthAction): AuthE
         case AUTH:
             return initialState;
 
-        case AUTH_ERROR:
+        case AUTH + ERROR:
             return action.payload;
 
         default:

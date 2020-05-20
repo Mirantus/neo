@@ -1,17 +1,17 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
+import { ErrorStore } from "../../store/error";
+import { IsLoadedStore } from "../../store/isLoaded";
 import { Store } from "../../store/reducers";
 import { init, passwordRecovery } from "./actions";
 import Form from "./form";
-import { PasswordRecoveryErrorStore } from "./reducers/error";
-import { PasswordRecoveryIsSubmittedStore } from "./reducers/isSubmitted";
 import { PasswordRecoveryFormData } from "./types";
 
 type Props = {
-    error: PasswordRecoveryErrorStore;
+    error: ErrorStore;
     history: any;
-    isSubmitted: PasswordRecoveryIsSubmittedStore;
+    isSubmitted: IsLoadedStore;
     passwordRecovery(values: PasswordRecoveryFormData): void;
     init(): void;
 };
@@ -38,4 +38,4 @@ const mapStateToProps = ({ user }: Store) => ({
     isSubmitted: user.passwordRecovery.isSubmitted,
 });
 
-export default connect(mapStateToProps, { passwordRecovery, init })(PasswordRecovery);
+export default connect(mapStateToProps, { init, passwordRecovery })(PasswordRecovery);

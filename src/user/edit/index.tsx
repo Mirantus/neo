@@ -1,18 +1,18 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
+import { ErrorStore } from "../../store/error";
+import { IsLoadedStore } from "../../store/isLoaded";
 import { Store } from "../../store/reducers";
 import { edit, init } from "./actions";
 import Form from "./form";
-import { UserEditErrorStore } from "./reducers/error";
-import { UserEditIsSubmittedStore } from "./reducers/isSubmitted";
 import { UserEditFormData } from "./types";
 
 type Props = {
-    error: UserEditErrorStore;
+    error: ErrorStore;
     history: any;
     initialValues: UserEditFormData;
-    isSubmitted: UserEditIsSubmittedStore;
+    isSubmitted: IsLoadedStore;
     edit(values: UserEditFormData): void;
     init(): void;
 };

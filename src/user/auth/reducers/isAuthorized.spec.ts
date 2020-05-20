@@ -1,11 +1,12 @@
-import { LOGIN_OK } from "../../login/constants";
-import { REGISTER_OK } from "../../register/constants";
-import { AUTH, AUTH_ERROR, AUTH_OK, LOGOUT } from "../constants";
+import { ERROR, OK } from "../../../store/constants";
+import { LOGIN } from "../../login/constants";
+import { REGISTER } from "../../register/constants";
+import { AUTH, LOGOUT } from "../constants";
 import reducer, { initialState } from "./isAuthorized";
 
 test("User auth reducer isAuthorized", () => {
     // LOGIN_OK
-    const userLoginOkAction = { type: LOGIN_OK, payload: { email: "e@mail.com" } };
+    const userLoginOkAction = { type: LOGIN + OK, payload: { email: "e@mail.com" } };
     expect(reducer(initialState, userLoginOkAction)).toBe(true);
 
     // LOGOUT
@@ -13,7 +14,7 @@ test("User auth reducer isAuthorized", () => {
     expect(reducer(initialState, logoutAction)).toBe(initialState);
 
     // REGISTER_OK
-    const userRegisterOkAction = { type: REGISTER_OK, payload: { email: "e@mail.com" } };
+    const userRegisterOkAction = { type: REGISTER + OK, payload: { email: "e@mail.com" } };
     expect(reducer(initialState, userRegisterOkAction)).toBe(true);
 
     // AUTH
@@ -21,11 +22,11 @@ test("User auth reducer isAuthorized", () => {
     expect(reducer(initialState, authAction)).toBe(initialState);
 
     // AUTH_OK
-    const authOkAction = { type: AUTH_OK, payload: null };
+    const authOkAction = { type: AUTH + OK, payload: null };
     expect(reducer(initialState, authOkAction)).toBe(true);
 
     // AUTH_ERROR
-    const authErrorAction = { type: AUTH_ERROR, payload: null };
+    const authErrorAction = { type: AUTH + ERROR, payload: null };
     expect(reducer(initialState, authErrorAction)).toBe(false);
 
     // default

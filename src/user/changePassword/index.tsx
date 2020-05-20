@@ -1,17 +1,17 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
+import { ErrorStore } from "../../store/error";
+import { IsLoadedStore } from "../../store/isLoaded";
 import { Store } from "../../store/reducers";
 import { changePassword, init } from "./actions";
 import Form from "./form";
-import { ChangePasswordErrorStore } from "./reducers/error";
-import { ChangePasswordIsSubmittedStore } from "./reducers/isSubmitted";
 import { ChangePasswordFormData } from "./types";
 
 type Props = {
-    error: ChangePasswordErrorStore;
+    error: ErrorStore;
     history: any;
-    isSubmitted: ChangePasswordIsSubmittedStore;
+    isSubmitted: IsLoadedStore;
     changePassword(values: ChangePasswordFormData): void;
     init(): void;
 };

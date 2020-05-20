@@ -4,11 +4,11 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Input from "../../components/form/input";
-import { UserEditErrorStore } from "./reducers/error";
+import { ErrorStore } from "../../store/error";
 import { UserEditFormData } from "./types";
 
 type Props = {
-    formError: UserEditErrorStore;
+    formError: ErrorStore;
 };
 
 export const UserEditForm = (props: InjectedFormProps<UserEditFormData> & Props) => {

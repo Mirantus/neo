@@ -4,11 +4,11 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Input from "../../components/form/input";
-import { RegisterErrorStore } from "./reducers/error";
+import { ErrorStore } from "../../store/error";
 import { UserRegisterFormData, UserRegisterValidationErrors } from "./types";
 
 type Props = {
-    formError: RegisterErrorStore;
+    formError: ErrorStore;
 };
 
 export const RegisterForm = (props: InjectedFormProps<UserRegisterFormData> & Props) => {
