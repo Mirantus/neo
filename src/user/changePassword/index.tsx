@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
+import useSubmitRedirect from "../../hooks/useSubmitRedirect";
 import { ErrorStore } from "../../store/error";
 import { IsLoadedStore } from "../../store/isLoaded";
 import { Store } from "../../store/reducers";
@@ -10,25 +11,19 @@ import { ChangePasswordFormData } from "./types";
 
 type Props = {
     error: ErrorStore;
-    history: any;
     isSubmitted: IsLoadedStore;
     changePassword(values: ChangePasswordFormData): void;
     init(): void;
 };
 
 export const ChangePassword = (props: Props) => {
-    const { error, history, isSubmitted, changePassword, init } = props;
+    const { error, isSubmitted, changePassword, init } = props;
 
     React.useEffect(() => {
         init();
     }, [init]);
 
-    React.useEffect(() => {
-        if (!error && isSubmitted) {
-            init();
-            history.push("/profile");
-        }
-    }, [error, history, init, isSubmitted]);
+    useSubmitRedirect({ error, isSubmitted, onRedirect: init, url: "/profile" });
 
     return <Form formError={error} onSubmit={changePassword} />;
 };

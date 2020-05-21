@@ -6,6 +6,6 @@ import { RouterProps } from "../../types";
 
 type Props = RouteComponentProps<RouterProps>;
 
-const PageItemsEdit = (props: Props) => <Edit history={props.history} id={props.match.params.id} />;
+const PageItemsEdit = (props: Props) => <Edit id={props.match.params.id} />;
 
 export default PageItemsEdit;

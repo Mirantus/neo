@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
+import useSubmitRedirect from "../../hooks/useSubmitRedirect";
 import { IsLoadingStore } from "../../store/isLoading";
 import { Store } from "../../store/reducers";
 import { Item } from "../../types";
@@ -12,7 +13,6 @@ import { EditInitStore } from "./reducers/init";
 import { EditSubmitStore } from "./reducers/submit";
 
 type Props = {
-    history: any;
     initData: EditInitStore["data"];
     initError: EditInitStore["error"];
     id: string;
@@ -25,18 +25,18 @@ type Props = {
 };
 
 export const ItemsEdit = (props: Props) => {
-    const { history, initData, id, isFetching, isSubmitted, isSubmitting, submitError, initError, edit, init } = props;
+    const { initData, id, isFetching, isSubmitted, isSubmitting, submitError, initError, edit, init } = props;
 
     React.useEffect(() => {
         init(id);
     }, [id, init]);
 
-    React.useEffect(() => {
-        if (!submitError && isSubmitted && initData) {
-            init(id);
-            history.push(`/items/${initData.id}`);
-        }
-    }, [history, id, initData, init, submitError, isSubmitted]);
+    useSubmitRedirect({
+        error: submitError,
+        isSubmitted: isSubmitted,
+        onRedirect: () => init(id),
+        url: `/items/${initData?.id}`,
+    });
 
     if (isFetching) {
         return <Loader />;
