@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import Error from "../../components/error";
@@ -18,7 +18,7 @@ type Props = {
 export const ItemsList = (props: Props) => {
     const { data, isFetching, error, fetchItems } = props;
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetchItems();
     }, [fetchItems]);
 

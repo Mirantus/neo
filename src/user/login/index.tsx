@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -18,7 +18,7 @@ type Props = {
 export const Login = (props: Props) => {
     const { error, isAuthorized, init, login } = props;
 
-    React.useEffect(() => {
+    useEffect(() => {
         init();
     }, [init]);
 

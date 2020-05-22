@@ -1,5 +1,5 @@
 import { createBrowserHistory } from "history";
-import * as React from "react";
+import React, { lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import { Route, Router, Switch } from "react-router";
 
@@ -12,19 +12,19 @@ import Loader from "./loader";
 import Loading from "./loading";
 import Message from "./message";
 
-const Add = React.lazy(() => import(/* webpackChunkName: "add" */ "../pages/items/add"));
-const Edit = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/items/edit"));
-const Item = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/items/item"));
+const Add = lazy(() => import(/* webpackChunkName: "add" */ "../pages/items/add"));
+const Edit = lazy(() => import(/* webpackChunkName: "item" */ "../pages/items/edit"));
+const Item = lazy(() => import(/* webpackChunkName: "item" */ "../pages/items/item"));
 
-const Login = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/login"));
-const Profile = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/profile"));
-const UserEdit = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/edit"));
-const Register = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/register"));
-const ChangePassword = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/changePassword"));
-const PasswordRecovery = React.lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/passwordRecovery"));
+const Login = lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/login"));
+const Profile = lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/profile"));
+const UserEdit = lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/edit"));
+const Register = lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/register"));
+const ChangePassword = lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/changePassword"));
+const PasswordRecovery = lazy(() => import(/* webpackChunkName: "item" */ "../pages/user/passwordRecovery"));
 
-const Home = React.lazy(() => import(/* webpackChunkName: "home" */ "../pages/home"));
-const NotFound = React.lazy(() => import(/* webpackChunkName: "notFound" */ "../pages/notFound"));
+const Home = lazy(() => import(/* webpackChunkName: "home" */ "../pages/home"));
+const NotFound = lazy(() => import(/* webpackChunkName: "notFound" */ "../pages/notFound"));
 
 // prepare store
 const history = createBrowserHistory();
@@ -34,7 +34,7 @@ const Application = () => (
     <Provider store={store}>
         <Router history={history}>
             <Layout>
-                <React.Suspense fallback={<Loader />}>
+                <Suspense fallback={<Loader />}>
                     <Switch>
                         <PrivateRoute exact path="/add" component={Add} />
                         <PrivateRoute exact path="/edit/:id(\d+)" component={Edit} />
@@ -50,7 +50,7 @@ const Application = () => (
                         <Route exact path="/" component={Home} />
                         <Route path="*" component={NotFound} />
                     </Switch>
-                </React.Suspense>
+                </Suspense>
             </Layout>
             <Auth />
             <Loading />

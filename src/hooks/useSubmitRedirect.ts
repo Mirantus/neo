@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { ErrorStore } from "../store/error";
@@ -15,7 +15,7 @@ const useSubmitRedirect = (props: Props) => {
     const { error, isSubmitted, onRedirect, url } = props;
     const history = useHistory();
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!error && isSubmitted) {
             onRedirect();
             history.push(url);

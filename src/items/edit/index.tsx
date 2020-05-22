@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import Error from "../../components/error";
@@ -27,7 +27,7 @@ type Props = {
 export const ItemsEdit = (props: Props) => {
     const { initData, id, isFetching, isSubmitted, isSubmitting, submitError, initError, edit, init } = props;
 
-    React.useEffect(() => {
+    useEffect(() => {
         init(id);
     }, [id, init]);
 

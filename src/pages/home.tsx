@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import AddButton from "../items/add/button";
 import List from "../items/list/index";

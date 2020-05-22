@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
@@ -19,7 +19,7 @@ type Props = {
 export const ChangePassword = (props: Props) => {
     const { error, isSubmitted, changePassword, init } = props;
 
-    React.useEffect(() => {
+    useEffect(() => {
         init();
     }, [init]);
 

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { InjectedFormProps, reduxForm } from "redux-form";
 
 import Error from "../../components/error";
