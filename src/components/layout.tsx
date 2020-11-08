@@ -1,6 +1,7 @@
 import React from "react";
 
 import UserPanel from "../user/panel/index";
+
 import Menu from "./menu";
 
 type Props = {

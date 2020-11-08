@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Item } from "../../types";
+
 import Date from "./date";
 
 type Props = {

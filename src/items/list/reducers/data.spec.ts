@@ -1,6 +1,7 @@
 import { OK } from "../../../store/constants";
 import { ITEMS_DELETE } from "../../delete/constants";
 import { ITEMS_FETCH } from "../constants";
+
 import reducer, { initialState } from "./data";
 
 test("List reducer data", () => {

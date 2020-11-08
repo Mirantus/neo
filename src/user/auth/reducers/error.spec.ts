@@ -1,5 +1,6 @@
 import { ERROR } from "../../../store/constants";
 import { AUTH, LOGOUT } from "../constants";
+
 import reducer, { initialState } from "./error";
 
 test("User auth reducer error", () => {

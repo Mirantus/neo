@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { Store } from "../../store/reducers";
 import { Item } from "../../types";
+
 import { deleteItem } from "./actions";
 
 type Props = {

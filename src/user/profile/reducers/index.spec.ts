@@ -1,7 +1,8 @@
 import { OK } from "../../../store/constants";
-import { LOGIN } from "../../login/constants";
 import { USER_EDIT } from "../../edit/constants";
+import { LOGIN } from "../../login/constants";
 import { REGISTER } from "../../register/constants";
+
 import reducer, { initialState } from "./index";
 
 test("Profile reducer", () => {

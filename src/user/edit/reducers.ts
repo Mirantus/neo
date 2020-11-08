@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 
 import createError, { ErrorStore } from "../../store/error";
-import createIsLoading, { IsLoadingStore } from "../../store/isLoading";
 import createIsLoaded, { IsLoadedStore } from "../../store/isLoaded";
+import createIsLoading, { IsLoadingStore } from "../../store/isLoading";
+
 import { USER_EDIT } from "./constants";
 
 export interface UserEditStore {

@@ -1,4 +1,5 @@
 import { Message } from "../../types";
+
 import { MESSAGE_HIDE, MESSAGE_SHOW } from "./constants";
 
 export interface ActionMessage {

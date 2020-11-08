@@ -11,7 +11,7 @@ test("Loading", () => {
     const emtpyTree = renderer.create(<Loading {...props} />).toJSON();
     expect(emtpyTree).toMatchInlineSnapshot(`null`);
 
-    const fullTree = renderer.create(<Loading loading={true} />).toJSON();
+    const fullTree = renderer.create(<Loading loading />).toJSON();
     expect(fullTree).toMatchInlineSnapshot(`
         <div
           className="app-message notification is-light"

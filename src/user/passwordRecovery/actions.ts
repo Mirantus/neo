@@ -1,8 +1,9 @@
 import { Dispatch } from "redux";
 
+import { messageShow } from "../../components/message/actions";
 import { createFetch } from "../../store/actions";
 import { INIT } from "../../store/constants";
-import { messageShow } from "../../components/message/actions";
+
 import { PASSWORD_RECOVERY } from "./constants";
 import { PasswordRecoveryFormData } from "./types";
 

@@ -8,6 +8,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
     "prettier",
   ],
   globals: {
@@ -24,6 +25,8 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "@typescript-eslint", "import"],
   rules: {
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/camelcase": "off", // конфликтует с prettier
     "default-case": "error",
     "dot-notation": "error",
     "func-style": "error",
@@ -37,7 +40,18 @@ module.exports = {
     "prefer-const": "error",
     "prefer-destructuring": "error",
     "valid-jsdoc": "error",
-    "import/order": "error",
+    "import/first": "error",
+    "import/named": "off", //удалить
+    "import/newline-after-import": "error",
+    "import/no-namespace": "error",
+    "import/order": [
+      "error",
+      {
+        alphabetize: { order: "asc", caseInsensitive: true },
+        "newlines-between": "always",
+      },
+    ],
+    "import/no-unresolved": "off",
     "react/default-props-match-prop-types": "error",
     "react/jsx-boolean-value": "error",
     "react/jsx-curly-brace-presence": "error",

@@ -5,6 +5,7 @@ import Layout from "../components/layout";
 import PrivateRoute from "../components/privateRoute";
 import "../styles.less";
 import Auth from "../user/auth/index";
+
 import Loader from "./loader";
 import Loading from "./loading";
 import Message from "./message";

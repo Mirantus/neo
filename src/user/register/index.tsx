@@ -5,6 +5,7 @@ import useSubmitRedirect from "../../hooks/useSubmitRedirect";
 import { ErrorStore } from "../../store/error";
 import { IsLoadedStore } from "../../store/isLoaded";
 import { Store } from "../../store/reducers";
+
 import { init, register } from "./actions";
 import Form from "./form";
 import { UserRegisterFormData } from "./types";

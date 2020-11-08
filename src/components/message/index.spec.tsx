@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 
 import { Message as MessageType } from "../../types";
+
 import { Message } from "./index";
 
 test("Message", () => {

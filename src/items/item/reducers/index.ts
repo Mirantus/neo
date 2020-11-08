@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
 
-import data, { ItemDataStore } from "./data";
 import createError, { ErrorStore } from "../../../store/error";
 import createIsLoading, { IsLoadingStore } from "../../../store/isLoading";
 import { ITEM_FETCH } from "../constants";
+
+import data, { ItemDataStore } from "./data";
 
 export interface ItemStore {
     data: ItemDataStore;

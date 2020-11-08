@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { Store } from "../../store/reducers";
+
 import { messageHide } from "./actions";
 import { MessageStore } from "./reducers";
 

@@ -3,9 +3,9 @@ import { Dispatch } from "redux";
 
 import { createFetch } from "../../store/actions";
 import { INIT } from "../../store/constants";
-import { UserEditFormData } from "./types";
 
 import { USER_EDIT } from "./constants";
+import { UserEditFormData } from "./types";
 
 export const init = () => ({ type: USER_EDIT + INIT });
 

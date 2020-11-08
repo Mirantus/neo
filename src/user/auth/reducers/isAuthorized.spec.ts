@@ -2,6 +2,7 @@ import { ERROR, OK } from "../../../store/constants";
 import { LOGIN } from "../../login/constants";
 import { REGISTER } from "../../register/constants";
 import { AUTH, LOGOUT } from "../constants";
+
 import reducer, { initialState } from "./isAuthorized";
 
 test("User auth reducer isAuthorized", () => {

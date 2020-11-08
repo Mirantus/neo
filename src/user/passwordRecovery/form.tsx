@@ -5,6 +5,7 @@ import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Input from "../../components/form/input";
 import { ErrorStore } from "../../store/error";
+
 import { PasswordRecoveryFormData } from "./types";
 
 type Props = {

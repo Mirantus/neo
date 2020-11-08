@@ -3,6 +3,7 @@ import { Dispatch } from "redux";
 
 import { createFetch } from "../../store/actions";
 import { INIT } from "../../store/constants";
+
 import { CHANGE_PASSWORD } from "./constants";
 import { ChangePasswordFormData } from "./types";
 

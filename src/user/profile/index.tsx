@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { Store } from "../../store/reducers";
 import { User } from "../../types";
+
 import Content from "./content";
 
 type Props = {

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Loader from "../../components/loader";
 import { Store } from "../../store/reducers";
+
 import { LoadingStore } from "./reducers";
 
 type Props = {

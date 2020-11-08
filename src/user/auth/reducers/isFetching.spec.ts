@@ -1,5 +1,6 @@
 import { ERROR, OK } from "../../../store/constants";
 import { AUTH, LOGOUT } from "../constants";
+
 import reducer, { initialState } from "./isFetching";
 
 test("User Auth reducer isFetching", () => {
