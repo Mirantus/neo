@@ -19,13 +19,13 @@ export const ChangePasswordForm = (props: InjectedFormProps<ChangePasswordFormDa
             <h1 className="title">Изменение пароля</h1>
 
             <form onSubmit={handleSubmit}>
-                <Field label="Старый пароль">
+                <Field label="Старый пароль" name="current_password">
                     <Input autoComplete="current-password" name="current_password" required type="password" />
                 </Field>
-                <Field label="Пароль">
+                <Field label="Пароль" name="password">
                     <Input autoComplete="new-password" name="password" required type="password" />
                 </Field>
-                <Field label="Подтверждение пароля">
+                <Field label="Подтверждение пароля" name="password2">
                     <Input autoComplete="new-password" name="password2" required type="password" />
                 </Field>
                 <div className="control">

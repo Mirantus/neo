@@ -18,7 +18,7 @@ export const ItemEditButton = (props: Props) => {
     }
 
     return (
-        <Link to={`/edit/${item.id}`} className="is-link has-text-grey-light">
+        <Link to={`/edit/${item.id}`} className="is-link has-text-grey-light" title="Редактировать">
             <span className="icon is-small">
                 <i className="fas fa-edit" />
             </span>

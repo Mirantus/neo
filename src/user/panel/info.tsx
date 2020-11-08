@@ -17,7 +17,7 @@ const UserPanelInfo = (props: Props) => {
             <Link to="/profile" className="has-text-white">
                 {email}
             </Link>
-            <a className="icon has-text-white" style={{ marginLeft: "10px" }} onClick={logout}>
+            <a className="icon has-text-white" style={{ marginLeft: "10px" }} onClick={logout} title="Выйти">
                 <i className="fas fa-sign-out-alt" />
             </a>
         </>

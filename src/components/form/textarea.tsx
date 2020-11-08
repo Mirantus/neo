@@ -5,7 +5,7 @@ type Props = TextareaHTMLAttributes<HTMLInputElement>;
 
 export const renderField = ({ input, meta: { touched, error } }: WrappedFieldProps) => (
     <div className="control">
-        <textarea className="textarea" {...input} />
+        <textarea id={input.name} className="textarea" {...input} />
         {touched && error && <p className="help is-danger">{error}</p>}
     </div>
 );

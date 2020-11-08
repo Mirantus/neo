@@ -16,10 +16,10 @@ export const LoginForm = (props: InjectedFormProps<UserLoginFormData> & Props) =
 
     return (
         <form onSubmit={handleSubmit}>
-            <Field label="Email">
+            <Field label="Email" name="email">
                 <Input autoComplete="username" name="email" required type="email" />
             </Field>
-            <Field label="Пароль">
+            <Field label="Пароль" name="password">
                 <Input autoComplete="new-password" name="password" required type="password" />
             </Field>
             <div className="control">

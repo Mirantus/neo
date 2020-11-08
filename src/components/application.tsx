@@ -1,11 +1,8 @@
-import { createBrowserHistory } from "history";
 import React, { lazy, Suspense } from "react";
-import { Provider } from "react-redux";
-import { Route, Router, Switch } from "react-router";
+import { Route, Switch } from "react-router";
 
 import Layout from "../components/layout";
 import PrivateRoute from "../components/privateRoute";
-import { configureStore } from "../store";
 import "../styles.less";
 import Auth from "../user/auth/index";
 import Loader from "./loader";
@@ -26,37 +23,31 @@ const PasswordRecovery = lazy(() => import(/* webpackChunkName: "item" */ "../pa
 const Home = lazy(() => import(/* webpackChunkName: "home" */ "../pages/home"));
 const NotFound = lazy(() => import(/* webpackChunkName: "notFound" */ "../pages/notFound"));
 
-// prepare store
-const history = createBrowserHistory();
-const store = configureStore();
-
 const Application = () => (
-    <Provider store={store}>
-        <Router history={history}>
-            <Layout>
-                <Suspense fallback={<Loader />}>
-                    <Switch>
-                        <PrivateRoute exact path="/add" component={Add} />
-                        <PrivateRoute exact path="/edit/:id(\d+)" component={Edit} />
-                        <Route exact path="/items/:id(\d+)" component={Item} />
+    <>
+        <Layout>
+            <Suspense fallback={<Loader />}>
+                <Switch>
+                    <PrivateRoute exact path="/add" component={Add} />
+                    <PrivateRoute exact path="/edit/:id(\d+)" component={Edit} />
+                    <Route exact path="/items/:id(\d+)" component={Item} />
 
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/password_recovery" component={PasswordRecovery} />
-                        <PrivateRoute exact path="/profile" component={Profile} />
-                        <PrivateRoute exact path="/user/edit" component={UserEdit} />
-                        <PrivateRoute exact path="/change_password" component={ChangePassword} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/password_recovery" component={PasswordRecovery} />
+                    <PrivateRoute exact path="/profile" component={Profile} />
+                    <PrivateRoute exact path="/user/edit" component={UserEdit} />
+                    <PrivateRoute exact path="/change_password" component={ChangePassword} />
 
-                        <Route exact path="/" component={Home} />
-                        <Route path="*" component={NotFound} />
-                    </Switch>
-                </Suspense>
-            </Layout>
-            <Auth />
-            <Loading />
-            <Message />
-        </Router>
-    </Provider>
+                    <Route exact path="/" component={Home} />
+                    <Route path="*" component={NotFound} />
+                </Switch>
+            </Suspense>
+        </Layout>
+        <Auth />
+        <Loading />
+        <Message />
+    </>
 );
 
 export default Application;

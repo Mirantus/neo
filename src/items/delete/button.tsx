@@ -26,7 +26,7 @@ export const ItemDeleteButton = (props: Props) => {
     };
 
     return (
-        <a className="is-link has-text-grey-light" onClick={handleClick}>
+        <a className="is-link has-text-grey-light" title="Удалить" onClick={handleClick}>
             <span className="icon is-small">
                 <i className="far fa-trash-alt" />
             </span>

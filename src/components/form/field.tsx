@@ -1,13 +1,16 @@
 import React from "react";
 
 type Props = {
-    label: string;
     children: any;
+    label: string;
+    name?: string;
 };
 
-const Field = ({ children, label }: Props) => (
+const Field = ({ children, label, name }: Props) => (
     <div className="field">
-        <label className="label">{label}</label>
+        <label className="label" htmlFor={name}>
+            {label}
+        </label>
         {children}
     </div>
 );

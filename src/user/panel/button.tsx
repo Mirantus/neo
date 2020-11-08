@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserPanelButton = () => {
     return (
         <div className="buttons">
-            <a href="/login" className="button is-light">
+            <Link to="/login" className="button is-light">
                 Войти
-            </a>
+            </Link>
         </div>
     );
 };

@@ -37,6 +37,7 @@ test("ItemEditButton", () => {
           className="is-link has-text-grey-light"
           href="/edit/1"
           onClick={[Function]}
+          title="Редактировать"
         >
           <span
             className="icon is-small"

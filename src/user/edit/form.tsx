@@ -19,7 +19,7 @@ export const UserEditForm = (props: InjectedFormProps<UserEditFormData> & Props)
             <h1 className="title">Редактирование профиля</h1>
 
             <form onSubmit={handleSubmit}>
-                <Field label="Email">
+                <Field name="email" label="Email">
                     <Input autoComplete="username" name="email" required type="email" />
                 </Field>
                 <div className="control">

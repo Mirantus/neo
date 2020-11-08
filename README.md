@@ -15,4 +15,5 @@ npm i -D webpack-dev-server react-hot-loader @hot-loader/react-dom
 npm i -D mini-css-extract-plugin css-loader less-loader less postcss-loader autoprefixer
 npm i redux-form && npm i -D @types/redux-form
 npm i -D jest ts-jest @types/jest enzyme @types/enzyme enzyme-adapter-react-16 @types/ enzyme-adapter-react-16 && identity-obj-proxy && npx ts-jest config:init
+npm i -D @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/testing-library__jest-dom msw whatwg-fetch
 ```

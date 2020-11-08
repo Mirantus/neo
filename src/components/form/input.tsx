@@ -12,7 +12,7 @@ export const renderField = (props: WrappedFieldProps) => {
 
     return (
         <div className="control">
-            <input className="input" {...input} {...otherProps} />
+            <input className="input" id={input.name} {...input} {...otherProps} />
             {touched && error && <p className="help is-danger">{error}</p>}
         </div>
     );

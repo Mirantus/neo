@@ -12,7 +12,8 @@ export const request = (apiUrl: string, apiMethod = "GET", apiData: {} = {}, api
 
     if (Object.keys(apiData).length) {
         if (apiMethod === "GET") {
-            url += `?${Object.entries(apiData)
+            const prefix = url.includes("?") ? "&" : "?";
+            url += `${prefix}${Object.entries(apiData)
                 .map(([key, val]) => `${key}=${val}`)
                 .join("&")}`;
         } else {

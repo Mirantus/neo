@@ -21,7 +21,7 @@ export const ItemsEditForm = (props: InjectedFormProps<ItemEditFormData> & Props
         <div className="container">
             <h1 className="title">Редактирование</h1>
             <form onSubmit={handleSubmit}>
-                <Field label="Текст">
+                <Field label="Текст" name="text">
                     <Textarea name="text" required />
                 </Field>
                 <div className="control">

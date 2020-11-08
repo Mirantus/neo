@@ -19,13 +19,13 @@ export const RegisterForm = (props: InjectedFormProps<UserRegisterFormData> & Pr
             <h1 className="title">Регистрация</h1>
 
             <form onSubmit={handleSubmit}>
-                <Field label="Email">
+                <Field name="email" label="Email">
                     <Input autoComplete="username" name="email" required type="email" />
                 </Field>
-                <Field label="Пароль">
+                <Field name="password" label="Пароль">
                     <Input autoComplete="new-password" name="password" required type="password" />
                 </Field>
-                <Field label="Подтверждение пароля">
+                <Field name="password2" label="Подтверждение пароля">
                     <Input autoComplete="new-password" name="password2" required type="password" />
                 </Field>
                 <div className="control">

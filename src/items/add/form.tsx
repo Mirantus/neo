@@ -16,7 +16,7 @@ export const ItemsAddForm = (props: InjectedFormProps<ItemAddFormData> & Props) 
 
     return (
         <form onSubmit={handleSubmit}>
-            <Field label="Текст">
+            <Field label="Текст" name="text">
                 <Textarea name="text" required />
             </Field>
             <div className="control">

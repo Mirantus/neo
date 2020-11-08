@@ -39,6 +39,7 @@ test("Input", () => {
         >
           <input
             className="input"
+            id="name"
             name="name"
             onBlur={[Function]}
             onChange={[Function]}
@@ -61,6 +62,7 @@ test("RenderField с ошибкой", () => {
         >
           <input
             className="input"
+            id="name"
             name="name"
             onBlur={[Function]}
             onChange={[Function]}

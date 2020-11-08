@@ -13,6 +13,7 @@ test("Textarea", () => {
         >
           <textarea
             className="textarea"
+            id="name"
             name="name"
             onBlur={[Function]}
             onChange={[Function]}
@@ -35,6 +36,7 @@ test("RenderField с ошибкой", () => {
         >
           <textarea
             className="textarea"
+            id="name"
             name="name"
             onBlur={[Function]}
             onChange={[Function]}

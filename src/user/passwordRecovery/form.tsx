@@ -19,7 +19,7 @@ export const PasswordRecoveryForm = (props: InjectedFormProps<PasswordRecoveryFo
             <h1 className="title">Восстановление пароля</h1>
 
             <form onSubmit={handleSubmit}>
-                <Field label="Email">
+                <Field label="Email" name="email">
                     <Input autoComplete="username" name="email" required type="email" />
                 </Field>
                 <div className="control">

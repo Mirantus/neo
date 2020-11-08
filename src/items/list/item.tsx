@@ -14,7 +14,7 @@ export const ListItem = (props: Props) => {
     const { data } = props;
 
     return (
-        <div className="box">
+        <div id={"item-" + data.id} className="box">
             <Link to={`/items/${data.id}`} className="is-link">
                 {data.text}
             </Link>
