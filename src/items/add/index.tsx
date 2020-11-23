@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
-import { ErrorStore } from "../../store/error";
-import { IsLoadedStore } from "../../store/isLoaded";
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
+import { ErrorStore, IsLoadedStore } from "../../types";
 
-import { add, init } from "./actions";
 import Form from "./form";
+import { add, init } from "./slice";
 import { ItemAddFormData } from "./types";
 
 type Props = {

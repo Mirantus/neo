@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
-import { ErrorStore } from "../../store/error";
-import { IsLoadedStore } from "../../store/isLoaded";
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
+import { ErrorStore, IsLoadedStore } from "../../types";
 
-import { init, passwordRecovery } from "./actions";
 import Form from "./form";
+import { init, passwordRecovery } from "./slice";
 import { PasswordRecoveryFormData } from "./types";
 
 type Props = {

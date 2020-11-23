@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { ErrorStore } from "../store/error";
-import { IsLoadedStore } from "../store/isLoaded";
+import { ErrorStore, IsLoadedStore } from "../types";
 
 type Props = {
     error: ErrorStore;

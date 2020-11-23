@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
 import { User } from "../../types";
 
 import Content from "./content";

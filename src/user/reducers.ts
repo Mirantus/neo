@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 
 import auth, { AuthStore } from "./auth/reducers";
-import changePassword, { ChangePasswordStore } from "./changePassword/reducers";
-import edit, { UserEditStore } from "./edit/reducers";
-import login, { LoginStore } from "./login/reducers";
-import passwordRecovery, { PasswordRecoveryStore } from "./passwordRecovery/reducers";
+import changePassword, { ChangePasswordStore } from "./changePassword/slice";
+import edit, { UserEditStore } from "./edit/slice";
+import login, { LoginStore } from "./login/slice";
+import passwordRecovery, { PasswordRecoveryStore } from "./passwordRecovery/slice";
 import profile, { UserProfileStore } from "./profile/reducers";
-import register, { RegisterStore } from "./register/reducers";
+import register, { RegisterStore } from "./register/slice";
 
 export interface UserStore {
     auth: AuthStore;

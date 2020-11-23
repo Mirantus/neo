@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { ErrorStore } from "../../store/error";
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
+import { ErrorStore } from "../../types";
 
-import { init, login } from "./actions";
 import Content from "./content";
+import { init, login } from "./slice";
 import { UserLoginFormData } from "./types";
 
 type Props = {

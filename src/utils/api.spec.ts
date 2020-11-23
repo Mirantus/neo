@@ -1,4 +1,4 @@
-import { fetch, request } from "./api";
+import { appFetch, fetch, request } from "./api";
 
 const globalAny: any = global;
 const url = "/url";
@@ -65,4 +65,62 @@ test("api fetch exception", () => {
     globalAny.fetch = jest.fn().mockImplementation(fetchException);
     const response = fetch(url).catch();
     expect(response).rejects.toBe("Ошибка отправки данных");
+});
+
+test("app fetch no global", async () => {
+    globalAny.fetch = jest.fn().mockImplementation(fetchSuccess);
+    const dispatch = jest.fn();
+    await appFetch({ url }, dispatch);
+    expect(dispatch).not.toHaveBeenCalled();
+});
+
+test("app fetch success", async () => {
+    const dispatch = jest.fn();
+    const okFactory = jest.fn();
+    okFactory.mockImplementation((value) => value);
+
+    const response = await appFetch({ url, okFactory }, dispatch);
+    expect(response).toBe(fetchSuccess().json());
+    expect(okFactory).toHaveBeenCalled();
+    expect(dispatch).not.toHaveBeenCalled();
+});
+
+test("app fetch error", async () => {
+    globalAny.fetch = jest.fn().mockImplementation(fetchError);
+    const dispatch = jest.fn();
+    const okFactory = jest.fn();
+    okFactory.mockImplementation((value) => value);
+    let response;
+
+    try {
+        await appFetch({ url, global: true }, dispatch);
+    } catch (e) {
+        response = e;
+    }
+    expect(response).toBe(fetchError().text());
+    expect(okFactory).not.toHaveBeenCalled();
+});
+
+test("app fetch global success", async () => {
+    globalAny.fetch = jest.fn().mockImplementation(fetchSuccess);
+    const dispatch = jest.fn();
+
+    await appFetch({ url, global: true }, dispatch);
+    expect(dispatch).toHaveBeenCalledWith({ type: "loading/loadingShow" });
+    expect(dispatch).toHaveBeenCalledWith({ type: "loading/loadingHide" });
+    expect(dispatch).not.toHaveBeenCalledWith({ type: "message/messageShow" });
+});
+
+test("app fetch global error", async () => {
+    globalAny.fetch = jest.fn().mockImplementation(fetchError);
+    const dispatch = jest.fn();
+
+    try {
+        await appFetch({ url, global: true }, dispatch);
+    } catch (e) {
+        // empty
+    }
+    expect(dispatch).toHaveBeenCalledWith({ type: "loading/loadingShow" });
+    expect(dispatch).toHaveBeenCalledWith({ type: "message/messageShow", payload: { text: "error", type: "danger" } });
+    expect(dispatch).toHaveBeenCalledWith({ type: "loading/loadingHide" });
 });

@@ -55,10 +55,10 @@ const server = setupServer(
   rest.post("/change_password/", (req: any, res: any, ctx: any) => {
     return res(ctx.json(""));
   }),
-  rest.post("/logout", (req: any, res: any, ctx: any) => {
+  rest.post("/logout/", (req: any, res: any, ctx: any) => {
     return res(ctx.json(""));
   }),
-  rest.get("/password_recovery", (req: any, res: any, ctx: any) => {
+  rest.get("/password_recovery/", (req: any, res: any, ctx: any) => {
     return res(ctx.json(""));
   })
 );

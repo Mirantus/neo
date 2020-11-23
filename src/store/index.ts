@@ -1,15 +1,24 @@
-import { applyMiddleware, createStore, Store as ReduxStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
+import { reducer as form } from "redux-form";
 
-import reducer, { Store } from "./reducers";
+import loading, { LoadingStore } from "../components/loading/slice";
+import message, { MessageStore } from "../components/message/slice";
+import items, { ItemsStore } from "../items/reducers";
+import user, { UserStore } from "../user/reducers";
 
-export const configureStore = (): ReduxStore<Store> => {
-    let middleware = applyMiddleware(thunk);
+export interface Store {
+    items: ItemsStore;
+    loading: LoadingStore;
+    message: MessageStore;
+    user: UserStore;
+}
 
-    if (process.env.NODE_ENV !== "production") {
-        middleware = composeWithDevTools(middleware);
-    }
-
-    return createStore(reducer as any, middleware) as ReduxStore<Store>;
-};
+export default configureStore({
+    reducer: {
+        form,
+        items,
+        loading,
+        message,
+        user,
+    },
+});

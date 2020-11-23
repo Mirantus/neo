@@ -1,5 +1,16 @@
+import { Dispatch, Action } from "@reduxjs/toolkit";
+import { get as getCookie } from "js-cookie";
+
+import { loadingHide, loadingShow } from "../components/loading/slice";
+import { messageShow } from "../components/message/slice";
+import { SubmitState } from "../types";
+
 interface ApiOptions {
     body?: string;
+}
+
+interface RejectedAction extends Action {
+    error: any;
 }
 
 export const request = (apiUrl: string, apiMethod = "GET", apiData: {} = {}, apiOptions: ApiOptions = {}) => {
@@ -44,4 +55,41 @@ export const fetch = async (apiUrl: string, apiMethod = "GET", apiData: {} = {},
     }
 
     throw responseText;
+};
+
+export const appFetch = async (
+    { data = {}, global = false, method = "GET", okFactory = (response: any) => response, url = "" },
+    dispatch: Dispatch
+) => {
+    if (global) {
+        dispatch(loadingShow());
+    }
+
+    try {
+        const token = getCookie("token");
+        const response = await fetch(url, method, { ...data, token });
+        return okFactory(response);
+    } catch (error) {
+        if (global) {
+            dispatch(messageShow(error, "danger"));
+        }
+        throw error;
+    } finally {
+        if (global) {
+            dispatch(loadingHide());
+        }
+    }
+};
+
+export const FETCH_STATE = {
+    initial: () => ({ error: null, isSubmitted: false, isSubmitting: false }),
+    pending: () => ({ error: null, isSubmitting: true, isSubmitted: false }),
+    fulfilled: () => ({ error: null, isSubmitting: false, isSubmitted: true }),
+    rejected: (state: SubmitState, action: RejectedAction) => {
+        return {
+            error: action.error.message,
+            isSubmitting: false,
+            isSubmitted: true,
+        };
+    },
 };

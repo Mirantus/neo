@@ -1,10 +1,10 @@
 import React, { MouseEvent } from "react";
 import { connect } from "react-redux";
 
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
 import { Item } from "../../types";
 
-import { deleteItem } from "./actions";
+import { deleteItem } from "./slice";
 
 type Props = {
     item: Item;

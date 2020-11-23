@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
 
 type Props = {
     isAuthorized: boolean;

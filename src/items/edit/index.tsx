@@ -4,14 +4,12 @@ import { connect } from "react-redux";
 import Error from "../../components/error";
 import Loader from "../../components/loader";
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
-import { IsLoadingStore } from "../../store/isLoading";
-import { Store } from "../../store/reducers";
-import { Item } from "../../types";
+import { Store } from "../../store/index";
+import { IsLoadingStore, Item } from "../../types";
 
-import { edit, init } from "./actions";
 import Form from "./form";
-import { EditInitStore } from "./reducers/init";
-import { EditSubmitStore } from "./reducers/submit";
+import { init, EditInitStore } from "./slices/init";
+import { submit, EditSubmitStore } from "./slices/submit";
 
 type Props = {
     initData: EditInitStore["data"];
@@ -21,12 +19,12 @@ type Props = {
     isSubmitted: IsLoadingStore;
     isSubmitting: EditSubmitStore["isSubmitting"];
     submitError: EditSubmitStore["error"];
-    edit(values: Item): void;
     init(id: string): void;
+    submit(values: Item): void;
 };
 
 export const ItemsEdit = (props: Props) => {
-    const { initData, id, isFetching, isSubmitted, isSubmitting, submitError, initError, edit, init } = props;
+    const { initData, id, isFetching, isSubmitted, isSubmitting, submitError, initError, init, submit } = props;
 
     useEffect(() => {
         init(id);
@@ -48,7 +46,7 @@ export const ItemsEdit = (props: Props) => {
     }
 
     if (initData) {
-        return <Form initialValues={initData} isSubmitting={isSubmitting} onSubmit={edit} formError={submitError} />;
+        return <Form initialValues={initData} isSubmitting={isSubmitting} onSubmit={submit} formError={submitError} />;
     }
 
     return null;
@@ -63,4 +61,4 @@ const mapStateToProps = (store: Store) => ({
     submitError: store.items.edit.submit.error,
 });
 
-export default connect(mapStateToProps, { edit, init })(ItemsEdit);
+export default connect(mapStateToProps, { init, submit })(ItemsEdit);

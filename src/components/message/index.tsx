@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
 
-import { messageHide } from "./actions";
-import { MessageStore } from "./reducers";
+import { messageHide, MessageStore } from "./slice";
 
 type Props = {
     message: MessageStore;

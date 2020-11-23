@@ -3,17 +3,16 @@ import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
 
-import { fetchItem } from "./actions";
 import Content from "./content";
-import { ItemStore as StoreItem } from "./reducers/";
+import { fetchItem, ItemStore } from "./slice";
 
 type Props = {
-    data: StoreItem["data"];
-    error: StoreItem["error"];
+    data: ItemStore["data"];
+    error: ItemStore["error"];
     id: string;
-    isFetching: StoreItem["isFetching"];
+    isFetching: ItemStore["isFetching"];
     fetchItem(id: string): void;
 };
 

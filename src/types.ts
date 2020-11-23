@@ -27,3 +27,15 @@ export interface User {
     id: string;
     email: string;
 }
+
+export type ErrorStore = string | null;
+
+export type IsLoadedStore = boolean;
+
+export type IsLoadingStore = boolean;
+
+export interface SubmitState {
+    error: ErrorStore;
+    isSubmitted: IsLoadedStore;
+    isSubmitting: IsLoadingStore;
+}

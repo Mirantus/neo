@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
 
 import Button from "./button";
 import Info from "./info";

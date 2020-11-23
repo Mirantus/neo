@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
 
-import { fetchItems } from "./actions";
 import List from "./list";
-import { ListStore } from "./reducers/";
+import { fetchItems, ListStore } from "./slice";
 
 type Props = {
     data: ListStore["data"];

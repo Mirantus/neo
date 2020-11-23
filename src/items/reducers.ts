@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 
-import add, { AddStore } from "./add/reducers";
-import deleteItem, { DeleteStore } from "./delete/reducers";
+import add, { AddStore } from "./add/slice";
+import deleteItem, { DeleteStore } from "./delete/slice";
 import edit, { EditStore } from "./edit/reducers";
-import item, { ItemStore } from "./item/reducers";
-import list, { ListStore } from "./list/reducers";
+import item, { ItemStore } from "./item/slice";
+import list, { ListStore } from "./list/slice";
 
 export interface ItemsStore {
     add: AddStore;

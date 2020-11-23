@@ -6,10 +6,10 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import server from "./mocks/server";
 
-import { item, defaultUser as user } from "./mocks/constants";
 import TestApplicationContainer from "./mocks/application";
+import { item, defaultUser as user } from "./mocks/constants";
+import server from "./mocks/server";
 import { getByHeading, getByQuery } from "./utils";
 
 const text = "text2";

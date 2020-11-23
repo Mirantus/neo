@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from "redux-form";
 import Error from "../../components/error";
 import Field from "../../components/form/field";
 import Textarea from "../../components/form/textarea";
-import { ErrorStore } from "../../store/error";
+import { ErrorStore } from "../../types";
 
 import { ItemAddFormData } from "./types";
 

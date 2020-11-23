@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect, Route, RouteProps } from "react-router-dom";
 
 import Loader from "../components/loader";
-import { Store } from "../store/reducers";
+import { Store } from "../store/index";
 
 interface PrivateRouteProps extends RouteProps {
     component: FunctionComponent<any>;

@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Loader from "../../components/loader";
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
 
-import { LoadingStore } from "./reducers";
+import { LoadingStore } from "./slice";
 
 type Props = {
     loading: LoadingStore;

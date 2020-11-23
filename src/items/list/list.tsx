@@ -1,10 +1,10 @@
 import React from "react";
 
 import ListItem from "./item";
-import { ListDataStore } from "./reducers/data";
+import { ListStore } from "./slice";
 
 type Props = {
-    data: ListDataStore;
+    data: ListStore["data"];
 };
 
 const ItemsListContent = (props: Props) => {

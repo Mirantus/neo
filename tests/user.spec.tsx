@@ -6,8 +6,9 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import server from "./mocks/server";
+
 import TestApplicationContainer from "./mocks/application";
+import server from "./mocks/server";
 
 beforeAll(() => server.listen());
 afterAll(server.close);

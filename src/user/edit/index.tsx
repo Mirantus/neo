@@ -2,24 +2,23 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
-import { ErrorStore } from "../../store/error";
-import { IsLoadedStore } from "../../store/isLoaded";
-import { Store } from "../../store/reducers";
+import { Store } from "../../store/index";
+import { ErrorStore, IsLoadedStore } from "../../types";
 
-import { edit, init } from "./actions";
 import Form from "./form";
+import { submit, init } from "./slice";
 import { UserEditFormData } from "./types";
 
 type Props = {
     error: ErrorStore;
     initialValues: UserEditFormData;
     isSubmitted: IsLoadedStore;
-    edit(values: UserEditFormData): void;
+    submit(values: UserEditFormData): void;
     init(): void;
 };
 
 export const UserEdit = (props: Props) => {
-    const { error, initialValues, isSubmitted, edit, init } = props;
+    const { error, initialValues, isSubmitted, init, submit } = props;
 
     useEffect(() => {
         init();
@@ -27,7 +26,7 @@ export const UserEdit = (props: Props) => {
 
     useSubmitRedirect({ error, isSubmitted, onRedirect: init, url: "/profile" });
 
-    return <Form formError={error} initialValues={initialValues} onSubmit={edit} />;
+    return <Form formError={error} initialValues={initialValues} onSubmit={submit} />;
 };
 
 const mapStateToProps = ({ user }: Store) => ({
@@ -36,4 +35,4 @@ const mapStateToProps = ({ user }: Store) => ({
     isSubmitted: user.edit.isSubmitted,
 });
 
-export default connect(mapStateToProps, { edit, init })(UserEdit);
+export default connect(mapStateToProps, { init, submit })(UserEdit);

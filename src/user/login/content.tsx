@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { ErrorStore } from "../../store/error";
+import { ErrorStore } from "../../types";
 
 import Form from "./form";
 import { UserLoginFormData } from "./types";
