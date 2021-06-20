@@ -5,60 +5,59 @@ import Error from "../../components/error";
 import Loader from "../../components/loader";
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
 import { Store } from "../../store/index";
-import { IsLoadingStore, Item } from "../../types";
+import { Item } from "../../types";
 
 import Form from "./form";
-import { init, EditInitStore } from "./slices/init";
-import { submit, EditSubmitStore } from "./slices/submit";
+import { itemsEditInit, EditInitStore } from "./slices/init";
+import { itemsEditSubmit, EditSubmitStore } from "./slices/submit";
 
 type Props = {
-    initData: EditInitStore["data"];
-    initError: EditInitStore["error"];
+    init: EditInitStore;
     id: string;
-    isFetching: EditInitStore["isFetching"];
-    isSubmitted: IsLoadingStore;
-    isSubmitting: EditSubmitStore["isSubmitting"];
-    submitError: EditSubmitStore["error"];
-    init(id: string): void;
-    submit(values: Item): void;
+    submit: EditSubmitStore;
+    itemsEditInit(id: string): void;
+    itemsEditSubmit(values: Item): void;
 };
 
 export const ItemsEdit = (props: Props) => {
-    const { initData, id, isFetching, isSubmitted, isSubmitting, submitError, initError, init, submit } = props;
+    const { init, id, submit, itemsEditInit, itemsEditSubmit } = props;
 
     useEffect(() => {
-        init(id);
-    }, [id, init]);
+        itemsEditInit(id);
+    }, [id, itemsEditInit]);
 
     useSubmitRedirect({
-        error: submitError,
-        isSubmitted: isSubmitted,
-        onRedirect: () => init(id),
-        url: `/items/${initData?.id}`,
+        error: submit.error,
+        settled: submit.settled,
+        onRedirect: () => itemsEditInit(id),
+        url: `/items/${init.data?.id}`,
     });
 
-    if (isFetching) {
+    if (init.pending) {
         return <Loader />;
     }
 
-    if (initError) {
-        return <Error message={initError} />;
+    if (init.error) {
+        return <Error message={init.error} />;
     }
 
-    if (initData) {
-        return <Form initialValues={initData} isSubmitting={isSubmitting} onSubmit={submit} formError={submitError} />;
+    if (init.data) {
+        return (
+            <Form
+                initialValues={init.data}
+                pending={submit.pending}
+                onSubmit={itemsEditSubmit}
+                formError={submit.error}
+            />
+        );
     }
 
     return null;
 };
 
 const mapStateToProps = (store: Store) => ({
-    initData: store.items.edit.init.data,
-    initError: store.items.edit.init.error,
-    isFetching: store.items.edit.init.isFetching,
-    isSubmitted: store.items.edit.submit.isSubmitted,
-    isSubmitting: store.items.edit.submit.isSubmitting,
-    submitError: store.items.edit.submit.error,
+    init: store.items.edit.init,
+    submit: store.items.edit.submit,
 });
 
-export default connect(mapStateToProps, { init, submit })(ItemsEdit);
+export default connect(mapStateToProps, { itemsEditInit, itemsEditSubmit })(ItemsEdit);

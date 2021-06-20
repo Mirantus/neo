@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { set as setCookie } from "js-cookie";
 
-import { Action, ActionError, SubmitState } from "../../types";
-import { appFetch, FETCH_STATE } from "../../utils/api";
-
-import { UserRegisterFormData } from "./types";
+import { Action, ActionError, SubmitState } from "../../../types";
+import { appFetch, FETCH_STATE } from "../../../utils/api";
+import { UserRegisterFormData } from "../types";
 
 export type RegisterAction = Action | ActionError;
-export type RegisterStore = SubmitState;
+export type RegisterSubmitStore = SubmitState;
 
 export const initialState = FETCH_STATE.initial();
 
@@ -26,7 +25,7 @@ export const register = createAsyncThunk("register", async (values: UserRegister
     );
 });
 
-const registerSlice = createSlice({
+const registerSubmitSlice = createSlice({
     name: "register",
     initialState,
     reducers: {
@@ -39,6 +38,6 @@ const registerSlice = createSlice({
     },
 });
 
-export const { init } = registerSlice.actions;
+export const { init } = registerSubmitSlice.actions;
 
-export default registerSlice.reducer;
+export default registerSubmitSlice.reducer;

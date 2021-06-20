@@ -1,17 +1,14 @@
 import { combineReducers } from "redux";
 
-import error, { AuthErrorStore } from "./slices/error";
 import isAuthorized, { AuthIsAuthorizedStore } from "./slices/isAuthorized";
-import isFetching, { AuthIsFetchingStore } from "./slices/isFetching";
+import submit, { AuthSubmitStore } from "./slices/submit/index";
 
 export interface AuthStore {
-    error: AuthErrorStore;
     isAuthorized: AuthIsAuthorizedStore;
-    isFetching: AuthIsFetchingStore;
+    submit: AuthSubmitStore;
 }
 
 export default combineReducers({
-    error,
     isAuthorized,
-    isFetching,
+    submit,
 });

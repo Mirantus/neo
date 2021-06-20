@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Store } from "../../store/index";
 import { Item } from "../../types";
 
-import { deleteItem } from "./slice";
+import { deleteItem } from "./slices/submit";
 
 type Props = {
     item: Item;

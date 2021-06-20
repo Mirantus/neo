@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { messageShow } from "../../components/message/slice";
-import { SubmitState } from "../../types";
-import { appFetch, FETCH_STATE } from "../../utils/api";
+import { messageShow } from "../../../components/message/slice";
+import { SubmitState } from "../../../types";
+import { appFetch, FETCH_STATE } from "../../../utils/api";
+import { PasswordRecoveryFormData } from "../types";
 
-import { PasswordRecoveryFormData } from "./types";
-
-export type PasswordRecoveryStore = SubmitState;
+export type PasswordRecoverySubmitStore = SubmitState;
 
 export const initialState = FETCH_STATE.initial();
 
@@ -28,7 +27,7 @@ export const passwordRecovery = createAsyncThunk(
     }
 );
 
-const passwordRecoverySlice = createSlice({
+const passwordRecoverySubmitSlice = createSlice({
     name: "password_recovery/",
     initialState,
     reducers: {
@@ -41,6 +40,6 @@ const passwordRecoverySlice = createSlice({
     },
 });
 
-export const { init } = passwordRecoverySlice.actions;
+export const { init } = passwordRecoverySubmitSlice.actions;
 
-export default passwordRecoverySlice.reducer;
+export default passwordRecoverySubmitSlice.reducer;

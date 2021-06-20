@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { set as setCookie } from "js-cookie";
 
-import { Action, ActionError, SubmitState } from "../../types";
-import { appFetch, FETCH_STATE } from "../../utils/api";
-
-import { UserLoginFormData } from "./types";
+import { Action, ActionError, SubmitState } from "../../../types";
+import { appFetch, FETCH_STATE } from "../../../utils/api";
+import { UserLoginFormData } from "../types";
 
 export type LoginAction = Action | ActionError;
-export type LoginStore = SubmitState;
+export type LoginSubmitStore = SubmitState;
 
 export const initialState = FETCH_STATE.initial();
 
@@ -26,7 +25,7 @@ export const login = createAsyncThunk("login", async (values: UserLoginFormData,
     );
 });
 
-const loginSlice = createSlice({
+const loginSubmitSlice = createSlice({
     name: "login",
     initialState,
     reducers: {
@@ -39,6 +38,6 @@ const loginSlice = createSlice({
     },
 });
 
-export const { init } = loginSlice.actions;
+export const { init } = loginSubmitSlice.actions;
 
-export default loginSlice.reducer;
+export default loginSubmitSlice.reducer;

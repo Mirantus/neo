@@ -1,7 +1,7 @@
-import { auth, logoutAction } from "../actions";
-import reducer, { initialState } from "../slices/isFetching";
+import { auth, logoutAction } from "../../actions";
+import reducer, { initialState } from "./pending";
 
-test("User Auth reducer isFetching", () => {
+test("User Auth reducer pending", () => {
     // LOGOUT
     expect(reducer(initialState, logoutAction())).toBe(false);
 

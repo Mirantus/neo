@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { login } from "../../login/slice";
-import { register } from "../../register/slice";
+import { login } from "../../login/slices/submit";
+import { register } from "../../register/slices/submit";
 import { auth, logoutAction } from "../actions";
 
 export type AuthIsAuthorizedStore = boolean;

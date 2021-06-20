@@ -36,6 +36,6 @@ export type IsLoadingStore = boolean;
 
 export interface SubmitState {
     error: ErrorStore;
-    isSubmitted: IsLoadedStore;
-    isSubmitting: IsLoadingStore;
+    settled: IsLoadedStore;
+    pending: IsLoadingStore;
 }

@@ -6,7 +6,7 @@ import { Store } from "../../store/index";
 import { ErrorStore } from "../../types";
 
 import Content from "./content";
-import { init, login } from "./slice";
+import { init, login } from "./slices/submit";
 import { UserLoginFormData } from "./types";
 
 type Props = {
@@ -27,7 +27,7 @@ export const Login = (props: Props) => {
 };
 
 const mapStateToProps = (store: Store) => ({
-    error: store.user.login.error,
+    error: store.user.login.submit.error,
     isAuthorized: store.user.auth.isAuthorized,
 });
 

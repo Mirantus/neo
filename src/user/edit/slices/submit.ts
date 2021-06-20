@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { get as getCookie } from "js-cookie";
 
-import { SubmitState } from "../../types";
-import { appFetch, FETCH_STATE } from "../../utils/api";
+import { SubmitState } from "../../../types";
+import { appFetch, FETCH_STATE } from "../../../utils/api";
+import { UserEditFormData } from "../types";
 
-import { UserEditFormData } from "./types";
-
-export type UserEditStore = SubmitState;
+export type UserEditSubmitStore = SubmitState;
 
 export const initialState = FETCH_STATE.initial();
 
@@ -23,7 +22,7 @@ export const submit = createAsyncThunk("user/edit/submit", async (values: UserEd
     );
 });
 
-const userEditSlice = createSlice({
+const userEditSubmitSlice = createSlice({
     name: "userEdit",
     initialState,
     reducers: {
@@ -36,6 +35,6 @@ const userEditSlice = createSlice({
     },
 });
 
-export const { init } = userEditSlice.actions;
+export const { init } = userEditSubmitSlice.actions;
 
-export default userEditSlice.reducer;
+export default userEditSubmitSlice.reducer;

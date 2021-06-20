@@ -82,14 +82,14 @@ export const appFetch = async (
 };
 
 export const FETCH_STATE = {
-    initial: () => ({ error: null, isSubmitted: false, isSubmitting: false }),
-    pending: () => ({ error: null, isSubmitting: true, isSubmitted: false }),
-    fulfilled: () => ({ error: null, isSubmitting: false, isSubmitted: true }),
+    initial: () => ({ error: null, pending: false, settled: false }),
+    pending: () => ({ error: null, pending: true, settled: false }),
+    fulfilled: () => ({ error: null, pending: false, settled: true }),
     rejected: (state: SubmitState, action: RejectedAction) => {
         return {
             error: action.error.message,
-            isSubmitting: false,
-            isSubmitted: true,
+            pending: false,
+            settled: true,
         };
     },
 };

@@ -6,33 +6,33 @@ import { Store } from "../../store/index";
 import { ErrorStore, IsLoadedStore } from "../../types";
 
 import Form from "./form";
-import { submit, init } from "./slice";
+import { submit, init } from "./slices/submit";
 import { UserEditFormData } from "./types";
 
 type Props = {
     error: ErrorStore;
     initialValues: UserEditFormData;
-    isSubmitted: IsLoadedStore;
+    settled: IsLoadedStore;
     submit(values: UserEditFormData): void;
     init(): void;
 };
 
 export const UserEdit = (props: Props) => {
-    const { error, initialValues, isSubmitted, init, submit } = props;
+    const { error, initialValues, settled, init, submit } = props;
 
     useEffect(() => {
         init();
     }, [init]);
 
-    useSubmitRedirect({ error, isSubmitted, onRedirect: init, url: "/profile" });
+    useSubmitRedirect({ error, settled, onRedirect: init, url: "/profile" });
 
     return <Form formError={error} initialValues={initialValues} onSubmit={submit} />;
 };
 
 const mapStateToProps = ({ user }: Store) => ({
-    error: user.edit.error,
+    error: user.edit.submit.error,
     initialValues: { email: user.profile.email },
-    isSubmitted: user.edit.isSubmitted,
+    settled: user.edit.submit.settled,
 });
 
 export default connect(mapStateToProps, { init, submit })(UserEdit);

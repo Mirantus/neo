@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { SubmitState } from "../../types";
-import { appFetch, FETCH_STATE } from "../../utils/api";
+import { SubmitState } from "../../../types";
+import { appFetch, FETCH_STATE } from "../../../utils/api";
 
-export type DeleteStore = SubmitState;
+export type DeleteSubmitStore = SubmitState;
 
 export const initialState = FETCH_STATE.initial();
 
@@ -11,7 +11,7 @@ export const deleteItem = createAsyncThunk("items/add/submit", async (id: string
     return await appFetch({ data: { id }, global: true, method: "POST", url: "items/delete" }, dispatch);
 });
 
-const itemsDeleteSlice = createSlice({
+const itemsDeleteSubmitSlice = createSlice({
     name: "items/delete",
     initialState,
     reducers: {},
@@ -22,4 +22,4 @@ const itemsDeleteSlice = createSlice({
     },
 });
 
-export default itemsDeleteSlice.reducer;
+export default itemsDeleteSubmitSlice.reducer;

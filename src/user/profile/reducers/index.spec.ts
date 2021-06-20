@@ -1,6 +1,6 @@
-import { submit } from "../../edit/slice";
-import { login } from "../../login/slice";
-import { register } from "../../register/slice";
+import { submit } from "../../edit/slices/submit";
+import { login } from "../../login/slices/submit";
+import { register } from "../../register/slices/submit";
 
 import reducer, { initialState } from "./index";
 

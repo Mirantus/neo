@@ -1,5 +1,5 @@
-import { auth, logoutAction } from "../actions";
-import reducer, { initialState } from "../slices/error";
+import { auth, logoutAction } from "../../actions";
+import reducer, { initialState } from "./error";
 
 test("User auth reducer error", () => {
     // LOGOUT

@@ -6,31 +6,31 @@ import { Store } from "../../store/index";
 import { ErrorStore, IsLoadedStore } from "../../types";
 
 import Form from "./form";
-import { changePassword, init } from "./slice";
+import { changePassword, init } from "./slices/submit";
 import { ChangePasswordFormData } from "./types";
 
 type Props = {
     error: ErrorStore;
-    isSubmitted: IsLoadedStore;
+    settled: IsLoadedStore;
     changePassword(values: ChangePasswordFormData): void;
     init(): void;
 };
 
 export const ChangePassword = (props: Props) => {
-    const { error, isSubmitted, changePassword, init } = props;
+    const { error, settled, changePassword, init } = props;
 
     useEffect(() => {
         init();
     }, [init]);
 
-    useSubmitRedirect({ error, isSubmitted, onRedirect: init, url: "/profile" });
+    useSubmitRedirect({ error, settled, onRedirect: init, url: "/profile" });
 
     return <Form formError={error} onSubmit={changePassword} />;
 };
 
 const mapStateToProps = ({ user }: Store) => ({
-    error: user.changePassword.error,
-    isSubmitted: user.changePassword.isSubmitted,
+    error: user.changePassword.submit.error,
+    settled: user.changePassword.submit.settled,
 });
 
 export default connect(mapStateToProps, { changePassword, init })(ChangePassword);

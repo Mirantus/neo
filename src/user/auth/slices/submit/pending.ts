@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { auth, logoutAction } from "../actions";
+import { auth, logoutAction } from "../../actions";
 
-export type AuthIsFetchingStore = boolean;
+export type AuthSubmitPendingStore = boolean;
 
-export const initialState: AuthIsFetchingStore = true;
+export const initialState: AuthSubmitPendingStore = true;
 
-const authIsFetchingSlice = createSlice({
-    name: "auth/isFetching",
+const authSubmitPendingSlice = createSlice({
+    name: "auth/pending",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -21,4 +21,4 @@ const authIsFetchingSlice = createSlice({
     },
 });
 
-export default authIsFetchingSlice.reducer;
+export default authSubmitPendingSlice.reducer;

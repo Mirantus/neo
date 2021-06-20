@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { Item, SubmitState } from "../../types";
-import { appFetch, FETCH_STATE } from "../../utils/api";
+import { Item, SubmitState } from "../../../types";
+import { appFetch, FETCH_STATE } from "../../../utils/api";
 
-export type AddStore = SubmitState;
+export type AddSubmitStore = SubmitState;
 
 export const initialState = FETCH_STATE.initial();
 
@@ -11,7 +11,7 @@ export const add = createAsyncThunk("items/add/submit", async (values: Item, { d
     return await appFetch({ data: values, method: "POST", url: "items/add" }, dispatch);
 });
 
-const itemsAddSlice = createSlice({
+const itemsAddSubmitSlice = createSlice({
     name: "items/add",
     initialState,
     reducers: {
@@ -24,6 +24,6 @@ const itemsAddSlice = createSlice({
     },
 });
 
-export const { init } = itemsAddSlice.actions;
+export const { init } = itemsAddSubmitSlice.actions;
 
-export default itemsAddSlice.reducer;
+export default itemsAddSubmitSlice.reducer;

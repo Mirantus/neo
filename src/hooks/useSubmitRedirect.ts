@@ -5,21 +5,21 @@ import { ErrorStore, IsLoadedStore } from "../types";
 
 type Props = {
     error: ErrorStore;
-    isSubmitted: IsLoadedStore;
+    settled: IsLoadedStore;
     onRedirect(): void;
     url: string;
 };
 
 const useSubmitRedirect = (props: Props) => {
-    const { error, isSubmitted, onRedirect, url } = props;
+    const { error, settled, onRedirect, url } = props;
     const history = useHistory();
 
     useEffect(() => {
-        if (!error && isSubmitted) {
+        if (!error && settled) {
             onRedirect();
             history.push(url);
         }
-    }, [error, history, isSubmitted, onRedirect, url]);
+    }, [error, history, settled, onRedirect, url]);
 };
 
 export default useSubmitRedirect;

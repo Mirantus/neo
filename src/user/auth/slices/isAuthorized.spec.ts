@@ -1,4 +1,4 @@
-import { login } from "../../login/slice";
+import { login } from "../../login/slices/submit";
 import { auth, logoutAction } from "../actions";
 import reducer, { initialState } from "../slices/isAuthorized";
 

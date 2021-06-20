@@ -8,17 +8,17 @@ import { Store } from "../store/index";
 interface PrivateRouteProps extends RouteProps {
     component: FunctionComponent<any>;
     isAuthorized: boolean;
-    isFetching: boolean;
+    pending: boolean;
 }
 
 export const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({
     component: Component,
     isAuthorized,
-    isFetching,
+    pending,
     ...rest
 }: PrivateRouteProps) => {
     const render = (props: any) => {
-        if (isFetching) {
+        if (pending) {
             return <Loader />;
         }
 
@@ -41,7 +41,7 @@ export const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({
 
 const mapStateToProps = (state: Store) => ({
     isAuthorized: state.user.auth.isAuthorized,
-    isFetching: state.user.auth.isFetching,
+    pending: state.user.auth.submit.pending,
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

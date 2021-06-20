@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { get as getCookie } from "js-cookie";
 
-import { SubmitState } from "../../types";
-import { appFetch, FETCH_STATE } from "../../utils/api";
+import { SubmitState } from "../../../types";
+import { appFetch, FETCH_STATE } from "../../../utils/api";
+import { ChangePasswordFormData } from "../types";
 
-import { ChangePasswordFormData } from "./types";
-
-export type ChangePasswordStore = SubmitState;
+export type ChangePasswordSubmitStore = SubmitState;
 
 export const initialState = FETCH_STATE.initial();
 
@@ -27,7 +26,7 @@ export const changePassword = createAsyncThunk(
     }
 );
 
-const changePasswordSlice = createSlice({
+const changePasswordSubmitSlice = createSlice({
     name: "changePassword",
     initialState,
     reducers: {
@@ -40,6 +39,6 @@ const changePasswordSlice = createSlice({
     },
 });
 
-export const { init } = changePasswordSlice.actions;
+export const { init } = changePasswordSubmitSlice.actions;
 
-export default changePasswordSlice.reducer;
+export default changePasswordSubmitSlice.reducer;

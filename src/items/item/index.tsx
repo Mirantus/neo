@@ -6,24 +6,24 @@ import Loader from "../../components/loader";
 import { Store } from "../../store/index";
 
 import Content from "./content";
-import { fetchItem, ItemStore } from "./slice";
+import { fetchItem, ItemInitStore } from "./slices/init";
 
 type Props = {
-    data: ItemStore["data"];
-    error: ItemStore["error"];
+    data: ItemInitStore["data"];
+    error: ItemInitStore["error"];
     id: string;
-    isFetching: ItemStore["isFetching"];
+    pending: ItemInitStore["pending"];
     fetchItem(id: string): void;
 };
 
 export const Item = (props: Props) => {
-    const { data, id, isFetching, error, fetchItem } = props;
+    const { data, id, pending, error, fetchItem } = props;
 
     useEffect(() => {
         fetchItem(id);
     }, [fetchItem, id]);
 
-    if (isFetching) {
+    if (pending) {
         return <Loader />;
     }
 
@@ -39,9 +39,9 @@ export const Item = (props: Props) => {
 };
 
 const mapStateToProps = (store: Store) => ({
-    data: store.items.item.data,
-    error: store.items.item.error,
-    isFetching: store.items.item.isFetching,
+    data: store.items.item.init.data,
+    error: store.items.item.init.error,
+    pending: store.items.item.init.pending,
 });
 
 export default connect(mapStateToProps, { fetchItem })(Item);

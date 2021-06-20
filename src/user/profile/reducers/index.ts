@@ -1,8 +1,8 @@
 import { User } from "../../../types";
 import { auth, AuthAction } from "../../auth/actions";
-import { submit } from "../../edit/slice";
-import { login, LoginAction } from "../../login/slice";
-import { register, RegisterAction } from "../../register/slice";
+import { submit } from "../../edit/slices/submit";
+import { login, LoginAction } from "../../login/slices/submit";
+import { register, RegisterAction } from "../../register/slices/submit";
 
 export type UserProfileStore = User;
 

@@ -11,11 +11,11 @@ import { ItemEditFormData } from "./types";
 
 type Props = {
     formError: ErrorStore;
-    isSubmitting: IsLoadingStore;
+    pending: IsLoadingStore;
 };
 
 export const ItemsEditForm = (props: InjectedFormProps<ItemEditFormData> & Props) => {
-    const { formError, isSubmitting, handleSubmit } = props;
+    const { formError, pending, handleSubmit } = props;
 
     return (
         <div className="container">
@@ -25,9 +25,7 @@ export const ItemsEditForm = (props: InjectedFormProps<ItemEditFormData> & Props
                     <Textarea name="text" required />
                 </Field>
                 <div className="control">
-                    <button className={classnames("button", "is-link", { "is-loading": isSubmitting })}>
-                        Сохранить
-                    </button>
+                    <button className={classnames("button", "is-link", { "is-loading": pending })}>Сохранить</button>
                 </div>
                 {formError && <Error message={formError} />}
             </form>
