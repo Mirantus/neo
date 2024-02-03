@@ -1,5 +1,5 @@
 import React from "react";
-import { InjectedFormProps, reduxForm } from "redux-form";
+import { Form, FormProps } from "react-final-form";
 
 import Error from "../../components/error";
 import Field from "../../components/form/field";
@@ -12,24 +12,28 @@ type Props = {
     formError: ErrorStore;
 };
 
-export const PasswordRecoveryForm = (props: InjectedFormProps<PasswordRecoveryFormData> & Props) => {
-    const { formError, handleSubmit } = props;
+export const PasswordRecoveryForm = (props: FormProps<PasswordRecoveryFormData> & Props) => {
+    const { formError, onSubmit } = props;
 
     return (
         <div className="container">
             <h1 className="title">Восстановление пароля</h1>
 
-            <form onSubmit={handleSubmit}>
-                <Field label="Email" name="email">
-                    <Input autoComplete="username" name="email" required type="email" />
-                </Field>
-                <div className="control">
-                    <button className="button is-link">Отправить</button>
-                </div>
-                {formError && <Error message={formError} />}
-            </form>
+            <Form onSubmit={onSubmit}>
+                {({ handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
+                        <Field label="Email" name="email">
+                            <Input autoComplete="username" name="email" required type="email" />
+                        </Field>
+                        <div className="control">
+                            <button className="button is-link">Отправить</button>
+                        </div>
+                        {formError && <Error message={formError} />}
+                    </form>
+                )}
+            </Form>
         </div>
     );
 };
 
-export default reduxForm<PasswordRecoveryFormData, any>({ form: "reduxForm" })(PasswordRecoveryForm);
+export default PasswordRecoveryForm;

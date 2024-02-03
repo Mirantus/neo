@@ -1,27 +1,30 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { connect } from "react-redux";
 
-import { Store } from "../../store/index";
-
-import { messageHide, MessageStore } from "./slice";
+import store from "../../store";
 
 type Props = {
-    message: MessageStore;
+    messageText: string;
+    messageType: string;
     messageHide(): void;
 };
 
 export const Message = (props: Props) => {
-    const { message, messageHide } = props;
-    const className = `app-message notification is-${message.type}`;
+    const { messageText, messageType, messageHide } = props;
+    const className = `app-message notification is-${messageType}`;
 
-    return message.text ? (
+    return messageText ? (
         <div className={className}>
             <button className="delete" onClick={messageHide} />
-            {message.text}
+            {messageText}
         </div>
     ) : null;
 };
 
-const mapStateToProps = (store: Store) => ({ message: store.message });
-
-export default connect(mapStateToProps, { messageHide })(Message);
+export default observer(() => (
+    <Message
+        messageText={store.message.text}
+        messageType={store.message.type}
+        messageHide={store.message.messageHide}
+    />
+));

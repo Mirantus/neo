@@ -1,23 +1,22 @@
+import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
-import { Store } from "../../store/index";
+import store from "../../store";
 import { ErrorStore, IsLoadedStore } from "../../types";
 
 import Form from "./form";
-import { changePassword, init } from "./slices/submit";
 import { ChangePasswordFormData } from "./types";
 
 type Props = {
     error: ErrorStore;
     settled: IsLoadedStore;
-    changePassword(values: ChangePasswordFormData): void;
+    submit(values: ChangePasswordFormData): void;
     init(): void;
 };
 
 export const ChangePassword = (props: Props) => {
-    const { error, settled, changePassword, init } = props;
+    const { error, settled, submit, init } = props;
 
     useEffect(() => {
         init();
@@ -25,12 +24,14 @@ export const ChangePassword = (props: Props) => {
 
     useSubmitRedirect({ error, settled, onRedirect: init, url: "/profile" });
 
-    return <Form formError={error} onSubmit={changePassword} />;
+    return <Form formError={error} onSubmit={submit} />;
 };
 
-const mapStateToProps = ({ user }: Store) => ({
-    error: user.changePassword.submit.error,
-    settled: user.changePassword.submit.settled,
-});
-
-export default connect(mapStateToProps, { changePassword, init })(ChangePassword);
+export default observer(() => (
+    <ChangePassword
+        error={store.user.changePassword.submit.error}
+        init={store.user.changePassword.submit.init}
+        submit={store.user.changePassword.submit.submit}
+        settled={store.user.changePassword.submit.settled}
+    />
+));

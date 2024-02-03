@@ -1,8 +1,8 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { Store } from "../../store/index";
+import store from "../../store";
 import { Item } from "../../types";
 
 type Props = {
@@ -26,8 +26,4 @@ export const ItemEditButton = (props: Props) => {
     );
 };
 
-const mapStateToProps = (store: Store) => ({
-    userId: store.user.profile.id,
-});
-
-export default connect(mapStateToProps)(ItemEditButton);
+export default observer(({ item }: { item: Item }) => <ItemEditButton item={item} userId={store.user.profile.id} />);

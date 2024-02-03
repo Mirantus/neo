@@ -1,18 +1,18 @@
+import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
-import { Store } from "../../store/index";
+import store from "../../store";
+import { Items } from "../../store/items/list/init";
 
 import List from "./list";
-import { fetchItems, ListInitStore } from "./slices/init";
 
 type Props = {
-    data: ListInitStore["data"];
-    error: ListInitStore["error"];
-    pending: ListInitStore["pending"];
-    fetchItems(): void;
+    data: Items["data"];
+    error: Items["error"];
+    pending: Items["pending"];
+    fetchItems: Items["fetchItems"];
 };
 
 export const ItemsList = (props: Props) => {
@@ -33,10 +33,11 @@ export const ItemsList = (props: Props) => {
     return <List data={data} />;
 };
 
-const mapStateToProps = (store: Store) => ({
-    data: store.items.list.init.data,
-    error: store.items.list.init.error,
-    pending: store.items.list.init.pending,
-});
-
-export default connect(mapStateToProps, { fetchItems })(ItemsList);
+export default observer(() => (
+    <ItemsList
+        data={store.items.list.init.data}
+        error={store.items.list.init.error}
+        pending={store.items.list.init.pending}
+        fetchItems={store.items.list.init.fetchItems}
+    />
+));

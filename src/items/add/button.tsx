@@ -1,8 +1,8 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { Store } from "../../store/index";
+import store from "../../store";
 
 type Props = {
     isAuthorized: boolean;
@@ -25,6 +25,4 @@ const ItemsAddButton = (props: Props) => {
     );
 };
 
-const mapStateToProps = ({ user }: Store) => ({ isAuthorized: user.auth.isAuthorized });
-
-export default connect(mapStateToProps)(ItemsAddButton);
+export default observer(() => <ItemsAddButton isAuthorized={store.user.auth.isAuthorized} />);

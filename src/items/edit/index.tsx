@@ -1,22 +1,22 @@
+import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
-import { Store } from "../../store/index";
-import { Item } from "../../types";
+import store from "../../store";
+import { ItemsEditInit } from "../../store/items/edit/init";
+import { ItemsEditSubmit } from "../../store/items/edit/submit";
 
 import Form from "./form";
-import { itemsEditInit, EditInitStore } from "./slices/init";
-import { itemsEditSubmit, EditSubmitStore } from "./slices/submit";
+import { ItemEditFormData } from "./types";
 
 type Props = {
-    init: EditInitStore;
+    init: ItemsEditInit;
     id: string;
-    submit: EditSubmitStore;
+    submit: ItemsEditSubmit;
     itemsEditInit(id: string): void;
-    itemsEditSubmit(values: Item): void;
+    itemsEditSubmit(values: ItemEditFormData): void;
 };
 
 export const ItemsEdit = (props: Props) => {
@@ -55,9 +55,12 @@ export const ItemsEdit = (props: Props) => {
     return null;
 };
 
-const mapStateToProps = (store: Store) => ({
-    init: store.items.edit.init,
-    submit: store.items.edit.submit,
-});
-
-export default connect(mapStateToProps, { itemsEditInit, itemsEditSubmit })(ItemsEdit);
+export default observer(({ id }: { id: string }) => (
+    <ItemsEdit
+        id={id}
+        init={{ ...store.items.edit.init }}
+        submit={{ ...store.items.edit.submit }}
+        itemsEditInit={store.items.edit.init.itemsEditInit}
+        itemsEditSubmit={store.items.edit.submit.itemsEditSubmit}
+    />
+));

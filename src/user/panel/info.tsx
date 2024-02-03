@@ -1,12 +1,12 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { logout } from "../auth/actions";
+import store from "../../store";
 
 type Props = {
     email: string;
-    logout(): void;
+    logout?(): void;
 };
 
 const UserPanelInfo = (props: Props) => {
@@ -24,4 +24,4 @@ const UserPanelInfo = (props: Props) => {
     );
 };
 
-export default connect(null, { logout })(UserPanelInfo);
+export default observer((props: Props) => <UserPanelInfo {...props} logout={store.user.auth.logout} />);

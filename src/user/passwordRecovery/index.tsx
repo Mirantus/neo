@@ -1,23 +1,22 @@
+import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 
 import useSubmitRedirect from "../../hooks/useSubmitRedirect";
-import { Store } from "../../store/index";
+import store from "../../store";
 import { ErrorStore, IsLoadedStore } from "../../types";
 
 import Form from "./form";
-import { init, passwordRecovery } from "./slices/submit";
 import { PasswordRecoveryFormData } from "./types";
 
 type Props = {
     error: ErrorStore;
     settled: IsLoadedStore;
-    passwordRecovery(values: PasswordRecoveryFormData): void;
+    submit(values: PasswordRecoveryFormData): void;
     init(): void;
 };
 
 export const PasswordRecovery = (props: Props) => {
-    const { error, settled, init, passwordRecovery } = props;
+    const { error, settled, init, submit } = props;
 
     useEffect(() => {
         init();
@@ -25,12 +24,14 @@ export const PasswordRecovery = (props: Props) => {
 
     useSubmitRedirect({ error, settled, onRedirect: init, url: "/login" });
 
-    return <Form formError={error} onSubmit={passwordRecovery} />;
+    return <Form formError={error} onSubmit={submit} />;
 };
 
-const mapStateToProps = ({ user }: Store) => ({
-    error: user.passwordRecovery.submit.error,
-    settled: user.passwordRecovery.submit.settled,
-});
-
-export default connect(mapStateToProps, { init, passwordRecovery })(PasswordRecovery);
+export default observer(() => (
+    <PasswordRecovery
+        error={store.user.passwordRecovery.submit.error}
+        init={store.user.passwordRecovery.submit.init}
+        submit={store.user.passwordRecovery.submit.submit}
+        settled={store.user.passwordRecovery.submit.settled}
+    />
+));

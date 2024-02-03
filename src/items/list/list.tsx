@@ -1,10 +1,11 @@
 import React from "react";
 
+import { ItemsListInitStore } from "../../store/items/list/init";
+
 import ListItem from "./item";
-import { ListInitStore } from "./slices/init";
 
 type Props = {
-    data: ListInitStore["data"];
+    data: ItemsListInitStore["data"];
 };
 
 const ItemsListContent = (props: Props) => {

@@ -1,10 +1,8 @@
+import { observer } from "mobx-react-lite";
 import React, { MouseEvent } from "react";
-import { connect } from "react-redux";
 
-import { Store } from "../../store/index";
+import store from "../../store";
 import { Item } from "../../types";
-
-import { deleteItem } from "./slices/submit";
 
 type Props = {
     item: Item;
@@ -35,8 +33,6 @@ export const ItemDeleteButton = (props: Props) => {
     );
 };
 
-const mapStateToProps = (store: Store) => ({
-    userId: store.user.profile.id,
-});
-
-export default connect(mapStateToProps, { deleteItem })(ItemDeleteButton);
+export default observer(({ item }: { item: Item }) => (
+    <ItemDeleteButton item={item} userId={store.user.profile.id} deleteItem={store.items.delete.submit.deleteItem} />
+));

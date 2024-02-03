@@ -1,34 +1,45 @@
+import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { Store } from "../../store/index";
-import { ErrorStore } from "../../types";
+import store from "../../store";
+import { ErrorStore, User } from "../../types";
 
 import Content from "./content";
-import { init, login } from "./slices/submit";
 import { UserLoginFormData } from "./types";
 
 type Props = {
     error: ErrorStore;
     isAuthorized: boolean;
     init(): void;
-    login(values: UserLoginFormData): void;
+    login(values: UserLoginFormData, profile: User): void;
+    profile: User;
 };
 
 export const Login = (props: Props) => {
-    const { error, isAuthorized, init, login } = props;
+    const { error, isAuthorized, init, login, profile } = props;
 
     useEffect(() => {
         init();
     }, [init]);
 
-    return isAuthorized ? <Redirect to={{ pathname: "/profile" }} /> : <Content onSubmit={login} formError={error} />;
+    const handleSubmit = (values: UserLoginFormData) => {
+        login(values, profile);
+    };
+
+    return isAuthorized ? (
+        <Redirect to={{ pathname: "/profile" }} />
+    ) : (
+        <Content onSubmit={handleSubmit} formError={error} />
+    );
 };
 
-const mapStateToProps = (store: Store) => ({
-    error: store.user.login.submit.error,
-    isAuthorized: store.user.auth.isAuthorized,
-});
-
-export default connect(mapStateToProps, { init, login })(Login);
+export default observer(() => (
+    <Login
+        error={store.user.login.submit.error}
+        isAuthorized={store.user.auth.isAuthorized}
+        init={store.user.login.submit.init}
+        login={store.user.login.submit.login}
+        profile={store.user.profile}
+    />
+));

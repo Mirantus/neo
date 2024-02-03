@@ -1,5 +1,5 @@
 import React from "react";
-import { InjectedFormProps, reduxForm } from "redux-form";
+import { Form, FormProps } from "react-final-form";
 
 import Error from "../../components/error";
 import Field from "../../components/form/field";
@@ -12,22 +12,24 @@ type Props = {
     formError: ErrorStore;
 };
 
-export const ItemsAddForm = (props: InjectedFormProps<ItemAddFormData> & Props) => {
-    const { formError, handleSubmit } = props;
+export const ItemsAddForm = (props: FormProps<ItemAddFormData> & Props) => {
+    const { formError } = props;
 
     return (
-        <form onSubmit={handleSubmit}>
-            <Field label="Текст" name="text">
-                <Textarea name="text" required />
-            </Field>
-            <div className="control">
-                <button className="button is-link">Добавить</button>
-            </div>
-            {formError && <Error message={formError} />}
-        </form>
+        <Form onSubmit={props.onSubmit}>
+            {({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
+                    <Field label="Текст" name="text">
+                        <Textarea name="text" required />
+                    </Field>
+                    <div className="control">
+                        <button className="button is-link">Добавить</button>
+                    </div>
+                    {formError && <Error message={formError} />}
+                </form>
+            )}
+        </Form>
     );
 };
 
-export default reduxForm<ItemAddFormData, any>({
-    form: "addForm",
-})(ItemsAddForm);
+export default ItemsAddForm;

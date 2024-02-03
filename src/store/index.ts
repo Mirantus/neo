@@ -1,24 +1,25 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { reducer as form } from "redux-form";
+import { makeAutoObservable } from "mobx";
 
-import loading, { LoadingStore } from "../components/loading/slice";
-import message, { MessageStore } from "../components/message/slice";
-import items, { ItemsStore } from "../items/reducers";
-import user, { UserStore } from "../user/reducers";
+import { ItemsStore } from "./items";
+import { MessageStore } from "./message";
+import { UserStore } from "./user";
 
-export interface Store {
-    items: ItemsStore;
-    loading: LoadingStore;
-    message: MessageStore;
-    user: UserStore;
+export class Store {
+    items = new ItemsStore();
+
+    message = new MessageStore();
+
+    user = new UserStore();
+
+    loading = false;
+
+    constructor() {
+        makeAutoObservable(this);
+    }
+
+    loadingHide = () => (this.loading = false);
+
+    loadingShow = () => (this.loading = true);
 }
 
-export default configureStore({
-    reducer: {
-        form,
-        items,
-        loading,
-        message,
-        user,
-    },
-});
+export default new Store();

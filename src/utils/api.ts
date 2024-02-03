@@ -1,16 +1,10 @@
-import { Dispatch, Action } from "@reduxjs/toolkit";
 import { get as getCookie } from "js-cookie";
+import { runInAction } from "mobx";
 
-import { loadingHide, loadingShow } from "../components/loading/slice";
-import { messageShow } from "../components/message/slice";
-import { SubmitState } from "../types";
+import store from "../store";
 
 interface ApiOptions {
     body?: string;
-}
-
-interface RejectedAction extends Action {
-    error: any;
 }
 
 export const request = (apiUrl: string, apiMethod = "GET", apiData: {} = {}, apiOptions: ApiOptions = {}) => {
@@ -59,37 +53,38 @@ export const fetch = async (apiUrl: string, apiMethod = "GET", apiData: {} = {},
 
 export const appFetch = async (
     { data = {}, global = false, method = "GET", okFactory = (response: any) => response, url = "" },
-    dispatch: Dispatch
+    entity: { pending?: boolean; data?: unknown; error?: string | null; settled?: boolean }
 ) => {
+    entity.pending = true;
+    entity.settled = false;
+
     if (global) {
-        dispatch(loadingShow());
+        store.loadingShow();
     }
 
     try {
         const token = getCookie("token");
         const response = await fetch(url, method, { ...data, token });
-        return okFactory(response);
+        runInAction(() => {
+            entity.data = okFactory(response);
+        });
     } catch (error) {
+        runInAction(() => {
+            entity.error = error;
+        });
+
         if (global) {
-            dispatch(messageShow(error, "danger"));
+            store.message.messageShow(error, "danger");
         }
         throw error;
     } finally {
+        runInAction(() => {
+            entity.pending = false;
+            entity.settled = true;
+        });
+
         if (global) {
-            dispatch(loadingHide());
+            store.loadingHide();
         }
     }
-};
-
-export const FETCH_STATE = {
-    initial: () => ({ error: null, pending: false, settled: false }),
-    pending: () => ({ error: null, pending: true, settled: false }),
-    fulfilled: () => ({ error: null, pending: false, settled: true }),
-    rejected: (state: SubmitState, action: RejectedAction) => {
-        return {
-            error: action.error.message,
-            pending: false,
-            settled: true,
-        };
-    },
 };

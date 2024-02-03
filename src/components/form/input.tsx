@@ -1,9 +1,10 @@
+// @ts-nocheck
 import React, { InputHTMLAttributes } from "react";
-import { Field, WrappedFieldProps } from "redux-form";
+import { Field, FieldRenderProps } from "react-final-form";
 
 type Props = InputHTMLAttributes<HTMLInputElement>;
 
-export const renderField = (props: WrappedFieldProps) => {
+export const renderField = (props: FieldRenderProps<Props>) => {
     const {
         input,
         meta: { touched, error },

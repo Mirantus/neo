@@ -1,13 +1,11 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { connect } from "react-redux";
 
 import Loader from "../../components/loader";
-import { Store } from "../../store/index";
-
-import { LoadingStore } from "./slice";
+import store from "../../store";
 
 type Props = {
-    loading: LoadingStore;
+    loading: boolean;
 };
 
 export const Loading = (props: Props) => {
@@ -18,6 +16,4 @@ export const Loading = (props: Props) => {
     ) : null;
 };
 
-const mapStateToProps = (store: Store) => ({ loading: store.loading });
-
-export default connect(mapStateToProps)(Loading);
+export default observer(() => <Loading loading={store.loading} />);

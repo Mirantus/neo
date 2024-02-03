@@ -1,7 +1,7 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { connect } from "react-redux";
 
-import { Store } from "../../store/index";
+import store from "../../store";
 
 import Button from "./button";
 import Info from "./info";
@@ -17,9 +17,6 @@ const UserPanel = (props: Props) => {
     return <div className="navbar-item">{isAuthorized ? <Info email={email} /> : <Button />}</div>;
 };
 
-const mapStateToProps = ({ user }: Store) => ({
-    email: user.profile.email,
-    isAuthorized: user.auth.isAuthorized,
-});
-
-export default connect(mapStateToProps)(UserPanel);
+export default observer(() => (
+    <UserPanel email={store.user.profile.email} isAuthorized={store.user.auth.isAuthorized} />
+));

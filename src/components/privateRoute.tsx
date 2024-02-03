@@ -1,14 +1,14 @@
+import { observer } from "mobx-react-lite";
 import React, { FunctionComponent } from "react";
-import { connect } from "react-redux";
 import { Redirect, Route, RouteProps } from "react-router-dom";
 
 import Loader from "../components/loader";
-import { Store } from "../store/index";
+import store from "../store";
 
 interface PrivateRouteProps extends RouteProps {
     component: FunctionComponent<any>;
-    isAuthorized: boolean;
-    pending: boolean;
+    isAuthorized?: boolean;
+    pending?: boolean;
 }
 
 export const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({
@@ -39,9 +39,6 @@ export const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({
     return <Route {...rest} render={render} />;
 };
 
-const mapStateToProps = (state: Store) => ({
-    isAuthorized: state.user.auth.isAuthorized,
-    pending: state.user.auth.submit.pending,
-});
-
-export default connect(mapStateToProps)(PrivateRoute);
+export default observer((props: PrivateRouteProps) => (
+    <PrivateRoute {...props} isAuthorized={store.user.auth.isAuthorized} pending={store.user.auth.submit.pending} />
+));

@@ -1,19 +1,19 @@
+import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 
 import Error from "../../components/error";
 import Loader from "../../components/loader";
-import { Store } from "../../store/index";
+import store from "../../store";
+import type { ItemInitStore } from "../../store/items/item/init";
 
 import Content from "./content";
-import { fetchItem, ItemInitStore } from "./slices/init";
 
 type Props = {
     data: ItemInitStore["data"];
     error: ItemInitStore["error"];
     id: string;
     pending: ItemInitStore["pending"];
-    fetchItem(id: string): void;
+    fetchItem: ItemInitStore["fetchItem"];
 };
 
 export const Item = (props: Props) => {
@@ -38,10 +38,12 @@ export const Item = (props: Props) => {
     return null;
 };
 
-const mapStateToProps = (store: Store) => ({
-    data: store.items.item.init.data,
-    error: store.items.item.init.error,
-    pending: store.items.item.init.pending,
-});
-
-export default connect(mapStateToProps, { fetchItem })(Item);
+export default observer(({ id }: { id: string }) => (
+    <Item
+        data={store.items.item.init.data}
+        error={store.items.item.init.error}
+        id={id}
+        pending={store.items.item.init.pending}
+        fetchItem={store.items.item.init.fetchItem}
+    />
+));

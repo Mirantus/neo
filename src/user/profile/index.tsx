@@ -1,7 +1,7 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { connect } from "react-redux";
 
-import { Store } from "../../store/index";
+import store from "../../store";
 import { User } from "../../types";
 
 import Content from "./content";
@@ -14,6 +14,4 @@ export const Profile = (props: Props) => {
     return <Content profile={props.profile} />;
 };
 
-const mapStateToProps = ({ user }: Store) => ({ profile: user.profile });
-
-export default connect(mapStateToProps)(Profile);
+export default observer(() => <Profile profile={store.user.profile} />);
