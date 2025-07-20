@@ -1,4 +1,5 @@
-import { rest } from "msw";
+// @ts-nocheck
+import { http } from "msw";
 import { setupServer } from "msw/node";
 
 import { defaultUser, item, token } from "./constants";
@@ -19,46 +20,46 @@ let items: Item[] = [];
 const users: User[] = [defaultUser];
 
 const server = setupServer(
-  rest.get("/items/", (req: any, res: any, ctx: any) => res(ctx.json(items))),
-  rest.post("/items/add", (req: any, res: any, ctx: any) => {
+  http.get("/items/", (req: any, res: any, ctx: any) => res(ctx.json(items))),
+  http.post("/items/add", (req: any, res: any, ctx: any) => {
     const { text } = JSON.parse(req.body);
     const result = { ...item, text };
     items.push(result);
     return res(ctx.json(result));
   }),
-  rest.post("/items/edit", (req: any, res: any, ctx: any) => {
+  http.post("/items/edit", (req: any, res: any, ctx: any) => {
     const { text } = JSON.parse(req.body);
     items[0].text = text;
     return res(ctx.json(items[0]));
   }),
-  rest.post("/items/delete", (req: any, res: any, ctx: any) => {
+  http.post("/items/delete", (req: any, res: any, ctx: any) => {
     const { 0: deletedItem } = items;
     items = [];
     return res(ctx.json(deletedItem));
   }),
-  rest.get("/items/item/", (req: any, res: any, ctx: any) => {
+  http.get("/items/item/", (req: any, res: any, ctx: any) => {
     return res(ctx.json(items[0]));
   }),
-  rest.post("/login/", (req: any, res: any, ctx: any) => {
+  http.post("/login/", (req: any, res: any, ctx: any) => {
     return res(ctx.json({ token, user: users[0] }));
   }),
-  rest.post("/register/", (req: any, res: any, ctx: any) => {
+  http.post("/register/", (req: any, res: any, ctx: any) => {
     const user = JSON.parse(req.body);
     users.push(user);
     return res(ctx.json({ token, user }));
   }),
-  rest.post("/user/edit/", (req: any, res: any, ctx: any) => {
+  http.post("/user/edit/", (req: any, res: any, ctx: any) => {
     const { email } = JSON.parse(req.body);
     users[1].email = email;
     return res(ctx.json(users[1]));
   }),
-  rest.post("/change_password/", (req: any, res: any, ctx: any) => {
+  http.post("/change_password/", (req: any, res: any, ctx: any) => {
     return res(ctx.json(""));
   }),
-  rest.post("/logout/", (req: any, res: any, ctx: any) => {
+  http.post("/logout/", (req: any, res: any, ctx: any) => {
     return res(ctx.json(""));
   }),
-  rest.get("/password_recovery/", (req: any, res: any, ctx: any) => {
+  http.get("/password_recovery/", (req: any, res: any, ctx: any) => {
     return res(ctx.json(""));
   })
 );

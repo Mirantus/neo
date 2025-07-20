@@ -22,8 +22,10 @@ module.exports = (env, argv) => {
     output: {
       publicPath: "/",
       filename: "[name].js",
-      chunkFilename: "[name].js"
+      chunkFilename: "[name].js",
     },
+
+    mode: isProduction ? "production" : "development",
 
     // Как подключать модули
     resolve: {
@@ -33,8 +35,8 @@ module.exports = (env, argv) => {
       // короткие пути для импортов в приложении
       alias: {
         pages: path.resolve(__dirname, "src/pages/"),
-        "react-dom": "@hot-loader/react-dom"
-      }
+        "react-dom": "@hot-loader/react-dom",
+      },
     },
 
     module: {
@@ -52,10 +54,10 @@ module.exports = (env, argv) => {
               options: {
                 emitWarning: !isProduction,
                 failOnError: isProduction,
-                fix: false
-              }
-            }
-          ].filter(Boolean)
+                fix: false,
+              },
+            },
+          ].filter(Boolean),
         },
 
         // .less
@@ -65,51 +67,49 @@ module.exports = (env, argv) => {
             MiniCssExtractPlugin.loader,
             "css-loader",
             "postcss-loader",
-            "less-loader"
-          ]
-        }
-      ]
+            "less-loader",
+          ],
+        },
+      ],
     },
 
     plugins: [
       // Глобальные переменные
       new webpack.DefinePlugin({
-        APP_ENV: JSON.stringify(APP_ENV)
+        APP_ENV: JSON.stringify(APP_ENV),
       }),
 
       // Всё, что в папке assets копируется в dist
       new CopyWebpackPlugin([
         {
           from: "assets",
-          to: path.resolve(__dirname, "dist/")
-        }
+          to: path.resolve(__dirname, "dist/"),
+        },
       ]),
 
       // Создание index.html на основе шаблона
       new HtmlWebpackPlugin({
-        template: "assets/index.html"
+        template: "assets/index.html",
       }),
 
       // Создание отдельного файла main.css
-      new MiniCssExtractPlugin()
+      new MiniCssExtractPlugin(),
     ],
 
     optimization: {
       // Использовать разбиение на чанки всех видов
       splitChunks: {
-        chunks: "all"
-      }
+        chunks: "all",
+      },
     },
 
     // Source map
-    devtool: isProduction ? false : "cheap-module-eval-source-map",
+    devtool: isProduction ? false : "cheap-module-source-map",
 
     devServer: {
-      contentBase: "./dist",
       historyApiFallback: true,
       hot: true,
-      inline: true,
-      publicPath: "/"
-    }
+      static: "./",
+    },
   };
 };

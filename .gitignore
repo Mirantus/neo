@@ -9,3 +9,4 @@ dist
 .env.dev.js
 .env.production.js
 coverage
+.cache-loader
