@@ -28,7 +28,7 @@ test("ProfileContent", () => {
           <div
             className="buttons are-small"
             style={
-              Object {
+              {
                 "marginTop": "20px",
               }
             }

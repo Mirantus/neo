@@ -1,4 +1,5 @@
 import { auth, logoutAction } from "../../actions";
+
 import reducer, { initialState } from "./pending";
 
 test("User Auth reducer pending", () => {
