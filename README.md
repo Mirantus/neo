@@ -43,13 +43,13 @@ npm run build
 
 ## Quality tools
 
-###ESLint
+### ESLint
 Used for linting Typescript code. You can find rules in .eslintrc.js file.
 
-###Prettier
+### Prettier
 Used for automatic formatting Typescript code. It runs on pre-commit hook.
 
-###Unit tests
+### Unit tests
 Unit tests used for testing clear functions (reducers, utils, simple React components).
 It uses Jest and matching inline snapshots for React components. Placed near file for testing with name *.spec.js.
 These tests runs automatically on pre-push hook. But you can run manually:
@@ -57,7 +57,7 @@ These tests runs automatically on pre-push hook. But you can run manually:
 npm run test
 ```
 
-###Integration tests
+### Integration tests
 Integration tests used for testing whole application from user side. They cover main features of application.
 These tests powered by React Testing Library and placed in "tests" directory. You can run manually:
 ```
