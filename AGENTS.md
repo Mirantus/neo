@@ -1,12 +1,12 @@
 # Neo — Agent guide
 
 ## Stack
-TypeScript + React 18 + React Router 5 + Redux Toolkit + Redux Form + Webpack 5 + Less + Jest + MSW
+TypeScript + React 18 + React Router 5 + Redux Toolkit + Redux Form + RsBuild + CSS + Jest + MSW
 
 ## Commands
 | Action | Command |
 |---|---|
-| Dev server | `npm run start` (webpack-dev-server, port 8080, hot) |
+| Dev server | `npm run start` (rsbuild dev, port 8080, hot) |
 | Production build | `npm run build` (outputs to `dist/`) |
 | Lint | `npm run eslint` |
 | Lint + fix | `npm run eslint:fix` |
@@ -19,7 +19,7 @@ TypeScript + React 18 + React Router 5 + Redux Toolkit + Redux Form + Webpack 5 
 ## Env
 - Dev: `.env.dev.js` → `apiUrl: 'http://api.neo.local/'`
 - Production: `.env.production.js` → `apiUrl: '/api'`
-- Global `APP_ENV` injected via webpack `DefinePlugin` (declared in `globals.d.ts`)
+- Global `APP_ENV` injected via RsBuild `source.define` (declared in `globals.d.ts`)
 - Install with `npm ci` (Docker); `legacy-peer-deps=true` in `.npmrc`
 - Backend: separate repo at `https://github.com/Mirantus/neo-api`
 
@@ -28,8 +28,8 @@ TypeScript + React 18 + React Router 5 + Redux Toolkit + Redux Form + Webpack 5 
 - **Store**: `src/store/index.ts` — Redux Toolkit `configureStore` with reducers: `form`, `items`, `loading`, `message`, `user`
 - **Routing**: React Router v5 (`react-router`, not `react-router-dom`). Routes in `src/components/application.tsx`. Lazy-loaded via `React.lazy` + `Suspense`
 - **API**: `src/utils/api.ts` custom fetch — reads `token` cookie via `js-cookie`, appends to every request, uses `APP_ENV.apiUrl`
-- **Aliases** (webpack + tsconfig): `pages/*` → `src/pages/*`; `react-dom` aliased to `@hot-loader/react-dom`
-- **Styling**: Less files; PostCSS (autoprefixer) via `postcss-loader`
+- **Aliases** (RsBuild + tsconfig): `pages/*` → `src/pages/*`
+- **Styling**: CSS + PostCSS (autoprefixer) via RsBuild
 
 ## Conventions
 - **Prettier**: 120 print width, 4-space tabs, trailing commas es5 (`src/.prettierrc`)

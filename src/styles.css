@@ -11,8 +11,6 @@
     text-align: center;
 }
 
-.item-tools {
-    & > a {
-        margin-right: 5px;
-    }
+.item-tools > a {
+    margin-right: 5px;
 }
